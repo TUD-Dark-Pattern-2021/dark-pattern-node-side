@@ -1,0 +1,45 @@
+.user-profile {
+  min-height: 100vh;
+  padding: 32px;
+  .avatar-wrapper {
+    padding: 16px 0;
+    .avatar-img {
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 100%;
+      box-shadow: rgba(50, 50, 93, 0.31) 0 4px 6px, rgba(0, 0, 0, 0.08) 0 1px 3px;
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+    }
+
+  }
+  .user-item {
+    margin: 5px auto;
+    padding: 8px 0;
+    align-items: center;
+    .ant-col-4 {
+      text-align: right;
+      padding: 0 8px;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+    .ant-input {
+      width: 60%;
+      margin-right: 10px;
+    }
+    .edit-button {
+      margin-right: 10px;
+    }
+    #password, #verify_pass {
+      margin-top: 20px;
+    }
+  }
+}
+
