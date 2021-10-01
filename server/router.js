@@ -1,7 +1,5 @@
 const express = require('express')
 const commons = require('./utils/commons')
-const userController = require('./controller/user')
-const animeController = require('./controller/anime')
 const dynamodbController = require('./controller/dynamodb')
 const dpController = require('./controller/dp')
 const router = express.Router();
@@ -23,14 +21,7 @@ const createAction = (router, baseurl, routerController, action, path, method) =
 };
 
 let INTERFACE_CONFIG = {
-  user: {
-    prefix: '/user/',
-    controller: userController
-  },
-  anime: {
-    prefix: '/anime/',
-    controller: animeController
-  },
+ 
   dynamodb: {
     prefix: '/dynamodb/',
     controller: dynamodbController
@@ -64,100 +55,100 @@ let routerConfig = {
       action: 'deleteItem',
       path: 'deleteItem',
       method: 'delete'
-    }
+    },
+    {
+      action: 'getReq',
+      path: 'getReq',
+      method: 'get'
+    },
   ], 
-  user: [
-    {
-      action: 'login',
-      path: 'login',
-      method: 'post'
-    },
-    {
-      action: 'reg',
-      path: 'reg',
-      method: 'post'
-    },
-    {
-      action: 'addItem',
-      path: 'addItem',
-      method: 'post'
-    },
-    {
-      action: 'update',
-      path: 'update',
-      method: 'put'
-    },
-    {
-      action: 'del',
-      path: 'del',
-      method: 'post'
-    },
-    {
-      action: 'getLoginStatus',
-      path: 'status',
-      method: 'get'
-    },
-    {
-      action: 'logout',
-      path: 'logout',
-      method: 'get'
-    },
-    {
-      action: 'changePassword',
-      path: 'change_password',
-      method: 'put'
-    },
-    {
-      action: 'avatar',
-      path: 'avatar/:uid',
-      method: 'get'
-    },
-    {
-      action: 'addToFavorite',
-      path: 'favorite/add',
-      method: 'post'
-    },
-    {
-      action: 'delFavorite',
-      path: 'favorite/delete/:id',
-      method: 'delete'
-    },
-    {
-      action: 'getFavoriteList',
-      path: 'favorite/list',
-      method: 'get'
-    },
-    {
-      action: 'forgotPassword',
-      path: 'forgotPassword',
-      method: 'post'
-    },
-    {
-      action: 'resetPassword',
-      path: 'resetPassword/:token',
-      method: 'get'
-    },
-    {
-      action: 'updatePassword',
-      path: 'updatePassword',
-      method: 'put'
-    },
-    {
-      action: 'uploadAvatar',
-      path: 'upload_avatar',
-      method: 'post'
-    },
-    {
-      action: 'deleteAccount',
-      path: 'delete',
-      method: 'delete'
-    }
-  ],
-  anime: [{
-    action: 'list',
-    path: 'list',
-    method: 'get'
-  }]
+  // user: [
+  //   {
+  //     action: 'login',
+  //     path: 'login',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'reg',
+  //     path: 'reg',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'addItem',
+  //     path: 'addItem',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'update',
+  //     path: 'update',
+  //     method: 'put'
+  //   },
+  //   {
+  //     action: 'del',
+  //     path: 'del',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'getLoginStatus',
+  //     path: 'status',
+  //     method: 'get'
+  //   },
+  //   {
+  //     action: 'logout',
+  //     path: 'logout',
+  //     method: 'get'
+  //   },
+  //   {
+  //     action: 'changePassword',
+  //     path: 'change_password',
+  //     method: 'put'
+  //   },
+  //   {
+  //     action: 'avatar',
+  //     path: 'avatar/:uid',
+  //     method: 'get'
+  //   },
+  //   {
+  //     action: 'addToFavorite',
+  //     path: 'favorite/add',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'delFavorite',
+  //     path: 'favorite/delete/:id',
+  //     method: 'delete'
+  //   },
+  //   {
+  //     action: 'getFavoriteList',
+  //     path: 'favorite/list',
+  //     method: 'get'
+  //   },
+  //   {
+  //     action: 'forgotPassword',
+  //     path: 'forgotPassword',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'resetPassword',
+  //     path: 'resetPassword/:token',
+  //     method: 'get'
+  //   },
+  //   {
+  //     action: 'updatePassword',
+  //     path: 'updatePassword',
+  //     method: 'put'
+  //   },
+  //   {
+  //     action: 'uploadAvatar',
+  //     path: 'upload_avatar',
+  //     method: 'post'
+  //   },
+  //   {
+  //     action: 'deleteAccount',
+  //     path: 'delete',
+  //     method: 'delete'
+  //   }
+  // ],
 };
 
 for (let ctrl in routerConfig) {
