@@ -1,5 +1,4 @@
 const baseController = require('./base.js');
-const userModel = require('../models/user.js');
 const commons = require('../utils/commons');
 const ddbClient = require("../ddb.js")
 const DynamoDB = require("@aws-sdk/client-dynamodb");
@@ -107,6 +106,33 @@ class dynamodbController extends baseController {
                     console.log("Error: Table in use");
                 }
             }
+        };
+        run();
+    }
+
+    async getReq(req, res) {
+        var table = "DarkPatternsReqRes";
+        console.log("Getting Request")
+        let params = {
+            
+            TableName: table,
+            Key: {
+                request: { S: req.body.request },
+            },
+            ProjectionExpression: "#r",
+            ExpressionAttributeNames: {
+                "#r": "request"
+            }
+            
+        };
+        console.log(params)
+        console.log("Getting Response")
+
+        const run = async () => {
+            const data = await ddbClient.send(new DynamoDB.GetItemCommand(params));
+            console.log("Success", data.Item);
+            res.send(commons.resReturn(data.Item));
+            return data;
         };
         run();
     }
