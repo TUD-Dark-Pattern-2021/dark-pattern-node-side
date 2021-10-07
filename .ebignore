@@ -1,0 +1,34 @@
+# Compiled files
+dist/
+
+# Config file
+config/config.js
+
+# Node stuff
+node_modules
+yarn-error.log
+.elasticbeanstalk
+.npm
+.node_repl_history
+.lock-wscript
+logs
+*.log
+npm-debug.log*
+
+# OS stuff
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+$RECYCLE.BIN/
+._*
+.DS_Store
+.Spotlight-V100
+.Trashes
+yarn-error.log
+
+.idea
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
