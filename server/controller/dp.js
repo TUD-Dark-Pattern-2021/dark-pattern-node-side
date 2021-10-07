@@ -17,9 +17,9 @@ class dpController extends baseController {
   }
 
   async detect(req, res) {
-    console.log(req.body.html)
+    // console.log(req.body.html)
     const html = decodeURIComponent(req.body.html)
-    console.log(html)
+    // console.log(html)
     const doc = new dom().parseFromString(html)
 
     let nodes = xpath.select("//text()", doc)
@@ -30,6 +30,7 @@ class dpController extends baseController {
     }
     nodes.forEach((item, index) => {
       if (!item.nodeValue.match(/\n/g)) {
+
         result.key.push(shortid.generate())
         result.content.push(item.nodeValue)
         result.tag.push('')
@@ -37,6 +38,12 @@ class dpController extends baseController {
         while (item.parentNode !== null) {
           // console.log(parent.parentNode)
           if (item.parentNode.tagName) {
+            if (item.parentNode.tagName === 'script' || item.parentNode.tagName === 'style') {
+              result.key.pop()
+              result.content.pop()
+              result.tag.pop()
+              break
+            }
             let attr = ''
             let originalAttr = item.parentNode.attributes
             let len = originalAttr.length
@@ -46,7 +53,9 @@ class dpController extends baseController {
                 if (i.value.indexOf(' ')){
                   let idList = i.value.split(' ')
                   idList.forEach(value => {
-                    attr += `#${value}`
+                    if (value) {
+                      attr += `#${value}`
+                    }
                   })
                   continue
                 }
@@ -57,20 +66,35 @@ class dpController extends baseController {
                 if (i.value.indexOf(' ')) {
                   let classList = i.value.split(' ')
                   classList.forEach(value => {
-                    attr += `.${value}`
+                    if (value) {
+                      attr += `.${value}`
+                    }
                   })
                   continue
                 }
                 attr += `.${i.value}`
                 continue
               }
-              attr += `[${i.name}="${i.value}"]`
+              if (i.value.indexOf("\"") > -1) {
+                console.log(i.value)
+                i.value = i.value.replace(/\"/g, "\\\"")
+                attr += `[${i.name}='${i.value}']`
+              } else if (i.value.indexOf("\'") > -1){
+                console.log(i.name, i.value, typeof i.value)
+                i.value = i.value.replace(/\'/g, "\\\'")
+                attr += `[${i.name}="${i.value}"]`
+              } else {
+                attr += `[${i.name}="${i.value}"]`
+              }
             }
             attr = item.parentNode.tagName + attr
             result.tag[result.content.length - 1] = attr + " " + result.tag[result.content.length - 1]
           }
           item = item.parentNode
         }
+console.log(result.tag[result.content.length - 1])
+
+
         // console.log(parent)
       }
 
