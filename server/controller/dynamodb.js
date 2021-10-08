@@ -110,31 +110,33 @@ class dynamodbController extends baseController {
         run();
     }
 
-    async getReq(req, res) {
-        var table = "DarkPatternsReqRes";
-        console.log("Getting Request")
-        let params = {
+    // async getReq(req, res) {
+    //     var table = "DarkPatternsReqRes";
+    //     console.log("Getting Request")
+    //     let params = {
             
-            TableName: table,
-            Key: {
-                request: { S: req.body.request },
-            },
-            ProjectionExpression: "#r",
-            ExpressionAttributeNames: {
-                "#r": "request"
-            }
+    //         TableName: table,
+    //         Key: {
+    //             request: { S: req.body.request },
+    //         },
+    //         ProjectionExpression: "#r",
+    //         ExpressionAttributeNames: {
+    //             "#r": "request"
+    //         }
             
-        };
-        console.log(params)
-        console.log("Getting Response")
+    //     };
+    //     console.log(params)
+    //     console.log("Getting Response")
 
-        const run = async () => {
-            const data = await ddbClient.send(new DynamoDB.GetItemCommand(params));
-            console.log("Success", data.Item);
-            res.send(commons.resReturn(data.Item));
-            return data;
-        };
-        run();
-    }
+    //     const run = async () => {
+    //         const data = await ddbClient.send(new DynamoDB.GetItemCommand(params));
+    //         console.log("Success", data.Item);
+    //         res.send(commons.resReturn(data.Item));
+    //         return data;
+    //     };
+    //     run();
+    // }
+
+    
 }
 module.exports = dynamodbController;
