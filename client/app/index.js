@@ -8,7 +8,6 @@ import App from './App';
 import 'antd/dist/antd.css';
 import './styles/app.less'
 
-
 const store = createStore();
 
 render((

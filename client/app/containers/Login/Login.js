@@ -7,8 +7,6 @@ import { loginActions } from '../../reducer/modules/user';
 import { withRouter } from 'react-router';
 const FormItem = Form.Item;
 
-import '../../styles/Login.less';
-
 const formItemStyle = {
   marginBottom: '.16rem'
 };
