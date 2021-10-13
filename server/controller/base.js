@@ -18,7 +18,9 @@ class baseController {
       '/api/dynamodb/addItem',
       '/api/dynamodb/getItem',
       '/api/dynamodb/deleteItem',
-      '/api/dyanmodb/getReq',
+      '/api/dyanmodb/storeDataset',
+      '/api/dyanmodb/s3Test',
+      '/api/dyanmodb/pushData',
       // '/api/user/updatePassword',
       '/api/dp/detect',
       
