@@ -67,6 +67,11 @@ let routerConfig = {
       method: 'put'
     },
     {
+      action: 'dyanmoToS3',
+      path: 'dyanmoToS3',
+      method: 'put'
+    },
+    {
       action: 'storeDataset',
       path: 'storeDataset',
       method: 'put'

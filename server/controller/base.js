@@ -21,6 +21,7 @@ class baseController {
       '/api/dyanmodb/storeDataset',
       '/api/dyanmodb/s3Test',
       '/api/dyanmodb/pushData',
+      '/api/dyanmodb/dyanmoToS3',
       // '/api/user/updatePassword',
       '/api/dp/detect',
       
