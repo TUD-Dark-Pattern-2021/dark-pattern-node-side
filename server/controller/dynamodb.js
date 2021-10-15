@@ -287,8 +287,8 @@ class dynamodbController extends baseController {
 
     };
 
-    async dyanmoToS3(req) {
-
+    async dyanmoToS3(req, res) {
+        let count = 0;
         let headers = [];
         let unMarshalledArray = [];
         const filename = req.body.filename;
@@ -314,7 +314,6 @@ class dynamodbController extends baseController {
         if (filename) {
             var stream = fs.createWriteStream(filename, { flags: 'a' });
         }
-        console.log(stream);
 
         let rowCount = 0;
         let writeCount = 0;
@@ -453,22 +452,67 @@ class dynamodbController extends baseController {
 
         const writeData = (data) => {
             stream.write(data);
+
             const fileStream = fs.createReadStream(filename);
-            const uploadParams = {
+            let done = false;
+
+            let uploadParams = {
                 Bucket: "darkpatternsdatasets",
                 Key: "darkpatterns.csv",
                 Body: fileStream,
             };
+            // let params = {
+            //     Bucket: "darkpatternsdatasets",
+            //     Key: "darkpatterns.csv",
+            // }
+
+            // let found = true;
+            // uploadParams.Key = "V" + count.toString() + uploadParams.Key;
+            // params.Key = "V" + count.toString() + params.Key;
+            // console.log(uploadParams.Key);
+            // const response = listObjectsS3(uploadParams)
+            // let files;
+            // console.log(response);
+            // for(i in response.Contents){
+            //     files.push(response.Contents[i])
+            //     console.log(files);
+            // }
+            // while(found){
+            //     if(files.includes(uploadParams.Key)){
+            //         count++;
+            //         uploadParams.Key = "V" + count.toString() + uploadParams.Key;
+            //     }
+            //     else{
+            //         found = true;
+            //     }
+
+            // }
             const run = async () => {
-                try {
-                    const data = await s3c.send(new S3.PutObjectCommand(uploadParams));
-                    console.log("Success", data);
-                    return data;
-                } catch (err) {
-                    console.log("Error", err);
-                }
+                console.log("123")
+                const data = await s3c.send(new S3.PutObjectCommand(uploadParams));
+                console.log("Success", data);
+                res.send(commons.resReturn(data));
+                return data;
+                
+            
             };
             run();
+
+
+
+
+
+
+            // console.log("File not Found ERROR : " + err.code)
+            // const run = async () => {
+            //     const data = await s3c.send(new S3.PutObjectCommand(uploadParams));
+            //     console.log("Success", data);
+            //     res.send(commons.resReturn(data));
+            //     return data;
+            // };
+            // run();
+
+
 
             // s3c.send(new PutObjectCommand(uploadParams));
             // ('darkpatternsdatasets', "dark_patterns.csv",data)
@@ -535,6 +579,27 @@ class dynamodbController extends baseController {
     //     run();
     // }
 
+    async listObjectsS3(req, res) {
+        let params = {
+            Bucket: req.body.bucket
+        }
+
+        console.log("Displaying all objects in the bucket")
+
+        const run = async () => {
+            const data = await s3c.send(new S3.ListObjectsV2Command(params));
+            console.log("Success", data.Contents[1].Key);
+            let files = new Array(data.Contents.length);
+            for (const i in data.Contents)
+            {
+                files.push(data.Contents[i].Key)
+            }
+            // console.log(files);
+            res.send(commons.resReturn(files+ " To get the data set you want enter the url - 'https://" + req.body.bucket + ".s3.amazonaws.com/Key'"));
+            return data;
+        };
+        run();
+    }
 
 }
 

@@ -85,6 +85,11 @@ let routerConfig = {
       path: 's3Test',
       method: 'get'
     },
+    {
+      action: 'listObjectsS3',
+      path: 'listObjectsS3',
+      method: 'get'
+    },
   ], 
   user: [
     {
