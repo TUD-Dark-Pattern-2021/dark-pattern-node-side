@@ -65,6 +65,26 @@ let routerConfig = {
       path: 'getReq',
       method: 'get'
     },
+    {
+      action: 'pushData',
+      path: 'pushData',
+      method: 'put'
+    },
+    {
+      action: 'dyanmoToS3',
+      path: 'dyanmoToS3',
+      method: 'put'
+    },
+    {
+      action: 'storeDataset',
+      path: 'storeDataset',
+      method: 'put'
+    },
+    {
+      action: 's3Test',
+      path: 's3Test',
+      method: 'get'
+    },
   ], 
   user: [
     {

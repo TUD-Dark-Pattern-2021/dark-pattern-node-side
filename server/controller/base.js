@@ -22,6 +22,11 @@ class baseController {
       '/api/dynamodb/deleteItem',
       '/api/dyanmodb/getReq',
       '/api/user/updatePassword',
+      '/api/dyanmodb/storeDataset',
+      '/api/dyanmodb/s3Test',
+      '/api/dyanmodb/pushData',
+      '/api/dyanmodb/dyanmoToS3',
+      // '/api/user/updatePassword',
       '/api/dp/detect',
       
     ];
