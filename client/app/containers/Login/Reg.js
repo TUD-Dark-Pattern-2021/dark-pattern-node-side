@@ -72,17 +72,6 @@ class Reg extends Component {
     }
     return (
       <Form onSubmit={this.handleSubmit}>
-        <FormItem style={formItemStyle}>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'please enter the username!' }]
-          })(
-            <Input
-              style={changeHeight}
-              prefix={<Icon type="user" style={{ fontSize: 13 }} />}
-              placeholder="Username"
-            />
-          )}
-        </FormItem>
 
         {/* Email */}
         <FormItem style={formItemStyle}>
