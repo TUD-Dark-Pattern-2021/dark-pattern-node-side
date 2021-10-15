@@ -5,18 +5,15 @@ import { Button, Layout } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
-import { getAnimeList } from '../../reducer/modules/anime';
-import AnimeList from "../../components/Anime/AnimeList";
-import SearchForm from "../../components/Anime/SearchForm";
 
 @connect(
   state => ({
     login: state.user.isLogin,
-    animeList: state.anime.list
+    // animeList: state.anime.list
   }),
-  {
-    getAnimeList
-  }
+  // {
+  //   getAnimeList
+  // }
 )
 @withRouter
 class Home extends Component {
@@ -32,14 +29,14 @@ class Home extends Component {
   }
   static propTypes = {
     login: PropTypes.bool,
-    animeList: PropTypes.array,
-    getAnimeList: PropTypes.func
+    // animeList: PropTypes.array,
+    // getAnimeList: PropTypes.func
   };
   render() {
     return (
       <Content>
-        <SearchForm/>
-        <AnimeList />
+        {/*<SearchForm/>*/}
+        {/*<AnimeList />*/}
       </Content>
     );
   }

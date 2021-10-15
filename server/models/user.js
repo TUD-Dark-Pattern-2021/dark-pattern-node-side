@@ -1,84 +1,110 @@
 const baseModel = require('./base.js');
+const ddbClient = require("../ddb");
+const { GetItemCommand, PutItemCommand, ScanCommand } = require("@aws-sdk/client-dynamodb");
+const { marshall, unmarshall } = require("@aws-sdk/util-dynamodb");
+
 class userModel extends baseModel {
 
   getName() {
-    return 'dp';
+    return 'User';
+  }
+  getIndex () {
+    return {
+      KeySchema: [
+        {
+          AttributeName: "Id",
+          KeyType: "HASH", //Partition key
+        },
+      ],
+    }
   }
   getSchema() {
     return {
-      url: {
-        type: String,
-        required: true
-      },
-      category: {
-        type: String,
-        required: true
-      },
-      country_rank: {
-        type: Number,
-        required: true
-      },
-      deceptive:{
-        type: Boolean,
-        required: true
-      },
-      dp:{
-        type: Boolean,
-        required: true
-      },
-      global_rank:{
-        type: Number,
-        required: true
-      },
-      page_views_per_million:{
-        type: Number,
-        required: true
-      },
-      page_views_per_user:{
-        type: Number,
-        required: true
-      },
-      reach_per_million:{
-        type: Number,
-        required: true
-      },
-
-      // favorites: [
-      //   commons.getInst(animeModel).getSchema()
-      // ],
-      // passsalt: String,
-      // add_time: Number,
-      // up_time: Number,
-
+      AttributeDefinitions: [
+        {
+          AttributeName: "Id",
+          AttributeType: "S"
+        },
+        {
+          AttributeName: "Email",
+          AttributeType: "S"
+        },
+        {
+          AttributeName: "Password",
+          AttributeType: "S"
+        },
+        {
+          AttributeName: "ResetPasswordToken",
+          AttributeType: "S"
+        },
+        {
+          AttributeName: "ResetPasswordExpires",
+          AttributeType: "N"
+        },
+        {
+          AttributeName: "Passsalt",
+          AttributeType: "S"
+        },
+        {
+          AttributeName: "AddTime",
+          AttributeType: "N"
+        },
+        {
+          AttributeName: "UpTime",
+          AttributeType: "N"
+        },
+      ]
     }
   }
-  checkRepeat(email) {
-    return this.model.countDocuments({
-      email: email
-    });
-  }
-  checkUserRepeat(username) {
-    return this.model.countDocuments({
-      username
-    });
-  }
+
   save(data) {
-    let dp = new this.model(data);
-    return dp.save();
+    const params = {
+      TableName: 'User',
+      Item: data,
+      ConditionExpression: "attribute_not_exists(Email)",
+    }
+    return ddbClient.send(new PutItemCommand(params))
   }
-  findById(id) {
-    return this.model.findOne({
-      _id: id
-    });
+  async findByEmail(email){
+    var params = {
+      TableName: 'User',
+      FilterExpression: 'Email = :email',
+      ExpressionAttributeValues: {
+        ":email": { S: email }
+      }
+    };
+    // const params = new GetItemCommand({
+    //   TableName: 'User',
+    //   Key: {
+    //     Email: {S: email}
+    //   },
+    //   ProjectionExpression: '#e',
+    //   ExpressionAttributeNames: {
+    //     '#e': 'Email'
+    //   }
+    // });
+    // let result =ddbClient.send(params)
+    let result = await ddbClient.send( new ScanCommand(params))
+    return result
   }
-  findByUsername(username){
-    return this.model.findOne({username: username});
+  async findById (id) {
+    const params = {
+      TableName: "User",
+      Key: marshall({
+        Id: id ,
+      }),
+    };
+    const data = await ddbClient.send(new GetItemCommand(params));
+    return data;
   }
-  findByEmail(email) {
-    return this.model.findOne({email: email});
-  }
-  findByToken(resetPasswordToken){
-    return this.model.findOne({resetPasswordToken: resetPasswordToken});
+  findByToken(ResetPasswordToken){
+    const params = new GetItemCommand(marshall({
+      TableName: 'User',
+      Key: {
+        ResetPasswordToken
+      }
+    }));
+    return ddbClient.send(params)
   }
 
   update(id, data) {
@@ -95,30 +121,6 @@ class userModel extends baseModel {
         resetPasswordToken: token
       },
       data
-    );
-  }
-  addToFavorite(id, data) {
-    console.log(id, data, 'data')
-    return this.model.update(
-      {
-        _id: id
-      },
-      { "$push":
-          { "favorites": data }
-      }
-    );
-  }
-  delFavorite (uid, id) {
-    return this.model.update(
-      {
-        _id: uid
-      },
-      { "$pull":
-          { "favorites": {
-              _id: id
-            }
-          }
-      }
     );
   }
   updateToken(email,data){

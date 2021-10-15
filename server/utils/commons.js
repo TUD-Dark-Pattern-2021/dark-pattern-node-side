@@ -76,7 +76,7 @@ exports.sendMail = (options, cb) => {
   let mail = nodemailer.createTransport({
     "host": "smtp.gmail.com",
     "port": 465,
-    "from": "anime",
+    "from": "DP",
     "secure": true,
     "auth": {
       "user": "webpairassessment",

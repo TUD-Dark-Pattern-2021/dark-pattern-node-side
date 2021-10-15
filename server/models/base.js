@@ -1,12 +1,9 @@
 const commons = require('../utils/commons')
-const DynamoDB = require("@aws-sdk/client-dynamodb");
 
 class baseModel {
   constructor() {
-    this.schema = new DynamoDB.Schema(this.getSchema());
+    this.schema = this.getSchema();
     this.name = this.getName();
-    this.model = DynamoDB.model(this.name, this.schema);
-    
   }
 
   getSchema() {

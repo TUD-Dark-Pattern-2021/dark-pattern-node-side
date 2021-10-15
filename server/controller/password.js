@@ -31,7 +31,7 @@ class passwordController extends baseController {
 
         commons.sendMail({
           to: user.email,
-          subject: 'notification from anime - Password reset',
+          subject: 'notification from dp - Password reset',
           contents: `<h3>Dear user：</h3><p>Hi，http://localhost:8080/reset/${token}`
         });
 
