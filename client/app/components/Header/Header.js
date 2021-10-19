@@ -12,11 +12,6 @@ let HeaderMenu = {
     path: '/profile',
     name: 'Profile',
   },
-  myBooks: {
-    path: '/my',
-    name: 'My Favorites',
-  },
-
 };
 
 const MenuUser = props => (
@@ -46,7 +41,6 @@ MenuUser.propTypes = {
 };
 
 const ToolUser = props => {
-  let imgUrl = props.imgUrl ? props.imgUrl : `/api/user/avatar/${props.uid}`;
   return (
       <div className="toolbar-li">
         <Dropdown
@@ -60,10 +54,7 @@ const ToolUser = props => {
           overlayClassName={"overlay"}
         >
           <a className="dropdown-link">
-            <span className="avatar-image">
-              <img src={imgUrl} />
-            </span>
-            <span>{props.username}</span>
+            <span>{props.email}</span>
             <span className="name">
              <Icon type="caret-down" />
             </span>
@@ -81,10 +72,9 @@ ToolUser.propTypes = {
 @connect(
   state => {
     return {
-      username: state.user.userName,
+      email: state.user.email,
       uid: state.user.uid,
       login: state.user.isLogin,
-      imgUrl: state.user.imgUrl
     };
   },
   {
@@ -121,14 +111,14 @@ export default class HeaderCom extends Component {
       });
   };
   render() {
-    const { login, uid, imgUrl, username } = this.props;
+    const { login, uid, email } = this.props;
     return (
       <div>
         {
           this.props.location.pathname !== "/login" &&
           <Header>
             <Link to="/" className="logo">
-              <img src="https://objectstorage.uk-london-1.oraclecloud.com/n/lr4yd7vw0w4q/b/bucket-20201101-2204/o/WeChated0bc916e403f18eb815c143571ac433.png" alt=""/>
+              <img src="" alt="dp logo"/>
             </Link>
             <div
               className="user-toolbar"
@@ -136,8 +126,7 @@ export default class HeaderCom extends Component {
               {login ? (
                 <ToolUser
                   uid={uid}
-                  username={username}
-                  imgUrl={imgUrl}
+                  email={email}
                   logout={this.logout}
                 />
               ) : (
