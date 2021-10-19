@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Layout, Spin} from 'antd'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Login, Home, Profile, MyFavorites, ForgotPassword, ResetPassword} from './containers/index';
+import { Login, Home, AdminIndex} from './containers/index';
 import Header from './components/Header/Header';
 import { checkLoginState } from './reducer/modules/user';
 import { requireAuthentication } from './components/AuthenticatedComponent';
@@ -55,11 +55,7 @@ class App extends Component {
             <Switch>
               <Route path='/login' component={Login} />
               <Route path='/' exact component={Home} />
-              <Route path='/forgotPassword' component={ForgotPassword}/>
-              <Route path='/resetPassword/:token' component={ResetPassword}/>
-              // {/* <Route path='/details' exact component={Details} /> */}
-              <Route path='/profile' component={requireAuthentication(Profile)} />
-              <Route path='/my' component={requireAuthentication(MyFavorites)} />
+              <Route path='/admin/index' exact component={requireAuthentication(AdminIndex)}/>
               <Route component={NotFound} />
             </Switch>
           </Layout>

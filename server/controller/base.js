@@ -10,28 +10,9 @@ class baseController {
 
   async init(req, res) {
     let ignoreRouter = [
-      '/api/user/login',
-      '/api/user/reg',
-      '/api/user/status',
-      '/api/user/logout',
-      '/api/user/avatar',
-      '/api/user/forgotPassword',
-      '/api/user/resetPassword',
-      '/api/dynamodb/addItem',
-      '/api/dynamodb/getItem',
-      '/api/dynamodb/deleteItem',
-      '/api/dyanmodb/getReq',
-      '/api/user/updatePassword',
-      '/api/dyanmodb/storeDataset',
-      '/api/dyanmodb/s3Test',
-      '/api/dyanmodb/pushData',
-      '/api/dyanmodb/dyanmoToS3',
-      '/api/dyanmodb/listObjectsS3',
-      // '/api/user/updatePassword',
-      '/api/dp/detect',
-      
+      '/api/dp',
     ];
-    if (ignoreRouter.indexOf(req.path) > -1 || req.path.indexOf('/api/user/resetPassword') > -1) {
+    if (req.path.indexOf(ignoreRouter) > -1) {
       this.$auth = true;
     } else {
       await this.checkLogin(req, res);
@@ -82,9 +63,8 @@ class baseController {
     if ((await this.checkLogin(req, res)) === true) {
       let result = commons.fieldSelect(this.$user, [
         'Id',
-        'Email',
+        'Username',
         'UpTime',
-        'AddTime',
       ]);
       body = commons.resReturn(result);
     } else {
