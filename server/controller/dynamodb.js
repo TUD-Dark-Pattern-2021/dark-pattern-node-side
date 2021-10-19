@@ -450,7 +450,7 @@ class dynamodbController extends baseController {
             rowCount = 0;
         }
 
-        const writeData = (data) => {
+        const writeData = async (data) => {
             stream.write(data);
 
             const fileStream = fs.createReadStream(filename);
@@ -461,19 +461,30 @@ class dynamodbController extends baseController {
                 Key: "darkpatterns.csv",
                 Body: fileStream,
             };
-            // let params = {
-            //     Bucket: "darkpatternsdatasets",
-            //     Key: "darkpatterns.csv",
-            // }
+            let params = {
+                Bucket: "darkpatternsdatasets",
+                Key: "darkpatterns.csv",
+            }
 
-            // let found = true;
-            // uploadParams.Key = "V" + count.toString() + uploadParams.Key;
-            // params.Key = "V" + count.toString() + params.Key;
-            // console.log(uploadParams.Key);
-            // const response = listObjectsS3(uploadParams)
-            // let files;
+            let found = true;
+            
+            let files;
+            console.log(uploadParams.Key);
+
+            const data2 = await s3c.send(new S3.ListObjectsV2Command(params));
+            console.log("Success", data2.Contents[1].Key);
+            files = new Array(data2.Contents.length);
+            for (const i in data2.Contents) {
+                files.push(data2.Contents[i].Key)
+            }
+            // console.log(files);
+            // res.send(commons.resReturn(files+ " To get the data set you want enter the url - 'https://" + req.body.bucket + ".s3.amazonaws.com/Key'"));
+            // return data;
+
+
             // console.log(response);
-            // for(i in response.Contents){
+            // console.log("123")
+            // for(let i in response.Contents){
             //     files.push(response.Contents[i])
             //     console.log(files);
             // }
@@ -487,16 +498,26 @@ class dynamodbController extends baseController {
             //     }
 
             // }
-            const run = async () => {
-                console.log("123")
-                const data = await s3c.send(new S3.PutObjectCommand(uploadParams));
-                console.log("Success", data);
-                res.send(commons.resReturn(data));
-                return data;
-                
-            
-            };
-            run();
+            while (found) {
+                uploadParams.Key = "DarkPatterns.csv"
+                uploadParams.Key = "V" + count.toString() + uploadParams.Key;
+            params.Key = "V" + count.toString() + params.Key;
+            console.log(uploadParams.Key)
+                if (files.indexOf(uploadParams.Key) == -1) {
+                    console.log("123")
+                    found = false;
+                    const data1 = await s3c.send(new S3.PutObjectCommand(uploadParams));
+                    console.log("Success", data1);
+                    res.send(commons.resReturn(data1));
+                }
+                else{
+                    count++;
+                }
+
+            }
+            // return data;
+
+
 
 
 
@@ -581,7 +602,7 @@ class dynamodbController extends baseController {
 
     async listObjectsS3(req, res) {
         let params = {
-            Bucket: req.body.bucket
+            Bucket: req.body.Bucket
         }
 
         console.log("Displaying all objects in the bucket")
@@ -590,12 +611,11 @@ class dynamodbController extends baseController {
             const data = await s3c.send(new S3.ListObjectsV2Command(params));
             console.log("Success", data.Contents[1].Key);
             let files = new Array(data.Contents.length);
-            for (const i in data.Contents)
-            {
+            for (const i in data.Contents) {
                 files.push(data.Contents[i].Key)
             }
             // console.log(files);
-            res.send(commons.resReturn(files+ " To get the data set you want enter the url - 'https://" + req.body.bucket + ".s3.amazonaws.com/Key'"));
+            res.send(commons.resReturn(files + " To get the data set you want enter the url - 'https://" + req.body.bucket + ".s3.amazonaws.com/Key'"));
             return data;
         };
         run();
