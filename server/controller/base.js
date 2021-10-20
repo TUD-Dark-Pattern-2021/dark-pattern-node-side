@@ -25,6 +25,8 @@ class baseController {
       '/api/dyanmodb/listObjectsS3',
       // '/api/user/updatePassword',
       '/api/dp/detect',
+      '/api/dp/newReport',
+      '/api/dp/getList'
       
     ];
     // if (ignoreRouter.indexOf(req.path) > -1 || req.path.indexOf('/api/user/resetPassword') > -1) {

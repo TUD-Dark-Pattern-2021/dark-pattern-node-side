@@ -6,6 +6,8 @@ const shortid = require('shortid');
 const baseController = require('./base.js');
 const commons = require("../utils/commons");
 const axios = require('axios')
+const ddbClient = require("../ddb.js")
+const DynamoDB = require("@aws-sdk/client-dynamodb");
 
 // const filePath = path.join(__dirname, 'sample1.html');
 // let xml  = fs.readFileSync(filePath, 'utf8');
@@ -43,7 +45,7 @@ class dpController extends baseController {
             while (len--) {
               let i = originalAttr[len]
               if (i.name === 'id') {
-                if (i.value.indexOf(' ')){
+                if (i.value.indexOf(' ')) {
                   let idList = i.value.split(' ')
                   idList.forEach(value => {
                     attr += `#${value}`
@@ -94,9 +96,94 @@ class dpController extends baseController {
     // }
 
     let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
-        ...result
-      })
+      ...result
+    })
     res.send(commons.resReturn(data.data));
+  }
+
+  async newReport(req, res) {
+
+    let table = "Report";
+    let id = shortid.generate();
+    let first = new Date();
+
+    console.log(first.toISOString());
+    let params = {
+      TableName: table,
+      Item: {
+        id: {
+          S: id
+        },
+        status: {
+          N: "1"
+        },
+        webType: {
+          S: req.body.webType
+        },
+        screenshot: {
+          N: req.body.screenshot
+        },
+        keyword: {
+          S: req.body.keyword
+        },
+        category: {
+          S: req.body.category
+        },
+        description: {
+          S: req.body.description
+        },
+        createdTime: {
+          S: first.toISOString()
+        },
+
+
+      }
+    };
+    console.log(params, 'params')
+
+    console.log("Adding a new report");
+
+    const run = async () => {
+      try {
+        const data = await ddbClient.send(new DynamoDB.PutItemCommand(params));
+        console.log(data);
+        res.send(commons.resReturn(params));
+        return data;
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    run();
+  }
+  async getList(req, res) {
+    // const query = {
+      // TableName: "Dataset",
+      // Select: "ALL_ATTRIBUTES",
+      // KeyConditionExpression: keyCon,
+      // ExpressionAttributeValues: { ":name": { S: "Your order is reserved for 19:57 minutes." } },
+      // // ProjectionExpression: "ALL_ATTRIBUTES",
+      // Limit: 10000
+    // };
+
+    let tableName = req.body.tableName;
+    const scanQuery = {
+
+      TableName: tableName,
+      Select: "ALL_ATTRIBUTES",
+      Limit: 10000
+  };
+
+  const run = async () => {
+    try {
+      const data = await ddbClient.send(new DynamoDB.ScanCommand(scanQuery));
+      console.log(data);
+      res.send(commons.resReturn(data));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  run();
+
   }
 }
 

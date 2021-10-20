@@ -38,7 +38,19 @@ let routerConfig = {
       action: 'detect',
       path: 'detect',
       method: 'post'
-    }
+    },
+    {
+      action: 'newReport',
+      path: 'newReport',
+      method: 'put'
+    },
+    {
+      action: 'getList',
+      path: 'getList',
+      method: 'get'
+    },
+
+
   ],
   dynamodb:[
     {
