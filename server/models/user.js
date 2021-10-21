@@ -65,26 +65,15 @@ class userModel extends baseModel {
     }
     return ddbClient.send(new PutItemCommand(params))
   }
-  async findByEmail(email){
+  async findByUsername(username){
     var params = {
       TableName: 'User',
-      FilterExpression: 'Email = :email',
+      FilterExpression: 'Username = :username',
       ExpressionAttributeValues: {
-        ":email": { S: email }
+        ":username": { S: username }
       }
     };
-    // const params = new GetItemCommand({
-    //   TableName: 'User',
-    //   Key: {
-    //     Email: {S: email}
-    //   },
-    //   ProjectionExpression: '#e',
-    //   ExpressionAttributeNames: {
-    //     '#e': 'Email'
-    //   }
-    // });
-    // let result =ddbClient.send(params)
-    let result = await ddbClient.send( new ScanCommand(params))
+    let result = await ddbClient.send(new ScanCommand(params))
     return result
   }
   async findById (id) {

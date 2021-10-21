@@ -42,6 +42,11 @@ let routerConfig = {
       action: 'detect',
       path: 'detect',
       method: 'post'
+    },
+    {
+      action: 'checkDP',
+      path: 'checkDP',
+      method: 'post'
     }
   ],
   dynamodb:[
@@ -103,21 +108,6 @@ let routerConfig = {
       method: 'post'
     },
     {
-      action: 'addItem',
-      path: 'addItem',
-      method: 'post'
-    },
-    {
-      action: 'update',
-      path: 'update',
-      method: 'put'
-    },
-    {
-      action: 'del',
-      path: 'del',
-      method: 'post'
-    },
-    {
       action: 'getLoginStatus',
       path: 'status',
       method: 'get'
@@ -127,56 +117,6 @@ let routerConfig = {
       path: 'logout',
       method: 'get'
     },
-    {
-      action: 'changePassword',
-      path: 'change_password',
-      method: 'put'
-    },
-    {
-      action: 'avatar',
-      path: 'avatar/:uid',
-      method: 'get'
-    },
-    {
-      action: 'addToFavorite',
-      path: 'favorite/add',
-      method: 'post'
-    },
-    {
-      action: 'delFavorite',
-      path: 'favorite/delete/:id',
-      method: 'delete'
-    },
-    {
-      action: 'getFavoriteList',
-      path: 'favorite/list',
-      method: 'get'
-    },
-    {
-      action: 'forgotPassword',
-      path: 'forgotPassword',
-      method: 'post'
-    },
-    {
-      action: 'resetPassword',
-      path: 'resetPassword/:token',
-      method: 'get'
-    },
-    {
-      action: 'updatePassword',
-      path: 'updatePassword',
-      method: 'put'
-    },
-    {
-      action: 'uploadAvatar',
-      path: 'upload_avatar',
-      method: 'post'
-    },
-    {
-      action: 'deleteAccount',
-      path: 'delete',
-      method: 'delete'
-    }
   ],
 };
 
