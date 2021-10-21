@@ -10,7 +10,7 @@ class baseController {
 
   async init(req, res) {
     let ignoreRouter = [
-      '/api/dp',
+      '/api/dp/detect',
       '/api/user/login'
     ];
     console.log(req.path)
