@@ -6,6 +6,10 @@ const shortid = require('shortid');
 const baseController = require('./base.js');
 const commons = require("../utils/commons");
 const axios = require('axios')
+const ddbClient = require("../ddb.js")
+const DynamoDB = require("@aws-sdk/client-dynamodb");
+const docClient = require("../docClient.js")
+const { unmarshall } = require("@aws-sdk/util-dynamodb");
 
 // const filePath = path.join(__dirname, 'sample1.html');
 // let xml  = fs.readFileSync(filePath, 'utf8');
@@ -50,7 +54,7 @@ class dpController extends baseController {
             while (len--) {
               let i = originalAttr[len]
               if (i.name === 'id') {
-                if (i.value.indexOf(' ')){
+                if (i.value.indexOf(' ')) {
                   let idList = i.value.split(' ')
                   idList.forEach(value => {
                     if (value) {
@@ -79,7 +83,7 @@ class dpController extends baseController {
                 console.log(i.value)
                 i.value = i.value.replace(/\"/g, "\\\"")
                 attr += `[${i.name}='${i.value}']`
-              } else if (i.value.indexOf("\'") > -1){
+              } else if (i.value.indexOf("\'") > -1) {
                 console.log(i.name, i.value, typeof i.value)
                 i.value = i.value.replace(/\'/g, "\\\'")
                 attr += `[${i.name}="${i.value}"]`
@@ -92,7 +96,7 @@ class dpController extends baseController {
           }
           item = item.parentNode
         }
-console.log(result.tag[result.content.length - 1])
+        console.log(result.tag[result.content.length - 1])
 
 
         // console.log(parent)
@@ -118,11 +122,159 @@ console.log(result.tag[result.content.length - 1])
     // }
 
     let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
-        ...result
-      })
+      ...result
+    })
     res.send(commons.resReturn(data.data));
   }
-  async checkDP (req, res) {
+
+  async newReport(req, res) {
+
+    let table = "Report";
+    let id = shortid.generate();
+    let first = new Date();
+
+    console.log(first.toISOString());
+    let params = {
+      TableName: table,
+      Item: {
+        id: {
+          S: id
+        },
+        url: {
+          S: req.body.url
+        },
+        status: {
+          N: "1"
+        },
+        webType: {
+          S: req.body.webType
+        },
+        screenshot: {
+          N: "5"
+        },
+        keyword: {
+          S: req.body.keyword
+        },
+        category: {
+          N: String(req.body.category)
+        },
+        description: {
+          S: req.body.description
+        },
+        createdTime: {
+          N: String(Date.now())
+        },
+
+      },
+      // ProjectionExpression: "#u",
+      // ExpressionAttributeNames: {
+      //   "#u": "url"
+      // }
+    };
+    console.log(params, 'params')
+
+    console.log("Adding a new report");
+
+    const run = async () => {
+      try {
+        const data = await ddbClient.send(new DynamoDB.PutItemCommand(params));
+        console.log(data);
+        res.send(commons.resReturn(data));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    run();
+  }
+  async getList(req, res) {
+
+    let tableName = "Report";
+    const scanQuery = {
+
+      TableName: tableName,
+      Select: "ALL_ATTRIBUTES",
+      Limit: 10
+    };
+
+    const run = async () => {
+      try {
+        const data = await ddbClient.send(new DynamoDB.ScanCommand(scanQuery));
+        console.log(data);
+        let newData = data.Items.map(item => {
+          return unmarshall(item)
+        })
+        res.send(commons.resReturn(
+          {
+            data: newData
+          }));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    run();
+
+  }
+
+  getListPage(req, res) {
+
+    //   let tableName = req.body.tableName;
+    //   const scanQuery = {
+
+    //     TableName: tableName,
+    //     Select: "ALL_ATTRIBUTES",
+    //     Limit: 10
+    //   };
+
+    //   docClient.scan(scanQuery, function scanUntilDone(err, data) {
+    //     if (err) {
+    //       console.log(err, err.stack);
+    //     } else {
+
+    //       if (data.LastEvaluatedKey) {
+    //         scanQuery.ExclusiveStartKey = data.LastEvaluatedKey;
+
+    //         docClient.scan(params, scanUntilDone);
+    //       }
+    //     }
+    // });
+
+  }
+
+  async updateReport(req, res) {
+    
+
+    let newStatus = req.body.status
+    let params = {
+
+      TableName: "Report",
+      Key: {
+        id: { S: req.body.id },
+      },
+      UpdateExpression: "SET #s = :q",
+      ExpressionAttributeValues: {
+        ":q": { N: String(newStatus) },
+      },
+      ExpressionAttributeNames: {
+        "#s": "status"
+      },
+      ReturnValues: "UPDATED_NEW",
+    };
+
+    console.log(params)
+
+    const run = async () => {
+      try {
+        const data = await ddbClient.send(new DynamoDB.UpdateItemCommand(params));
+        console.log(data);
+        res.send(commons.resReturn(data));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    run();
+  }
+
+  async checkDP(req, res) {
     let content = req.body.content
     let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/checkDP', {
       "content": content

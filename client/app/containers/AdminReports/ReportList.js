@@ -77,13 +77,13 @@ class ReportList extends Component {
           title: 'Status',
           dataIndex: 'status',
             render: (text, record) => (
-              <Select defaultValue={text} style={{ width: 120 }} onChange={() => this.handleStatusChange(text, record.id)}>
+              <Select defaultValue={text} style={{ width: 120 }} onChange={(value) => this.handleStatusChange(value, record.id)}>
                 {statusMap.map(item => <Option key={item.value} value={item.value}>{item.label}</Option>)}
               </Select>
           ),
         },
       ],
-      result: {}
+      result: []
     }
   }
 
@@ -95,7 +95,7 @@ class ReportList extends Component {
   }
   async handleStatusChange (status, id) {
     console.log(status, id)
-    let result = axios.post('/api/dp/report/updateList', {
+    let result = axios.post('/api/dp/updateReport', {
       id,
       status,
     })
@@ -173,36 +173,36 @@ class ReportList extends Component {
 
   async getList(values = {}) {
     console.log(values)
-    // let result = await axios.get('/api/dp/report/getList',  {params: values})
-    let result = {
-      count: 1000,
-      pageCount: 25,
-      curPage: 1,
-      data: [
-        {
-          id: 'abc',
-          createTime: Date.now(),
-          url: 'google.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.com',
-          webType: 'shopping',
-          keyword: 'abc',
-          category: 1,
-          status: 1,
-          description: 'abbcccccc'
-        },
-        {
-          id: 'abc12',
-          createTime: Date.now(),
-          url: 'google.com',
-          webType: 'shopping',
-          keyword: 'abc',
-          category: 1,
-          status: 2,
-          description: 'abbcccccc'
-        }
-      ],
-    }
+    let result = await axios.get('/api/dp/getList',  {params: values})
+    // let result = {
+    //   count: 1000,
+    //   pageCount: 25,
+    //   curPage: 1,
+    //   data: [
+    //     {
+    //       id: 'abc',
+    //       createTime: Date.now(),
+    //       url: 'google.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.com',
+    //       webType: 'shopping',
+    //       keyword: 'abc',
+    //       category: 1,
+    //       status: 1,
+    //       description: 'abbcccccc'
+    //     },
+    //     {
+    //       id: 'abc12',
+    //       createTime: Date.now(),
+    //       url: 'google.com',
+    //       webType: 'shopping',
+    //       keyword: 'abc',
+    //       category: 1,
+    //       status: 2,
+    //       description: 'abbcccccc'
+    //     }
+    //   ],
+    // }
     this.setState({
-      result
+      result:result.data.data.data
     })
   }
   handleSubmit = e => {
@@ -240,7 +240,7 @@ class ReportList extends Component {
         </Row>
       </Form>
       <div>
-        <Table columns={columns} dataSource={result.data} rowKey={'id'}/>
+        <Table columns={columns} dataSource={result} rowKey={'id'}/>
       </div>
     </div>
   }

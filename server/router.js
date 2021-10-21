@@ -44,6 +44,21 @@ let routerConfig = {
       method: 'post'
     },
     {
+      action: 'newReport',
+      path: 'newReport',
+      method: 'post'
+    },
+    {
+      action: 'getList',
+      path: 'getList',
+      method: 'get'
+    },
+    {
+      action: 'updateReport',
+      path: 'updateReport',
+      method: 'post'
+    },
+    {
       action: 'checkDP',
       path: 'checkDP',
       method: 'post'
