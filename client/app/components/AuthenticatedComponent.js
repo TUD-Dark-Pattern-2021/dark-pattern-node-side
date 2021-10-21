@@ -28,7 +28,7 @@ export function requireAuthentication(Component) {
     }
     checkAuth() {
       if (!this.props.isAuthenticated) {
-        this.props.history.push('/');
+        this.props.history.push('/login');
       }
     }
     render() {

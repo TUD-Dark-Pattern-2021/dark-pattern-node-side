@@ -9,6 +9,7 @@ const axios = require('axios')
 const ddbClient = require("../ddb.js")
 const DynamoDB = require("@aws-sdk/client-dynamodb");
 const docClient = require("../docClient.js")
+const { unmarshall } = require("@aws-sdk/util-dynamodb");
 
 // const filePath = path.join(__dirname, 'sample1.html');
 // let xml  = fs.readFileSync(filePath, 'utf8');
@@ -20,9 +21,9 @@ class dpController extends baseController {
   }
 
   async detect(req, res) {
-    console.log(req.body.html)
+    // console.log(req.body.html)
     const html = decodeURIComponent(req.body.html)
-    console.log(html)
+    // console.log(html)
     const doc = new dom().parseFromString(html)
 
     let nodes = xpath.select("//text()", doc)
@@ -33,6 +34,7 @@ class dpController extends baseController {
     }
     nodes.forEach((item, index) => {
       if (!item.nodeValue.match(/\n/g)) {
+
         result.key.push(shortid.generate())
         result.content.push(item.nodeValue)
         result.tag.push('')
@@ -40,6 +42,12 @@ class dpController extends baseController {
         while (item.parentNode !== null) {
           // console.log(parent.parentNode)
           if (item.parentNode.tagName) {
+            if (item.parentNode.tagName === 'script' || item.parentNode.tagName === 'style') {
+              result.key.pop()
+              result.content.pop()
+              result.tag.pop()
+              break
+            }
             let attr = ''
             let originalAttr = item.parentNode.attributes
             let len = originalAttr.length
@@ -49,7 +57,9 @@ class dpController extends baseController {
                 if (i.value.indexOf(' ')) {
                   let idList = i.value.split(' ')
                   idList.forEach(value => {
-                    attr += `#${value}`
+                    if (value) {
+                      attr += `#${value}`
+                    }
                   })
                   continue
                 }
@@ -60,20 +70,35 @@ class dpController extends baseController {
                 if (i.value.indexOf(' ')) {
                   let classList = i.value.split(' ')
                   classList.forEach(value => {
-                    attr += `.${value}`
+                    if (value) {
+                      attr += `.${value}`
+                    }
                   })
                   continue
                 }
                 attr += `.${i.value}`
                 continue
               }
-              attr += `[${i.name}="${i.value}"]`
+              if (i.value.indexOf("\"") > -1) {
+                console.log(i.value)
+                i.value = i.value.replace(/\"/g, "\\\"")
+                attr += `[${i.name}='${i.value}']`
+              } else if (i.value.indexOf("\'") > -1) {
+                console.log(i.name, i.value, typeof i.value)
+                i.value = i.value.replace(/\'/g, "\\\'")
+                attr += `[${i.name}="${i.value}"]`
+              } else {
+                attr += `[${i.name}="${i.value}"]`
+              }
             }
             attr = item.parentNode.tagName + attr
             result.tag[result.content.length - 1] = attr + " " + result.tag[result.content.length - 1]
           }
           item = item.parentNode
         }
+        console.log(result.tag[result.content.length - 1])
+
+
         // console.log(parent)
       }
 
@@ -115,6 +140,9 @@ class dpController extends baseController {
         id: {
           S: id
         },
+        url: {
+          S: req.body.url
+        },
         status: {
           N: "1"
         },
@@ -122,23 +150,26 @@ class dpController extends baseController {
           S: req.body.webType
         },
         screenshot: {
-          N: req.body.screenshot
+          N: "5"
         },
         keyword: {
           S: req.body.keyword
         },
         category: {
-          S: req.body.category
+          N: String(req.body.category)
         },
         description: {
           S: req.body.description
         },
         createdTime: {
-          S: first.toISOString()
+          N: String(Date.now())
         },
 
-
-      }
+      },
+      // ProjectionExpression: "#u",
+      // ExpressionAttributeNames: {
+      //   "#u": "url"
+      // }
     };
     console.log(params, 'params')
 
@@ -157,7 +188,7 @@ class dpController extends baseController {
   }
   async getList(req, res) {
 
-    let tableName = req.body.tableName;
+    let tableName = "Report";
     const scanQuery = {
 
       TableName: tableName,
@@ -169,7 +200,13 @@ class dpController extends baseController {
       try {
         const data = await ddbClient.send(new DynamoDB.ScanCommand(scanQuery));
         console.log(data);
-        res.send(commons.resReturn(data));
+        let newData = data.Items.map(item => {
+          return unmarshall(item)
+        })
+        res.send(commons.resReturn(
+          {
+            data: newData
+          }));
       } catch (err) {
         console.error(err);
       }
@@ -178,32 +215,33 @@ class dpController extends baseController {
 
   }
 
-   getListPage(req, res) {
+  getListPage(req, res) {
 
-  //   let tableName = req.body.tableName;
-  //   const scanQuery = {
+    //   let tableName = req.body.tableName;
+    //   const scanQuery = {
 
-  //     TableName: tableName,
-  //     Select: "ALL_ATTRIBUTES",
-  //     Limit: 10
-  //   };
+    //     TableName: tableName,
+    //     Select: "ALL_ATTRIBUTES",
+    //     Limit: 10
+    //   };
 
-  //   docClient.scan(scanQuery, function scanUntilDone(err, data) {
-  //     if (err) {
-  //       console.log(err, err.stack);
-  //     } else {
+    //   docClient.scan(scanQuery, function scanUntilDone(err, data) {
+    //     if (err) {
+    //       console.log(err, err.stack);
+    //     } else {
 
-  //       if (data.LastEvaluatedKey) {
-  //         scanQuery.ExclusiveStartKey = data.LastEvaluatedKey;
-    
-  //         docClient.scan(params, scanUntilDone);
-  //       }
-  //     }
-  // });
+    //       if (data.LastEvaluatedKey) {
+    //         scanQuery.ExclusiveStartKey = data.LastEvaluatedKey;
+
+    //         docClient.scan(params, scanUntilDone);
+    //       }
+    //     }
+    // });
 
   }
 
   async updateReport(req, res) {
+    
 
     let newStatus = req.body.status
     let params = {
@@ -214,11 +252,11 @@ class dpController extends baseController {
       },
       UpdateExpression: "SET #s = :q",
       ExpressionAttributeValues: {
-        ":q":{ N: newStatus },
+        ":q": { N: String(newStatus) },
       },
       ExpressionAttributeNames: {
         "#s": "status"
-    },
+      },
       ReturnValues: "UPDATED_NEW",
     };
 
@@ -234,7 +272,14 @@ class dpController extends baseController {
       }
     };
     run();
+  }
 
+  async checkDP(req, res) {
+    let content = req.body.content
+    let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/checkDP', {
+      "content": content
+    })
+    res.send(commons.resReturn(data.data));
   }
 }
 

@@ -1,4 +1,3 @@
-const nodemailer = require('nodemailer');
 const sha1 = require('sha1');
 
 exports.randStr = () => {
@@ -71,32 +70,6 @@ exports.log = (msg, type) => {
 
   f(type + ':', msg);
 };
-
-exports.sendMail = (options, cb) => {
-  let mail = nodemailer.createTransport({
-    "host": "smtp.gmail.com",
-    "port": 465,
-    "from": "anime",
-    "secure": true,
-    "auth": {
-      "user": "webpairassessment",
-      "pass": "webpair1"
-    }
-  });
-  try {
-    mail.sendMail(
-      {
-        from: mail.from,
-        to: options.to,
-        subject: options.subject,
-        html: options.contents
-      },
-      cb
-    );
-  } catch (e) {
-    console.error(e.message); // eslint-disable-line
-  }
-}
 
 function trim(str) {
   if (!str) {

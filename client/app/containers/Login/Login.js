@@ -7,8 +7,6 @@ import { loginActions } from '../../reducer/modules/user';
 import { withRouter } from 'react-router';
 const FormItem = Form.Item;
 
-import '../../styles/Login.less';
-
 const formItemStyle = {
   marginBottom: '.16rem'
 };
@@ -49,7 +47,7 @@ class Login extends Component {
       if (!err) {
           this.props.loginActions(values).then(res => {
             if (res.payload.data.errcode == 0) {
-              this.props.history.replace('/');
+              this.props.history.replace('/admin/index');
               message.success('login success!');
             } 
             else {
@@ -62,7 +60,7 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.loginData.isLogin) {
-      this.props.history.push('/');
+      this.props.history.push('/admin/index');
     }
   }
 
@@ -77,12 +75,12 @@ class Login extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormItem style={formItemStyle}>
-          {getFieldDecorator('email', { rules: [{required: true }]})
+          {getFieldDecorator('username', { rules: [{required: true }]})
           (
             <Input
               style={changeHeight}
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Email/Username"
+              placeholder="Username"
             />
           )}
         </FormItem>
@@ -109,15 +107,6 @@ class Login extends Component {
             Sign in
           </Button>
         </FormItem>
-        <Link to="/forgotPassword">
-        <Button
-            style={changeHeight}
-            type="primary"
-            className="login-form-button"
-          >
-            Forgot Password
-          </Button>
-          </Link>
       </Form>
     );
   }
