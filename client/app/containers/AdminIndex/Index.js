@@ -1,10 +1,14 @@
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Button, Layout, Menu, Icon } from 'antd';
+import { Button, Layout, Menu, Icon, } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-const { Content } = Layout
+import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { ReportList, ReportNew  } from '../AdminReports'
+import { CurrentModel, ModelTest } from '../AdminModel'
+import { ModelResources } from '../AdminS3'
+import AdminHome from './AdminHome'
+const { Content, Sider } = Layout
 const { SubMenu  } = Menu
 
 @connect(
@@ -27,6 +31,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
+
   }
   static propTypes = {
     login: PropTypes.bool,
@@ -34,65 +39,90 @@ class Index extends Component {
     // getAnimeList: PropTypes.func
   };
   render() {
+    const path = this.props.location.pathname
+    console.log(path)
     return (
-      <Content>
-        <Menu
-          onClick={this.handleClick}
-          style={{ width: 256 }}
-          defaultSelectedKeys={['10']}
-          defaultOpenKeys={['sub1']}
-          mode="inline"
-        >
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-              <Icon type="file-text" />
-              <span>Reports Management</span>
-            </span>
-            }
+      <Layout>
+        <Sider>
+          <Menu
+            onClick={this.handleClick}
+            defaultSelectedKeys={[path]}
+            defaultOpenKeys={['sub1', 'sub2', 'sub3']}
+            mode="inline"
           >
-            <Menu.Item key="10">Generate a New Report</Menu.Item>
-            <Menu.Item key="1">Reports from Extension</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub2"
-            title={
-              <span>
-              <Icon type="database" />
-              <span>Model Management</span>
-            </span>
-            }
-          >
-            <Menu.Item key="2">Current Model</Menu.Item>
-            <Menu.Item key="3">Model Test</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub3"
-            title={
-              <span>
-              <Icon type="solution" />
-              <span>Logs</span>
-            </span>
-            }
-          >
-            <Menu.Item key="4">Training Logs</Menu.Item>
-            <Menu.Item key="5">Option 2</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub4"
-            title={
-              <span>
-              <Icon type="amazon" />
-              <span>S3</span>
-            </span>
-            }
-          >
-            <Menu.Item key="6">Training Logs</Menu.Item>
-            <Menu.Item key="7">Option 2</Menu.Item>
-          </SubMenu>
-        </Menu>
-      </Content>
+            <SubMenu
+              key="sub1"
+              title={
+                <span>
+                  <Icon type="file-text" />
+                  <span>Reports Management</span>
+                </span>
+              }
+            >
+              <Menu.Item key="/admin/report-new">
+                <Link to={'/admin/report-new'}>
+                  Generate a New Report
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="/admin/report-list">
+                <Link to={'/admin/report-list'}>
+                  Reports from Extension
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub2"
+              title={
+                <span>
+                  <Icon type="database" />
+                  <span>
+                    Model Management
+                  </span>
+                </span>
+              }
+            >
+              <Menu.Item key="/admin/current-model">
+                <Link to={'/admin/current-model'}>
+                  Current Model
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="/admin/model-test">
+                <Link to={'/admin/model-test'}>
+                  Model Test
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub3"
+              title={
+                <span>
+                  <Icon type="amazon" />
+                  <span>S3</span>
+                </span>
+              }
+            >
+              <Menu.Item key="/admin/model-resources">
+                <Link to={'/admin/model-resources'}>
+                  Model Resources
+                </Link>
+              </Menu.Item>
+            </SubMenu>
+          </Menu>
+        </Sider>
+        <Layout style={{width: 'auto'}}>
+          <Content style={{width: '100%'}}>
+              <Switch>
+                <Route path='/admin/report-list' component={ReportList} />
+                <Route path='/admin/report-new' component={ReportNew} />
+                <Route path='/admin/current-model' component={CurrentModel} />
+                <Route path='/admin/model-test' component={ModelTest} />
+                <Route path='/admin/model-resources' component={ModelResources} />
+                <Route component={AdminHome}>
+                </Route>
+              </Switch>
+          </Content>
+        </Layout>
+      </Layout>
     );
   }
 }

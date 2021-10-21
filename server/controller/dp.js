@@ -122,6 +122,13 @@ console.log(result.tag[result.content.length - 1])
       })
     res.send(commons.resReturn(data.data));
   }
+  async checkDP (req, res) {
+    let content = req.body.content
+    let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/checkDP', {
+      "content": content
+    })
+    res.send(commons.resReturn(data.data));
+  }
 }
 
 module.exports = dpController;

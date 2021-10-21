@@ -55,7 +55,7 @@ class App extends Component {
             <Switch>
               <Route path='/login' component={Login} />
               <Route path='/' exact component={Home} />
-              <Route path='/admin/index' exact component={requireAuthentication(AdminIndex)}/>
+              <Route path='/admin/:path' exact component={requireAuthentication(AdminIndex)}/>
               <Route component={NotFound} />
             </Switch>
           </Layout>

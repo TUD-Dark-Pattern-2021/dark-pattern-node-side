@@ -11,8 +11,10 @@ class baseController {
   async init(req, res) {
     let ignoreRouter = [
       '/api/dp',
+      '/api/user/login'
     ];
-    if (req.path.indexOf(ignoreRouter) > -1) {
+    console.log(req.path)
+    if (ignoreRouter.indexOf(req.path) > -1) {
       this.$auth = true;
     } else {
       await this.checkLogin(req, res);
