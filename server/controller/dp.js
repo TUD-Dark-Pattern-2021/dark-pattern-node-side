@@ -8,6 +8,7 @@ const commons = require("../utils/commons");
 const axios = require('axios')
 const ddbClient = require("../ddb.js")
 const DynamoDB = require("@aws-sdk/client-dynamodb");
+const docClient = require("../docClient.js")
 
 // const filePath = path.join(__dirname, 'sample1.html');
 // let xml  = fs.readFileSync(filePath, 'utf8');
@@ -147,8 +148,7 @@ class dpController extends baseController {
       try {
         const data = await ddbClient.send(new DynamoDB.PutItemCommand(params));
         console.log(data);
-        res.send(commons.resReturn(params));
-        return data;
+        res.send(commons.resReturn(data));
       } catch (err) {
         console.error(err);
       }
@@ -162,7 +162,7 @@ class dpController extends baseController {
 
       TableName: tableName,
       Select: "ALL_ATTRIBUTES",
-      Limit: 10000
+      Limit: 10
     };
 
     const run = async () => {
@@ -175,6 +175,31 @@ class dpController extends baseController {
       }
     };
     run();
+
+  }
+
+   getListPage(req, res) {
+
+  //   let tableName = req.body.tableName;
+  //   const scanQuery = {
+
+  //     TableName: tableName,
+  //     Select: "ALL_ATTRIBUTES",
+  //     Limit: 10
+  //   };
+
+  //   docClient.scan(scanQuery, function scanUntilDone(err, data) {
+  //     if (err) {
+  //       console.log(err, err.stack);
+  //     } else {
+
+  //       if (data.LastEvaluatedKey) {
+  //         scanQuery.ExclusiveStartKey = data.LastEvaluatedKey;
+    
+  //         docClient.scan(params, scanUntilDone);
+  //       }
+  //     }
+  // });
 
   }
 
