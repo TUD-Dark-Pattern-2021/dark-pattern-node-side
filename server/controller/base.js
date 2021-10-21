@@ -26,8 +26,8 @@ class baseController {
       // '/api/user/updatePassword',
       '/api/dp/detect',
       '/api/dp/newReport',
-      '/api/dp/getList'
-      
+      '/api/dp/getList',
+      '/api/dp/updateReport'
     ];
     // if (ignoreRouter.indexOf(req.path) > -1 || req.path.indexOf('/api/user/resetPassword') > -1) {
       this.$auth = true;

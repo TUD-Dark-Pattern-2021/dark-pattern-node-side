@@ -49,6 +49,11 @@ let routerConfig = {
       path: 'getList',
       method: 'get'
     },
+    {
+      action: 'updateReport',
+      path: 'updateReport',
+      method: 'put'
+    },
 
 
   ],

@@ -156,14 +156,6 @@ class dpController extends baseController {
     run();
   }
   async getList(req, res) {
-    // const query = {
-      // TableName: "Dataset",
-      // Select: "ALL_ATTRIBUTES",
-      // KeyConditionExpression: keyCon,
-      // ExpressionAttributeValues: { ":name": { S: "Your order is reserved for 19:57 minutes." } },
-      // // ProjectionExpression: "ALL_ATTRIBUTES",
-      // Limit: 10000
-    // };
 
     let tableName = req.body.tableName;
     const scanQuery = {
@@ -171,18 +163,52 @@ class dpController extends baseController {
       TableName: tableName,
       Select: "ALL_ATTRIBUTES",
       Limit: 10000
-  };
+    };
 
-  const run = async () => {
-    try {
-      const data = await ddbClient.send(new DynamoDB.ScanCommand(scanQuery));
-      console.log(data);
-      res.send(commons.resReturn(data));
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  run();
+    const run = async () => {
+      try {
+        const data = await ddbClient.send(new DynamoDB.ScanCommand(scanQuery));
+        console.log(data);
+        res.send(commons.resReturn(data));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    run();
+
+  }
+
+  async updateReport(req, res) {
+
+    let newStatus = req.body.status
+    let params = {
+
+      TableName: "Report",
+      Key: {
+        id: { S: req.body.id },
+      },
+      UpdateExpression: "SET #s = :q",
+      ExpressionAttributeValues: {
+        ":q":{ N: newStatus },
+      },
+      ExpressionAttributeNames: {
+        "#s": "status"
+    },
+      ReturnValues: "UPDATED_NEW",
+    };
+
+    console.log(params)
+
+    const run = async () => {
+      try {
+        const data = await ddbClient.send(new DynamoDB.UpdateItemCommand(params));
+        console.log(data);
+        res.send(commons.resReturn(data));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    run();
 
   }
 }
