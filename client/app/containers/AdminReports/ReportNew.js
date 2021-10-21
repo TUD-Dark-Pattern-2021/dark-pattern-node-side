@@ -27,7 +27,7 @@ class ReportNew extends Component {
    componentDidMount() {
   }
   async postNewReport (values) {
-    let result = await axios.post('/api/dp/report/getList', values)
+    let result = await axios.post('/api/dp/newReport', values)
     console.log(result)
   }
   handleSubmit = e => {
