@@ -477,27 +477,6 @@ class dynamodbController extends baseController {
             for (const i in data2.Contents) {
                 files.push(data2.Contents[i].Key)
             }
-            // console.log(files);
-            // res.send(commons.resReturn(files+ " To get the data set you want enter the url - 'https://" + req.body.bucket + ".s3.amazonaws.com/Key'"));
-            // return data;
-
-
-            // console.log(response);
-            // console.log("123")
-            // for(let i in response.Contents){
-            //     files.push(response.Contents[i])
-            //     console.log(files);
-            // }
-            // while(found){
-            //     if(files.includes(uploadParams.Key)){
-            //         count++;
-            //         uploadParams.Key = "V" + count.toString() + uploadParams.Key;
-            //     }
-            //     else{
-            //         found = true;
-            //     }
-
-            // }
             while (found) {
                 uploadParams.Key = "DarkPatterns.csv"
                 uploadParams.Key = "V" + count.toString() + uploadParams.Key;
@@ -515,29 +494,6 @@ class dynamodbController extends baseController {
                 }
 
             }
-            // return data;
-
-
-
-
-
-
-
-
-            // console.log("File not Found ERROR : " + err.code)
-            // const run = async () => {
-            //     const data = await s3c.send(new S3.PutObjectCommand(uploadParams));
-            //     console.log("Success", data);
-            //     res.send(commons.resReturn(data));
-            //     return data;
-            // };
-            // run();
-
-
-
-            // s3c.send(new PutObjectCommand(uploadParams));
-            // ('darkpatternsdatasets', "dark_patterns.csv",data)
-            // object.put(data)
         };
 
         const unMarshalIntoArray = (items) => {
