@@ -241,7 +241,7 @@ class dpController extends baseController {
   }
 
   async updateReport(req, res) {
-    
+
 
     let newStatus = req.body.status
     let params = {
@@ -262,15 +262,49 @@ class dpController extends baseController {
 
     console.log(params)
 
+
     const run = async () => {
-      try {
+        console.log("fdwfw")
         const data = await ddbClient.send(new DynamoDB.UpdateItemCommand(params));
-        console.log(data);
         res.send(commons.resReturn(data));
-      } catch (err) {
-        console.error(err);
-      }
-    };
+        if (newStatus == "2") {
+
+          let params = {
+            TableName: "Report",
+            Key: {
+              id: { S: req.body.id },
+            },
+            ProjectionExpression: "#id, #url, description, keyword, webType", 
+            ExpressionAttributeNames: {
+              "#id": "id",
+              "#url": "url"
+            }
+          };
+
+          const data2 = await ddbClient.send(new DynamoDB.GetItemCommand(params));
+          console.log(data2.Item.url.S);
+          params = {
+            TableName: "Dataset",
+            Item:{
+              Website_Page: {
+                S: data2.Item.url.S
+              },
+              Pattern_String: {
+                S: data2.Item.description.S
+              },
+              Pattern_Category:{
+                S:data2.Item.webType.S
+              },
+              Pattern_Type: {
+                S:data2.Item.keyword.S
+              }
+            }
+          };
+          const data3 = await ddbClient.send(new DynamoDB.PutItemCommand(params));
+          console.log(data3);
+        }
+        
+    }
     run();
   }
 
