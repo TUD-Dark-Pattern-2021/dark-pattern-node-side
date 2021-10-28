@@ -43,7 +43,7 @@ class Introduction extends Component {
           Dark Patterns are tricks used in websites and apps that make you do things that you didn't mean to, like buying or signing up for something. The purpose of this site is to spread awareness and to shame companies that use them.
         </p>
         <div className={'youtube-video'}>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/kxkrdLI6e6M" title="YouTube video player"
+          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M" title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen></iframe>

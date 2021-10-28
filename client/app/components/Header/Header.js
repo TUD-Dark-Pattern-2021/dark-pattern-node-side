@@ -15,9 +15,13 @@ import {connect} from "react-redux";
   },
 )
 @withRouter
+
 export default class HeaderCom extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showMenu: false
+    }
   }
 
   static propTypes = {
@@ -28,6 +32,43 @@ export default class HeaderCom extends Component {
     imgUrl: PropTypes.any,
   };
 
+  toggleMenu = () => {
+    this.setState({
+      showMenu: !this.state.showMenu
+    })
+  }
+  getMenuList = (isMobile) => {
+    return (<ul>
+      <li onClick={this.toggleMenu}>
+        <Link to="/">
+          Home
+        </Link>
+      </li>
+      <li onClick={this.toggleMenu}>
+        <Link to="/introduction">
+          Dark Pattern Introduction
+        </Link>
+      </li>
+      <li onClick={this.toggleMenu}>
+        <Link to="/chrome-extension">
+          Chrome Extension
+        </Link>
+      </li>
+      <li onClick={this.toggleMenu}>
+        <Link to="/about-us">
+          About us
+        </Link>
+      </li>
+      {
+        isMobile &&
+        <li onClick={this.toggleMenu}>
+          <Link to="/report">
+            Report to Us
+          </Link>
+        </li>
+      }
+    </ul>)
+  }
   render() {
     const { login } = this.props;
     return (
@@ -36,34 +77,25 @@ export default class HeaderCom extends Component {
           this.props.location.pathname !== "/login" &&
           <Header>
             <Link to="/" className="logo">
-              <img src="/assets/img/logo.png" alt="dp logo"/>
+              <picture>
+                  <source media="(max-width: 1024px)" srcSet="/assets/img/logo-s.png" />
+                  <img src="/assets/img/logo.png" alt="dp logo"/>
+              </picture>
             </Link>
             <div className={'tabs'}>
-              <ul>
-                <li>
-                  <Link to="/">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/introduction">
-                    Dark Pattern Introduction
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/chrome-extension">
-                    Chrome Extension
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about-us">
-                    About us
-                  </Link>
-                </li>
-              </ul>
+              {this.getMenuList()}
               <Link to="/report" className="report">
                 Report to Us
               </Link>
+            </div>
+            <div className={'mobile-tabs'}>
+              <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={this.toggleMenu}/>
+              <div className={this.state.showMenu ? 'show-menu' : ''}>
+                <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>
+                  <Icon type="close" />
+                </div>
+                {this.getMenuList(true)}
+              </div>
             </div>
             {
               login && this.props.location.pathname.indexOf('admin') > -1 && <UserToolBar />
