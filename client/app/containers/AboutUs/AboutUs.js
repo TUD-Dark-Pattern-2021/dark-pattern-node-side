@@ -12,7 +12,7 @@ const { Content } = Layout
   }),
 )
 @withRouter
-class Home extends Component {
+class AboutUs extends Component {
   constructor(props) {
     super(props);
   }
@@ -32,27 +32,30 @@ class Home extends Component {
   }
   render() {
     return (
-      <Content className={'index-content'}>
+      <Content className={'about-us-content'}>
         <h1>
-          Detecting Dark Patterns on websites
+          Who are we?
         </h1>
-        <h2>
-          Find out the Dark Pattern that show on the website. Create list of the detected Dark Pattern with category and numbers
-        </h2>
-        <div>
-          <form action="" onSubmit={this.onSubmit}>
-            <div>
-              <input type="url" name="url" placeholder={'Enter Websites URL'}/>
-              <button type={'submit'} >
-                <img src="/assets/img/search.png" alt=""/>
-              </button>
-            </div>
-
-          </form>
-        </div>
+        <p>
+          We are a student group from TUD
+        </p>
+        <h1>
+          What do we do?
+        </h1>
+        <p>
+          We are committed to research in the direction of Dark Pattern and hope to apply the theory to practice.
+        </p>
+        <h1>
+          Contact Us
+        </h1>
+        <p>
+          <a href="mailto:andrea.f.curley@TUDublin.ie">Andrea.Curley</a>
+          <br/>
+          <a href="mailto:damian.x.gordon@tudublin.ie">Damian.Gordon</a>
+        </p>
       </Content>
     );
   }
 }
 
-export default Home;
+export default AboutUs;
