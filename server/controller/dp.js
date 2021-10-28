@@ -131,9 +131,6 @@ class dpController extends baseController {
 
     let table = "Report";
     let id = shortid.generate();
-    let first = new Date();
-
-    console.log(first.toISOString());
     let params = {
       TableName: table,
       Item: {
@@ -147,7 +144,7 @@ class dpController extends baseController {
           N: "1"
         },
         webType: {
-          S: req.body.webType
+          S: "shopping"
         },
         screenshot: {
           N: "5"
@@ -179,7 +176,7 @@ class dpController extends baseController {
       try {
         const data = await ddbClient.send(new DynamoDB.PutItemCommand(params));
         console.log(data);
-        res.send(commons.resReturn(data));
+        res.send(commons.resReturn("Added Report"));
       } catch (err) {
         console.error(err);
       }
