@@ -42,7 +42,7 @@ class Index extends Component {
     const path = this.props.location.pathname
     console.log(path)
     return (
-      <Layout>
+      <Layout className={"admin-index-layout"}>
         <Sider>
           <Menu
             onClick={this.handleClick}
@@ -81,11 +81,11 @@ class Index extends Component {
                 </span>
               }
             >
-              <Menu.Item key="/admin/current-model">
-                <Link to={'/admin/current-model'}>
-                  Current Model
-                </Link>
-              </Menu.Item>
+              {/*<Menu.Item key="/admin/current-model">*/}
+              {/*  <Link to={'/admin/current-model'}>*/}
+              {/*    Current Model*/}
+              {/*  </Link>*/}
+              {/*</Menu.Item>*/}
               <Menu.Item key="/admin/model-test">
                 <Link to={'/admin/model-test'}>
                   Model Test
@@ -109,7 +109,7 @@ class Index extends Component {
             </SubMenu>
           </Menu>
         </Sider>
-        <Layout style={{width: 'auto'}}>
+        <Layout style={{width: 'auto', backgroundImage:'none'}}>
           <Content style={{width: '100%'}}>
               <Switch>
                 <Route path='/admin/report-list' component={ReportList} />

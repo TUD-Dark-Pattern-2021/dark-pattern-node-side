@@ -3,6 +3,7 @@
   min-height: 100vh;
   background-image: radial-gradient(circle at 60% 100px, #FEDB96, #FFFFFF);
 }
+
 .ant-layout-content {
   padding: 24px;
   width: 1000px;
@@ -64,4 +65,13 @@
 
 .ant-calendar-year-panel-decade-select-content {
   display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .ant-layout-content {
+    width: auto;
+  }
+  .ant-layout-content.index-content form div {
+    width: 80%;
+  }
 }

@@ -4,6 +4,32 @@
   align-items: center;
   justify-content: space-between;
   background-color: inherit;
+  .mobile-tabs {
+    display: none;
+    z-index: 100;
+    .mobile-menu-icon {
+      font-size: 24px;
+    }
+    > div {
+      display: none;
+      margin-top: 40px;
+      z-index: 10000;
+      &.show-menu {
+        display: block;
+        background: #bbb;
+        padding: 15px;
+        ul {
+          li {
+            line-height: 40px;
+
+            a {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
   .tabs {
     display: flex;
     justify-content: space-between;
@@ -111,3 +137,14 @@
 
 }
 
+@media screen and (max-width: 1000px) {
+  .ant-layout-header {
+    padding: 0 20px;
+    .tabs {
+      display: none;
+    }
+    .mobile-tabs {
+      display: block;
+    }
+  }
+}

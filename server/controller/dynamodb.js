@@ -599,23 +599,27 @@ class dynamodbController extends baseController {
     //     };
     //     run();
     // }
-
+    // https://" + req.body.bucket + ".s3.amazonaws.com/Key'"
     async listObjectsS3(req, res) {
         let params = {
-            Bucket: req.body.Bucket
+            Bucket: req.query.Bucket
         }
 
-        console.log("Displaying all objects in the bucket")
+        console.log("Displaying all objects in the bucket", req.query)
 
         const run = async () => {
             const data = await s3c.send(new S3.ListObjectsV2Command(params));
-            console.log("Success", data.Contents[1].Key);
-            let files = new Array(data.Contents.length);
-            for (const i in data.Contents) {
-                files.push(data.Contents[i].Key)
+            console.log("Success", data.Contents);
+            let files = [];
+            for (let i = 0; i < data.Contents.length; i++) {
+                files.push({
+                  name: data.Contents[i].Key,
+                  size: data.Contents[i].Size,
+                  last_modified: data.Contents[i].LastModified,
+                })
             }
             // console.log(files);
-            res.send(commons.resReturn(files + " To get the data set you want enter the url - 'https://" + req.body.bucket + ".s3.amazonaws.com/Key'"));
+            res.send(commons.resReturn(files));
             return data;
         };
         run();

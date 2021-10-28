@@ -10,7 +10,6 @@ import { checkLoginState } from './reducer/modules/user';
 import { requireAuthentication } from './components/AuthenticatedComponent';
 import NotFound from './components/NotFound'
 import { hot } from 'react-hot-loader/root';
-import Password from 'antd/lib/input/Password';
 
 const LOADING_STATUS = 0;
 
@@ -18,6 +17,7 @@ const LOADING_STATUS = 0;
   state => {
     return {
       loginState: state.user.loginState,
+      isLogin: state.user.isLogin,
     };
   },
   {
@@ -34,6 +34,7 @@ class App extends Component {
 
   static propTypes = {
     checkLoginState: PropTypes.func,
+    isLogin: PropTypes.bool,
     loginState: PropTypes.number
   };
 
@@ -43,6 +44,7 @@ class App extends Component {
 
   route = status => {
     let r;
+    console.log(this.props)
     if (status === LOADING_STATUS) {
       return <div className="loading-wrap">
         <Spin size="large" />
@@ -50,7 +52,7 @@ class App extends Component {
     } else {
       r = (
         <Router >
-          <Layout className="layout">
+          <Layout className={{layout: true, 'admin-layout': window.location.pathname.indexOf('admin')>-1}}>
             <Header />
             <Switch>
               <Route path='/login' component={Login} />
