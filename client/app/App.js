@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Layout, Spin} from 'antd'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Login, Home, AdminIndex} from './containers/index';
+import { Home, Login, AdminIndex, AboutUs, Report, ChromeExtension, Introduction} from './containers/index';
 import Header from './components/Header/Header';
 import { checkLoginState } from './reducer/modules/user';
 import { requireAuthentication } from './components/AuthenticatedComponent';
@@ -55,6 +55,10 @@ class App extends Component {
             <Switch>
               <Route path='/login' component={Login} />
               <Route path='/' exact component={Home} />
+              <Route path='/introduction' exact component={Introduction} />
+              <Route path='/chrome-extension' exact component={ChromeExtension} />
+              <Route path='/about-us' exact component={AboutUs} />
+              <Route path='/report' exact component={Report} />
               <Route path='/admin/:path' exact component={requireAuthentication(AdminIndex)}/>
               <Route component={NotFound} />
             </Switch>

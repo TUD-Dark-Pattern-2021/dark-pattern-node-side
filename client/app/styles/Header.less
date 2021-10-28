@@ -1,5 +1,41 @@
 .ant-layout-header {
-  background: #121212;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: inherit;
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      align-items: center;
+      height: 53px;
+      li a{
+        color: #131314;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 32px;
+        transition: all .2s;
+        &:hover {
+          color: #666;
+        }
+      }
+    }
+    .report {
+      width: 163px;
+      height: 53px;
+      color: #fff;
+      background-color: #111;
+      text-align: center;
+      line-height: 53px;
+      border-radius: 6px;
+      font-weight: bold;
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
 }
 .user-toolbar{
     float: right;

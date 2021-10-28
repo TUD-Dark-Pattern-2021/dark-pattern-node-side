@@ -36,8 +36,35 @@ export default class HeaderCom extends Component {
           this.props.location.pathname !== "/login" &&
           <Header>
             <Link to="/" className="logo">
-              <img src="" alt="dp logo"/>
+              <img src="/assets/img/logo.png" alt="dp logo"/>
             </Link>
+            <div className={'tabs'}>
+              <ul>
+                <li>
+                  <Link to="/">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/introduction">
+                    Dark Pattern Introduction
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/chrome-extension">
+                    Chrome Extension
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about-us">
+                    About us
+                  </Link>
+                </li>
+              </ul>
+              <Link to="/report" className="report">
+                Report to Us
+              </Link>
+            </div>
             {
               login && this.props.location.pathname.indexOf('admin') > -1 && <UserToolBar />
             }

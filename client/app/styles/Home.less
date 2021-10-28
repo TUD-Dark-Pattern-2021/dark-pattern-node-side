@@ -1,60 +1,61 @@
+
 .ant-layout {
   min-height: 100vh;
+  background-image: radial-gradient(circle at 60% 100px, #FEDB96, #FFFFFF);
 }
 .ant-layout-content {
   padding: 24px;
-  background: #f0f2f5;
   width: 1000px;
   margin: 0 auto;
-}
-
-.anime-list {
-  background: #fff;
-  margin-top: 20px;
-  .anime-item {
-    position: relative;
-    padding: 20px 0;
-    //background: #fff;
-    margin: 0 20px;
-    display: flex;
-    border-bottom: 1px solid #eee;
-    img {
-      margin-right: 10px;
+  &.index-content {
+    text-align: center;
+    h1 {
+      font-size: 36px;
+      font-weight: normal;
     }
     h2 {
-      color: #5C0E0E;
-      span {
-        font-size: 14px;
-        color: #999;
+      font-size: 18px;
+      font-weight: normal;
+      margin-top: 17px;
+      margin-bottom: 80px;
+      letter-spacing: 2px;
+    }
+    form {
+
+      div {
+        width: 690px;
+        position: relative;
+        margin: 0 auto;
+        input {
+          width: 100%;
+          height: 67px;
+          border: 1px solid #131314;
+          padding: 24px 26px;
+          font-size: 16px;
+          color: #131314;
+          border-radius: 8px;
+        }
+        button {
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          position: absolute;
+          width: 70px;
+          height: 59px;
+          top: 4px;
+          right: 4px;
+          border-radius: 6px;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
+        }
       }
-    }
-    .tag {
-      color: rgba(0,0,0, .6);
-      font-size: 12px;
-    }
-    // https://wow.techbrood.com/fiddle/26702
-    .heart {
-      width: 100px;
-      height: 100px;
-      background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
-      background-position: 0 0;
-      cursor: pointer;
-      -webkit-transition: background-position 1s steps(28);
-      transition: background-position 1s steps(28);
-      -webkit-transition-duration: 0s;
-      transition-duration: 0s;
-      position: absolute;
-      top: -5px;
-      left: -15px;
-    }
-    .heart.is-active {
-      -webkit-transition-duration: 1s;
-      transition-duration: 1s;
-      background-position: -2800px 0;
+
     }
   }
-
 }
+
 .search-form {
   background: #fff;
   padding: 10px;
