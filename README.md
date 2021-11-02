@@ -8,7 +8,6 @@ yarn
 yarn start
 ```
 Or
- 
 Use npm 
 ```bin
 npm i

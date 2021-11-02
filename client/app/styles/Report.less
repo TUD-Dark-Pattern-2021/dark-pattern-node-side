@@ -1,0 +1,79 @@
+.Report-Container{
+  display:flex;
+  display: -webkit-flex; /* Safari */
+  padding: 24px;
+  width: 1000px;
+  margin: 0 auto;
+
+
+  background-color: white;
+  justify-content:center;
+
+
+
+.reportBackground{
+  background-color: white;
+  width: 80%;
+  height: 800px;
+  h1{
+    font-size: 36px;
+    color: #040404;
+    margin-bottom: 10%;
+  }
+  Input{
+    margin-bottom: 2%;
+    height: 50px;
+    width: 100%;
+  }
+
+  .DPdescription{
+    Input{
+      height: 150px;
+    }
+
+  }
+  Button{
+
+    margin-top: 20%;
+    width: 163px;
+    height: 53px;
+    background-color: #040404;
+    border-radius: 8px;
+    color:whitesmoke;
+    left: 83%;
+    font-weight: bold;
+  }
+}}
+.ant-form-item-control{
+  margin-bottom: 2%;
+  height: 50px;
+  width: 150%;
+}
+@media screen and (max-width: 1000px) {
+  .Report-Container {
+    width: 100%;
+    .ant-form-item-control{
+      margin-bottom: 2%;
+      height: 50px;
+      width: 80%;
+    }
+    .reportBackground {
+      width: 100%;
+      justify-content:center;
+
+      Button {
+        position: absolute;
+        margin:100px;
+        top:10px;
+        width: 200px;
+        height: 53px;
+        left:-143px;
+        background-color: #040404;
+        border-radius: 8px;
+        color: whitesmoke;
+        font-weight: bold;
+      }
+
+    }
+  }
+}
