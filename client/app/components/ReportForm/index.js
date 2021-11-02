@@ -61,9 +61,12 @@ class ReportForm extends Component {
       },
     };
     const { getFieldDecorator } = this.props.form;
-    return <div>
+    return<div className="Report-Container">
+    <div className="reportBackground">
+      <h1>Report New Dark Patterns</h1>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="Url">
+        <h3>Website URL:</h3>
+        <Form.Item label="">
           {getFieldDecorator('url', {
             rules: [
               {
@@ -73,7 +76,8 @@ class ReportForm extends Component {
             ],
           })(<Input placeholder='Please input url'/>)}
         </Form.Item>
-        <Form.Item label="Web Type">
+        <h3>Website Type:</h3>
+        <Form.Item label="">
           {getFieldDecorator('webType', {
             rules: [{ required: true, message: 'Please select web type!' }],
           })(
@@ -82,7 +86,8 @@ class ReportForm extends Component {
             </Select>,
           )}
         </Form.Item>
-        <Form.Item label="Keyword">
+        <h3>Sentence Or Keywords Of Dark Patterns:</h3>
+        <Form.Item label="">
           {getFieldDecorator('keyword', {
             rules: [
               {
@@ -92,7 +97,8 @@ class ReportForm extends Component {
             ],
           })(<Input placeholder='Please input keyword' />)}
         </Form.Item>
-        <Form.Item label="Category">
+        <h3>Dark Pattern Category:</h3>
+        <Form.Item label="">
           {getFieldDecorator('category', {
             rules: [{ required: true, message: 'Please select category!' }],
           })(
@@ -104,7 +110,8 @@ class ReportForm extends Component {
             </Select>,
           )}
         </Form.Item>
-        <Form.Item label="Description">
+        <h3>Issues Description:</h3>
+        <Form.Item label="" className="DPdescription">
           {getFieldDecorator('description', {
             rules: [
               {
@@ -115,11 +122,12 @@ class ReportForm extends Component {
           })(<Input />)}
         </Form.Item>
         <Form.Item wrapperCol={{ span: 12, offset: 4 }}>
-          <Button type="primary" htmlType="submit">
+          <Button type="" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
       </Form>
+    </div>
     </div>
   }
 }

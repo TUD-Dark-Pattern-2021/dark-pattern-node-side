@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Layout } from 'antd';
+import { Button, Layout,Breadcrumb, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
@@ -31,6 +31,7 @@ class Introduction extends Component {
     window.alert(e.target.url.value)
   }
   render() {
+
     return (
       <Content className={'introduction-content'}>
         <h1>

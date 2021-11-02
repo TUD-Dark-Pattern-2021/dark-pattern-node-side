@@ -2,8 +2,8 @@ import React, { PureComponent as Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {Layout, Spin} from 'antd'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import {Breadcrumb, Layout, Spin} from 'antd'
+import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import { Home, Login, AdminIndex, AboutUs, Report, ChromeExtension, Introduction} from './containers/index';
 import Header from './components/Header/Header';
 import { checkLoginState } from './reducer/modules/user';
@@ -17,7 +17,7 @@ const LOADING_STATUS = 0;
   state => {
     return {
       loginState: state.user.loginState,
-      isLogin: state.user.isLogin,
+      isLogin: state.user.isLogin
     };
   },
   {
@@ -28,7 +28,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: LOADING_STATUS
+      login: LOADING_STATUS,
+      isHome: window.location.pathname === '/'
     };
   }
 
@@ -42,6 +43,7 @@ class App extends Component {
     this.props.checkLoginState();
   }
 
+
   route = status => {
     let r;
     console.log(this.props)
@@ -54,6 +56,15 @@ class App extends Component {
         <Router >
           <Layout className={{layout: true, 'admin-layout': window.location.pathname.indexOf('admin')>-1}}>
             <Header />
+            <Breadcrumb>
+                <Breadcrumb.Item href="">
+                  <Link to="/">
+                    Home
+                  </Link>
+                </Breadcrumb.Item>
+
+                <Breadcrumb.Item>Introduction</Breadcrumb.Item>
+            </Breadcrumb>
             <Switch>
               <Route path='/login' component={Login} />
               <Route path='/' exact component={Home} />
