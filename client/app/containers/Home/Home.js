@@ -26,7 +26,7 @@ class Home extends Component {
   static propTypes = {
     login: PropTypes.bool,
   };
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
     window.alert(e.target.url.value)
   }
@@ -34,14 +34,12 @@ class Home extends Component {
     return (
       <Content className={'index-content'}>
         <h1>
-          Detecting Dark Patterns on websites
+          <b><u>Dark Patterns</u></b>
         </h1>
         <h2>
-          Find out the Dark Pattern that show on the website. Create list of the detected Dark Pattern with category and numbers
+          <b><u>What is a dark pattern?</u></b>
         </h2>
-<<<<<<< Updated upstream
         <div>
-=======
         <h3>Dark patterns are design elements, on webpages, that deliberately obscure, mislead, coerce and/or deceive website visitors into making unintended and possibly harmful choices. Dark patterns
           can be split into many categories. Dark patterns are especially used on shopping websites. <br />
           The highlighting of the devious dark patterns will allow the user to be aware
@@ -87,6 +85,10 @@ class Home extends Component {
 
           <br />
           The following table will cateogrise the dark patterns: <br />
+
+        <h3>Dark patterns are design elements, on webpages, that deliberately obscure, mislead, coerce and/or deceive website visitors into making unintended and possibly harmful choices. Dark patterns
+          can be split into many categories. Dark patterns are especially used on shopping websites. The following table will cateogrise the dark patterns. <br />
+
           <b><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></b>
         </h3>
         <table>
@@ -105,11 +107,22 @@ class Home extends Component {
           <tr>
             <td>Hidden Costs</td>
             <td>When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout</td>
+
+            <td rowSpan="3">Sneaking</td>
+            <td>Sneak into baskets</td>
+          </tr>
+          <tr>
+            <td>Hidden Costs</td>
+          </tr>
+          <tr>
+            <td>Hidden Subscription </td>
+
           </tr>
 
           <tr>
             <td>Forced Action</td>
             <td>Forced Continuity</td>
+
             <td>This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
               (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
             </td>
@@ -118,6 +131,7 @@ class Home extends Component {
           <tr>
             <td rowSpan="3">Misdirection</td>
             <td>Confirmshaming</td>
+
             <td>Invoking language and emotion (shame)
               to convince users not to make a certain
               choice, or guilting users into opting into
@@ -166,11 +180,34 @@ class Home extends Component {
               it more attractive to users.
               (e.g., “this item is in high demand”, “selling fast”)
             </td>
+
+          </tr>
+          <tr>
+            <td>Visual Interference</td>
+          </tr>
+          <tr>
+            <td>Trick Questions </td>
+          </tr>
+
+
+       
+
+          <tr>
+            <th rowSpan="3">Urgency</th>
+            <td><b>Fake Countdown</b></td>
+          </tr>
+          <tr>
+            <td><b>Fake Limited-time</b></td>
+          </tr>
+          <tr>
+            <td><b>Fake High-demand</b> </td>
+
           </tr>
 
           <tr>
             <td>Social Proof</td>
             <td><b>Fake Activity</b></td>
+
             <td>Informing the user about other people’s activity
               on the website, including behavious of
               puchasing, viewing, visiting etc, which may not
@@ -204,7 +241,8 @@ class Home extends Component {
         </table>
 
         {/* <div>
->>>>>>> Stashed changes
+
+        {/* <div>
           <form action="" onSubmit={this.onSubmit}>
             <div>
               <input type="url" name="url" placeholder={'Enter Websites URL'}/>
@@ -214,7 +252,7 @@ class Home extends Component {
             </div>
 
           </form>
-        </div>
+        </div> */}
       </Content>
     );
   }

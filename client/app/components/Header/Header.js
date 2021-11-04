@@ -48,27 +48,32 @@ export default class HeaderCom extends Component {
     return (<Menu>
       <Menu.Item>
         <Link  to="/introduction"  onClick={this.toggleMenu}>
-          1st menu item
+          Sneaking
         </Link>
       </Menu.Item>
       <Menu.Item>
         <Link  to="/introduction"  onClick={this.toggleMenu}>
-          2st menu item
+        Forced Action	
         </Link>
       </Menu.Item>
       <Menu.Item>
         <Link  to="/introduction"  onClick={this.toggleMenu}>
-          3st menu item
+        Misdirection
         </Link>
       </Menu.Item>
     <Menu.Item>
         <Link  to="/introduction"  onClick={this.toggleMenu}>
-          4st menu item
+        Urgency
         </Link>
       </Menu.Item>
     <Menu.Item>
         <Link  to="/introduction"  onClick={this.toggleMenu}>
-          5st menu item
+        Social Proof
+        </Link>
+    </Menu.Item>
+    <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+        Scarcity
         </Link>
     </Menu.Item>
 
