@@ -39,9 +39,6 @@ class Home extends Component {
         <h2>
           Find out the Dark Pattern that show on the website. Create list of the detected Dark Pattern with category and numbers
         </h2>
-<<<<<<< Updated upstream
-        <div>
-=======
         <h3>Dark patterns are design elements, on webpages, that deliberately obscure, mislead, coerce and/or deceive website visitors into making unintended and possibly harmful choices. Dark patterns
           can be split into many categories. Dark patterns are especially used on shopping websites. <br />
           The highlighting of the devious dark patterns will allow the user to be aware
@@ -204,7 +201,6 @@ class Home extends Component {
         </table>
 
         {/* <div>
->>>>>>> Stashed changes
           <form action="" onSubmit={this.onSubmit}>
             <div>
               <input type="url" name="url" placeholder={'Enter Websites URL'}/>
@@ -214,7 +210,7 @@ class Home extends Component {
             </div>
 
           </form>
-        </div>
+        </div>*/}
       </Content>
     );
   }
