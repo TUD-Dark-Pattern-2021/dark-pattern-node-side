@@ -2,8 +2,10 @@ import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Dropdown, message, Icon} from 'antd';
+
 import { withRouter } from 'react-router';
 const { Header } = Layout;
+const { SubMenu } = Menu;
 import UserToolBar from './UserToolBar'
 import {connect} from "react-redux";
 
@@ -21,7 +23,6 @@ export default class HeaderCom extends Component {
     super(props);
     this.state = {
       showMenu: false,
-
     }
   }
 
@@ -45,6 +46,20 @@ export default class HeaderCom extends Component {
   }
 
   menu = () => {
+ WebsiteContent
+    return (
+      <Menu>
+        <SubMenu title="sub menu">
+          <Menu.Item>3rd menu item</Menu.Item>
+          <Menu.Item>4th menu item</Menu.Item>
+        </SubMenu>
+        <SubMenu title="disabled sub menu">
+          <Menu.Item>5d menu item</Menu.Item>
+          <Menu.Item>6th menu item</Menu.Item>
+        </SubMenu>
+      </Menu>
+    )
+
     return (<Menu>
       <Menu.Item>
         <Link  to="/introduction"  onClick={this.toggleMenu}>
@@ -87,12 +102,18 @@ export default class HeaderCom extends Component {
           Home
         </Link>
       </li>
-      <li>
-        <Dropdown overlay={this.menu}>
-          <Link to="/introduction">
-            Dark Pattern Introduction
+      <li onClick={this.toggleMenu}>
+        <Dropdown overlay={this.menu} >
+          <Link to="/Introduction" className="ant-dropdown-link">
+            Introduction <Icon type="down" />
           </Link>
         </Dropdown>
+
+        {/*<Dropdown overlay={this.menu}>*/}
+         {/* <Link to="/introduction">*/}
+        {/*   Dark Pattern Introduction*/}
+         {/* </Link>*/}
+        {/*</Dropdown>}*/}
 
         {/*<Link to="/introduction">*/}
         {/*  Dark Pattern Introduction*/}
@@ -145,7 +166,7 @@ export default class HeaderCom extends Component {
             <div className={'mobile-tabs'}>
               <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={this.toggleMenu}/>
               <div className={this.state.showMenu ? 'show-menu' : ''}>
-                <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>
+                <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>`
                   <Icon type="close" />
                 </div>
                 {this.getMenuList(true)}
