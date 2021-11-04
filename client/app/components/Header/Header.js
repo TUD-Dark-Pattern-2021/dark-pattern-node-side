@@ -85,7 +85,7 @@ export default class HeaderCom extends Component {
       <li>
         <Dropdown overlay={this.menu}>
           <Link to="/introduction">
-            Dark Pattern Introduction
+            Dark Patterns
           </Link>
         </Dropdown>
 
