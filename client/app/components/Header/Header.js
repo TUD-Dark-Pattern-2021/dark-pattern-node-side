@@ -46,6 +46,7 @@ export default class HeaderCom extends Component {
   }
 
   menu = () => {
+ WebsiteContent
     return (
       <Menu>
         <SubMenu title="sub menu">
@@ -58,6 +59,40 @@ export default class HeaderCom extends Component {
         </SubMenu>
       </Menu>
     )
+
+    return (<Menu>
+      <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+          Sneaking
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+        Forced Action	
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+        Misdirection
+        </Link>
+      </Menu.Item>
+    <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+        Urgency
+        </Link>
+      </Menu.Item>
+    <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+        Social Proof
+        </Link>
+    </Menu.Item>
+    <Menu.Item>
+        <Link  to="/introduction"  onClick={this.toggleMenu}>
+        Scarcity
+        </Link>
+    </Menu.Item>
+
+    </Menu>)
   }
 
   getMenuList = (isMobile) => {
