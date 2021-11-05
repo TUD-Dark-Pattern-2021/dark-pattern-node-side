@@ -238,8 +238,6 @@ class dpController extends baseController {
   }
 
   async updateReport(req, res) {
-
-
     let newStatus = req.body.status
     let params = {
 
@@ -264,7 +262,7 @@ class dpController extends baseController {
         console.log("fdwfw")
         const data = await ddbClient.send(new DynamoDB.UpdateItemCommand(params));
         res.send(commons.resReturn(data));
-        if (newStatus == "2") {
+        if (newStatus == "4") {
 
           let params = {
             TableName: "Report",
@@ -299,6 +297,17 @@ class dpController extends baseController {
           };
           const data3 = await ddbClient.send(new DynamoDB.PutItemCommand(params));
           console.log(data3);
+        }
+        else if (newStatus == "3"){
+          console.log("here")
+          let params = {
+            TableName: "Report",
+            Key: {
+              id: { S: req.body.id },
+            }
+          };
+          const data4 = await ddbClient.send(new DynamoDB.DeleteItemCommand(params));
+          console.log(data4);
         }
         
     }
