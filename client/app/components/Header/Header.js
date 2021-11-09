@@ -49,31 +49,32 @@ export default class HeaderCom extends Component {
     return (
       <Menu>
         <SubMenu title="Sneaking">
-          <Menu.Item>Sneak into baskets</Menu.Item>
-          <Menu.Item>Hidden Costs</Menu.Item>
+          
+          <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Sneak into baskets</Menu.Item>
+          <Menu.Item><img src="/assets/img/HiddenCosts.png" alt="HiddenCosts." id="HiddenCosts"  width = "50px" height = "30px"/>Hidden Costs</Menu.Item>
         </SubMenu>
         <SubMenu title="Forced Action">
-          <Menu.Item>Forced Continuity</Menu.Item>
+          <Menu.Item><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity." id="ForcedContinuity"  width = "50px" height = "30px"/>Forced Continuity</Menu.Item>
         </SubMenu>
         <SubMenu title="Misdirection">
-          <Menu.Item>Confirmshaming</Menu.Item>
-          <Menu.Item>Visual Interference</Menu.Item>
-          <Menu.Item>Trick Questions</Menu.Item>
+          <Menu.Item><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming." id="Confirmshaming"  width = "50px" height = "30px"/>Confirmshaming</Menu.Item>
+          <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Visual Interference</Menu.Item>
+          <Menu.Item><img src="/assets/img/TrickQuestions.png" alt="Trick Questions" id="TrickQuestions"  width = "50px" height = "30px"/>Trick Questions</Menu.Item>
         </SubMenu>
         <SubMenu title="Urgency">
-        <Menu.Item>Fake Countdown</Menu.Item>
-          <Menu.Item>Fake Limited-time</Menu.Item>
-          <Menu.Item>Fake High-demand</Menu.Item>
+        <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Countdown</Menu.Item>
+          <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Limited-time</Menu.Item>
+          <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake High-demand</Menu.Item>
         </SubMenu>
         <SubMenu title="Social Proof">
-          <Menu.Item>Fake Activity</Menu.Item>
+          <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Activity</Menu.Item>
         </SubMenu>
         <SubMenu title="Scarcity">
-          <Menu.Item>Fake Low-Stock</Menu.Item>
+          <Menu.Item><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Low-Stock</Menu.Item>
         </SubMenu>
         <SubMenu title="Other Dark Patterns">
-          <Menu.Item>Privacy Zuckering</Menu.Item>
-          <Menu.Item>Bait and Switch</Menu.Item>
+          <Menu.Item><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering" id="Zuckering" float= "right" width = "50px" height = "30px"/>Privacy Zuckering</Menu.Item>
+          <Menu.Item><img src="/assets/img/Bait.png" alt="Mouse Trap." id="Bait" float= "right" width = "50px" height = "30px"/>Bait and Switch</Menu.Item>
         </SubMenu>
       </Menu>
     )

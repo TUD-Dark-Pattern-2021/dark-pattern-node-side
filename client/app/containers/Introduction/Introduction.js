@@ -34,21 +34,25 @@ class Introduction extends Component {
 
     return (
       <Content className={'introduction-content'}>
-        <h1>
-          Introduction
+       <h1>
+          Sneak Into basket
+          <img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" width = "70px" height = "50px"/>
         </h1>
+        
         <h2>
-          What is Dark Pattern ?
+          What is Sneak Into basket?
         </h2>
         <p>
           Dark Patterns are tricks used in websites and apps that make you do things that you didn't mean to, like buying or signing up for something. The purpose of this site is to spread awareness and to shame companies that use them.
         </p>
         <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M" title="YouTube video player"
+          <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen></iframe>
+
         </div>
+        
       </Content>
     );
   }
