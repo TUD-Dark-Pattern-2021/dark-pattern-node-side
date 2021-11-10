@@ -33,19 +33,74 @@ class Home extends Component {
   render() {
     return (
       <Content className={'index-content'}>
+        <div className="header-container">
+          <div>
         <h1>
-          Detecting Dark Patterns on websites
+          Dark Patterns
         </h1>
         <h2>
-          Find out the Dark Pattern that show on the website. Create list of the detected Dark Pattern with category and numbers
+          are design elements, on webpages, that deliberately obscure, mislead, force and/or deceive website visitors into making unintended and possibly harmful choices.
         </h2>
-        <h3>Dark patterns are design elements, on webpages, that deliberately obscure, mislead, coerce and/or deceive website visitors into making unintended and possibly harmful choices. Dark patterns
-          can be split into many categories. Dark patterns are especially used on shopping websites. <br />
+
+        </div>
+          <img src="/assets/img/header-pic.png" alt="header-pic." id="header-pic" />
+        </div>
+        <div className="container1">
+          <h3>Dark patterns can be split into many categories</h3>
+        <div className="DP-category-container">
+        <div>
+        <img src="/assets/img/scarcity.png" alt="scarcity." id="scarcity-icon" />
+        <h2>Scarcity </h2>
+        </div>
+        <div>
+          <img src="/assets/img/forcedAction.png" alt="scarcity." id="forced-action-icon" />
+        <h2>Forced Action </h2>
+        </div>
+        <div>
+          <img src="/assets/img/misdirection.png" alt="scarcity." id="misdirection-icon" />
+        <h2>Misdirection </h2>
+        </div>
+        <div>
+          <img src="/assets/img/socialProof.png" alt="scarcity." id="social-proof-icon" />
+        <h2>Social Proof </h2>
+        </div>
+        <div>
+          <img src="/assets/img/scarcity.png" alt="scarcity." id="scarciy-icon" />
+        <h2>Sneaking </h2>
+        </div>
+        <div>
+          <img src="/assets/img/urgency.png" alt="scarcity." id="urgency-icon" />
+        <h2>Urgency </h2>
+        </div>
+          </div>
+        </div>
+          <img src="/assets/img/circle.png"alt="half-circle." className="half-circle1"/>
+
+
+
+
+        <h3 className="shopping-web"> Dark patterns are especially used on <p>shopping</p> websites<img src="/assets/img/gouwuche.png"alt="half-circle." className="shoppingcart"/> <br /></h3>
+
+        <img src="/assets/img/circle2.png"alt="half-circle." className="half-circle2"/>
+<div className="content3">
+  <h2>
+    How to avoid it?
+  </h2>
+        <h3 className="content2">
           The highlighting of the devious dark patterns will allow the user to be aware
           of when he/she is being tricked or deceived. It will also provide information
           on how the dark pattern is considered a dark pattern which will educate the
-          user, hopefully allowing them to recognize dark patterns in the future. This
-          system will assist the user in various ways, such as:
+          user, hopefully allowing them to recognize dark patterns in the future.
+        </h3>
+  <h1>
+    This system will assist the user in various ways, such as:
+
+  </h1>
+  <b><u>Financially </u></b>
+  <b><u>Emotionally</u></b>
+
+</div>
+        <h3>
           <br />
           <br />
           <p>
