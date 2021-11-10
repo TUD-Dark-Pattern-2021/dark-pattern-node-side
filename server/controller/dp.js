@@ -22,8 +22,11 @@ class dpController extends baseController {
 
   async detect(req, res) {
     // console.log(req.body.html)
-    const html = decodeURIComponent(req.body.html)
-    // console.log(html)
+    let html = decodeURIComponent(req.body.html)
+    html = html.replace(/<noscript.*?>.*?<\/noscript>/g, '')
+    html = html.replace(/<script.*?>.*?<\/script>/g, '')
+    html = html.replace(/<style.*?>.*?<\/style>/g, '')
+    html = html.replace(/<svg.*?>.*?<\/svg>/g, '')
     const doc = new dom().parseFromString(html)
 
     let nodes = xpath.select("//text()", doc)
@@ -84,7 +87,6 @@ class dpController extends baseController {
                 i.value = i.value.replace(/\"/g, "\\\"")
                 attr += `[${i.name}='${i.value}']`
               } else if (i.value.indexOf("\'") > -1) {
-                console.log(i.name, i.value, typeof i.value)
                 i.value = i.value.replace(/\'/g, "\\\'")
                 attr += `[${i.name}="${i.value}"]`
               } else {
@@ -96,13 +98,29 @@ class dpController extends baseController {
           }
           item = item.parentNode
         }
-        console.log(result.tag[result.content.length - 1])
-
-
-        // console.log(parent)
+        // console.log(result.tag[result.content.length - 1])
       }
 
     })
+
+    let images = xpath.select("//img", doc)
+    images.forEach(node =>{
+      let originalAttr = node.attributes
+      let len = originalAttr.length
+      while(len--) {
+        if (originalAttr[len].name === 'src') {
+          console.log(originalAttr[len].value)
+          result.key.push(shortid.generate())
+          result.content.push(originalAttr[len].nodeValue)
+          result.tag.push(`img[src='${originalAttr[len].nodeValue}']`)
+          break
+        }
+      }
+    })
+    // let srcs = xpath.select("//img//@src", doc)
+    // srcs.forEach(item =>{
+    //   console.log(item.value)
+    // })
     // var a = {
     //   "key": [
     //     "NcsdGAMd8",
@@ -120,7 +138,7 @@ class dpController extends baseController {
     //     "html[lang=en] body div#123 p#aaa div p "
     //   ]
     // }
-
+    // console.log(result)
     let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
       ...result
     })
