@@ -34,7 +34,8 @@ class dpController extends baseController {
       let result = {
         key: [],
         content: [],
-        tag: []
+        tag: [],
+        type: []
       }
       nodes.forEach((item, index) => {
         if (!item.nodeValue.match(/\n/g)) {
@@ -42,6 +43,7 @@ class dpController extends baseController {
           result.key.push(shortid.generate())
           result.content.push(item.nodeValue)
           result.tag.push('')
+          result.type.push('text')
 
           while (item.parentNode !== null) {
             // console.log(parent.parentNode)
@@ -50,6 +52,7 @@ class dpController extends baseController {
                 result.key.pop()
                 result.content.pop()
                 result.tag.pop()
+                result.type.pop()
                 break
               }
               let attr = ''
@@ -114,6 +117,7 @@ class dpController extends baseController {
             result.key.push(shortid.generate())
             result.content.push(originalAttr[len].nodeValue)
             result.tag.push(`img[src='${originalAttr[len].nodeValue}']`)
+            result.type.push('image')
             break
           }
         }
