@@ -350,6 +350,13 @@ class dpController extends baseController {
     })
     res.send(commons.resReturn(data.data));
   }
+  async checkOCR(req, res) {
+    let content = req.body.content
+    let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/checkOCR', {
+      "content": content
+    })
+    res.send(commons.resReturn(data.data));
+  }
 }
 
 module.exports = dpController;
