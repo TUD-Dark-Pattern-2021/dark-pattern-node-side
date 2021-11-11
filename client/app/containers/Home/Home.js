@@ -33,55 +33,122 @@ class Home extends Component {
   render() {
     return (
       <Content className={'index-content'}>
+        <div className="header-container">
+          <div>
         <h1>
-          <b><u>Dark Patterns</u></b>
+          Dark Patterns
         </h1>
         <h2>
-          <b><u>What is a dark pattern?</u></b>
+          are design elements, on webpages, that deliberately obscure, mislead, force and/or deceive website visitors into making unintended and possibly harmful choices.
+
         </h2>
-        <h3>Dark patterns are design elements, on webpages, that deliberately obscure, mislead, coerce and/or deceive website visitors into making unintended and possibly harmful choices. Dark patterns
-          can be split into many categories. Dark patterns are especially used on shopping websites. <br />
-          The highlighting of the devious dark patterns will allow the user to be aware
-          of when he/she is being tricked or deceived. It will also provide information
+
+        </div>
+          <img src="/assets/img/header-pic.png" alt="header-pic." id="header-pic" />
+        </div>
+        <div className="container1">
+          <h3>Dark patterns can be split into many categories</h3>
+        <div className="DP-category-container">
+        <div>
+        <img src="/assets/img/scarcity.png" alt="scarcity." id="scarcity-icon" />
+        <h2>Scarcity </h2>
+        </div>
+        <div>
+          <img src="/assets/img/forcedAction.png" alt="scarcity." id="forced-action-icon" />
+        <h2>Forced Action </h2>
+        </div>
+        <div>
+          <img src="/assets/img/misdirection.png" alt="scarcity." id="misdirection-icon" />
+        <h2>Misdirection </h2>
+        </div>
+        <div>
+          <img src="/assets/img/socialProof.png" alt="scarcity." id="social-proof-icon" />
+        <h2>Social Proof </h2>
+        </div>
+        <div>
+          <img src="/assets/img/scarcity.png" alt="scarcity." id="scarciy-icon" />
+        <h2>Sneaking </h2>
+        </div>
+        <div>
+          <img src="/assets/img/urgency.png" alt="scarcity." id="urgency-icon" />
+        <h2>Urgency </h2>
+        </div>
+          </div>
+        </div>
+          <img src="/assets/img/circle.png"alt="half-circle." className="half-circle1"/>
+
+
+
+
+        <h3 className="shopping-web"> Dark patterns are especially used on <p>shopping</p> websites<img src="/assets/img/gouwuche.png"alt="half-circle." className="shoppingcart"/> <br /></h3>
+
+        <img src="/assets/img/circle2.png"alt="half-circle." className="half-circle2"/>
+<div className="content3">
+
+  <h2>
+    The highlighting of the devious dark patterns will allow the user to be aware of when he/she is being tricked or deceived.
+  </h2>
+        <h3>
+          It will also provide information
           on how the dark pattern is considered a dark pattern which will educate the
-          user, hopefully allowing them to recognize dark patterns in the future. This
-          system will assist the user in various ways, such as:
-          <br />
-          <br />
-          <p>
+          user, hopefully allowing them to recognize dark patterns in the future.<br/>
+
+
+        </h3>
+  <h4>
+    This system will assist the user in various ways, such as:
+  </h4>
+
+
+</div>
+        <div className="content4-container">
+        <div className="content4">
+          <div className="content4-top">
+            <div className="content4-top-topic">
             <img src="/assets/img/MoneyStealing.png" alt="Figure with a money bag over the shoulder." id="MoneyMan" />
-            <b><u>Financially </u></b> – It will highlight when the user might be tricked into
+            <h1><b>Financially </b></h1>
+            </div>
+            <p>
+              It will highlight when the user might be tricked into
+              adding extra items to their baskets or being pushed into buying the
+              more expensive option. The dark patterns that fall into this category are:
+            </p>
+        </div>
+        <div className="content4-bottom">
+            <div className="group-financially"><b>Sneak into baskets</b></div>
+            <div className="group-financially"><b>Hidden Costs</b></div>
+            <div className="group-financially"><b>Fake Countdown</b></div>
+            <div className="group-financially"><b>Fake Limited-time</b></div>
+            <div className="group-financially"><b>Fake High-demand</b></div>
+            <div className="group-financially"><b>Fake Low-Stock</b></div>
+        </div>
+        </div>
 
-            adding extra items to their baskets or being pushed into buying the
-            more expensive option. The dark patterns that fall into this category are:
+  <div className="content4">
+    <div className="content4-top">
+      <div className="content4-top-topic">
+        <img src="/assets/img/Panic.jpg" alt="Man Panicing." id="Panic" />
+        <h1><b>Emotionally </b></h1>
+      </div>
+      <p>
+        It will highlight the urgency of low stocks and fake
+        countdowns and remind the user to relax and that more than likely
+        the stock and countdown is fake. The dark patterns that fall into this category are:
 
-            <ul>
-              <li><b><mark>Sneak into baskets</mark></b></li>
-              <li><b><mark>Hidden Costs</mark></b></li>
-              <li><b><mark>Fake Countdown</mark></b></li>
-              <li><b><mark>Fake Limited-time</mark></b></li>
-              <li><b><mark>Fake High-demand</mark></b></li>
-              <li><b><mark>Fake Low-Stock</mark></b></li>
-            </ul>
-          </p>
-          <br />
-          <p>
-            <img src="/assets/img/Panic.jpg" alt="Man Panicing." id="Panic" />
-            <b><u>Emotionally</u></b> - It will highlight the urgency of low stocks and fake
-            countdowns and remind the user to relax and that more than likely
-            the stock and countdown is fake. The dark patterns that fall into this category are:
-
-            <ul>
-              <li><b><mark>Confirmshaming</mark></b></li>
-              <li><b><mark>Trick Questions</mark></b></li>
-              <li><b><mark>Visual Interference</mark></b></li>
-              <li><b><mark>Fake Countdown</mark></b></li>
-              <li><b><mark>Fake Limited-time</mark></b></li>
-              <li><b><mark>Fake High-demand</mark></b></li>
-              <li><b><mark>Fake Low-Stock</mark></b></li>
-            </ul>
-          </p>
-
+      </p>
+    </div>
+    <div className="content4-bottom-emotionally">
+      <div className="group-financially"><b>Confirmshaming</b></div>
+      <div className="group-financially"><b>Trick Questions</b></div>
+      <div className="group-financially"><b>Visual Interference</b></div>
+      <div className="group-financially"><b>Fake Limited Time</b></div>
+      <div className="group-financially"><b>Fake Countdown</b></div>
+      <div className="group-financially"><b>Fake High-demand</b></div>
+      <div className="group-financially"><b>Fake Low-Stock</b></div>
+    </div>
+  </div>
+        </div>
+<h3>
           <br />
           The following table will cateogrise the dark patterns: <br />
           <b><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></b>
