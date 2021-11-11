@@ -26,7 +26,7 @@ class Home extends Component {
   static propTypes = {
     login: PropTypes.bool,
   };
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
     window.alert(e.target.url.value)
   }
@@ -40,6 +40,7 @@ class Home extends Component {
         </h1>
         <h2>
           are design elements, on webpages, that deliberately obscure, mislead, force and/or deceive website visitors into making unintended and possibly harmful choices.
+
         </h2>
 
         </div>
@@ -153,6 +154,7 @@ class Home extends Component {
           <b><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></b>
         </h3>
         <table>
+          <tbody>
           <tr>
             <th>Category</th>
             <th>Pattern Type</th>
@@ -263,7 +265,7 @@ class Home extends Component {
             (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
             </td>
           </tr>
-
+          </tbody>
         </table>
 
         {/* <div>

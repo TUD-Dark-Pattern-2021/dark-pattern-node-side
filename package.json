@@ -33,6 +33,7 @@
     "axios": "^0.21.4",
     "babel-loader": "^8.0.0-beta.2",
     "browserslist": "^4.17.3",
+    "cheerio": "^1.0.0-rc.10",
     "connect-history-api-fallback": "^1.5.0",
     "connected-react-router": "^6.8.0",
     "cookie-parser": "^1.4.5",

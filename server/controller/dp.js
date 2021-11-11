@@ -10,6 +10,8 @@ const ddbClient = require("../ddb.js")
 const DynamoDB = require("@aws-sdk/client-dynamodb");
 const docClient = require("../docClient.js")
 const { unmarshall } = require("@aws-sdk/util-dynamodb");
+const cheerio = require('cheerio');
+const {element} = require("prop-types");
 
 // const filePath = path.join(__dirname, 'sample1.html');
 // let xml  = fs.readFileSync(filePath, 'utf8');
@@ -21,110 +23,137 @@ class dpController extends baseController {
   }
 
   async detect(req, res) {
-    // console.log(req.body.html)
-    const html = decodeURIComponent(req.body.html)
-    // console.log(html)
-    const doc = new dom().parseFromString(html)
+    try {
+      let $ = cheerio.load(decodeURIComponent(req.body.html))
+      $('script, style, noscript, svg').each(function(index, element) {
+        $(this).empty()
+      })
+      const doc = new dom().parseFromString($.html())
 
-    let nodes = xpath.select("//text()", doc)
-    let result = {
-      key: [],
-      content: [],
-      tag: []
-    }
-    nodes.forEach((item, index) => {
-      if (!item.nodeValue.match(/\n/g)) {
-
-        result.key.push(shortid.generate())
-        result.content.push(item.nodeValue)
-        result.tag.push('')
-
-        while (item.parentNode !== null) {
-          // console.log(parent.parentNode)
-          if (item.parentNode.tagName) {
-            if (item.parentNode.tagName === 'script' || item.parentNode.tagName === 'style') {
-              result.key.pop()
-              result.content.pop()
-              result.tag.pop()
-              break
-            }
-            let attr = ''
-            let originalAttr = item.parentNode.attributes
-            let len = originalAttr.length
-            while (len--) {
-              let i = originalAttr[len]
-              if (i.name === 'id') {
-                if (i.value.indexOf(' ')) {
-                  let idList = i.value.split(' ')
-                  idList.forEach(value => {
-                    if (value) {
-                      attr += `#${value}`
-                    }
-                  })
-                  continue
-                }
-                attr += `#${i.value}`
-                continue
-              }
-              if (i.name === 'class') {
-                if (i.value.indexOf(' ')) {
-                  let classList = i.value.split(' ')
-                  classList.forEach(value => {
-                    if (value) {
-                      attr += `.${value}`
-                    }
-                  })
-                  continue
-                }
-                attr += `.${i.value}`
-                continue
-              }
-              if (i.value.indexOf("\"") > -1) {
-                console.log(i.value)
-                i.value = i.value.replace(/\"/g, "\\\"")
-                attr += `[${i.name}='${i.value}']`
-              } else if (i.value.indexOf("\'") > -1) {
-                console.log(i.name, i.value, typeof i.value)
-                i.value = i.value.replace(/\'/g, "\\\'")
-                attr += `[${i.name}="${i.value}"]`
-              } else {
-                attr += `[${i.name}="${i.value}"]`
-              }
-            }
-            attr = item.parentNode.tagName + attr
-            result.tag[result.content.length - 1] = attr + " " + result.tag[result.content.length - 1]
-          }
-          item = item.parentNode
-        }
-        console.log(result.tag[result.content.length - 1])
-
-
-        // console.log(parent)
+      let nodes = xpath.select("//text()", doc)
+      let result = {
+        key: [],
+        content: [],
+        tag: [],
+        type: []
       }
+      nodes.forEach((item, index) => {
+        if (!item.nodeValue.match(/\n/g)) {
 
-    })
-    // var a = {
-    //   "key": [
-    //     "NcsdGAMd8",
-    //     "VFcDD_G8yr",
-    //     "p6U_5K4gLh",
-    //     "a96JQLjg2S",
-    //     "JspTN1fT9a"
-    //   ],
-    //     "content" :["Title", "123kjklj", "fdsfs dfd fd", "-70%", "LAST CHANCE"],
-    //     "tag": [
-    //     "html[lang=en] head title#bacc ",
-    //     "html[lang=en] body div#123 p#aaa span#acccc ",
-    //     "html[lang=en] body div#123 p#aaa i[data=accdddd].abcccc#aaaaddd ",
-    //     "html[lang=en] body div#123 p#aaa div ",
-    //     "html[lang=en] body div#123 p#aaa div p "
-    //   ]
-    // }
+          result.key.push(shortid.generate())
+          result.content.push(item.nodeValue)
+          result.tag.push('')
+          result.type.push('text')
 
-    let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
-      ...result
-    })
-    res.send(commons.resReturn(data.data));
+          while (item.parentNode !== null) {
+            // console.log(parent.parentNode)
+            if (item.parentNode.tagName) {
+              if (item.parentNode.tagName === 'script' || item.parentNode.tagName === 'style') {
+                result.key.pop()
+                result.content.pop()
+                result.tag.pop()
+                result.type.pop()
+                break
+              }
+              let attr = ''
+              let originalAttr = item.parentNode.attributes
+              let len = originalAttr.length
+              while (len--) {
+                let i = originalAttr[len]
+                if (i.name === 'id') {
+                  if (i.value.indexOf(' ')) {
+                    let idList = i.value.split(' ')
+                    idList.forEach(value => {
+                      if (value) {
+                        attr += `#${value}`
+                      }
+                    })
+                    continue
+                  }
+                  attr += `#${i.value}`
+                  continue
+                }
+                if (i.name === 'class') {
+                  if (i.value.indexOf(' ')) {
+                    let classList = i.value.split(' ')
+                    classList.forEach(value => {
+                      if (value) {
+                        attr += `.${value}`
+                      }
+                    })
+                    continue
+                  }
+                  attr += `.${i.value}`
+                  continue
+                }
+                if (i.value.indexOf("\"") > -1) {
+                  console.log(i.value)
+                  i.value = i.value.replace(/\"/g, "\\\"")
+                  attr += `[${i.name}='${i.value}']`
+                } else if (i.value.indexOf("\'") > -1) {
+                  i.value = i.value.replace(/\'/g, "\\\'")
+                  attr += `[${i.name}="${i.value}"]`
+                } else {
+                  attr += `[${i.name}="${i.value}"]`
+                }
+              }
+              attr = item.parentNode.tagName + attr
+              result.tag[result.content.length - 1] = attr + " " + result.tag[result.content.length - 1]
+            }
+            item = item.parentNode
+          }
+          // console.log(result.tag[result.content.length - 1])
+        }
+
+      })
+
+      let images = xpath.select("//img", doc)
+      images.forEach(node =>{
+        let originalAttr = node.attributes
+        let len = originalAttr.length
+        while(len--) {
+          if (originalAttr[len].name === 'src') {
+            // console.log(originalAttr[len].value)
+            result.key.push(shortid.generate())
+            result.content.push(originalAttr[len].nodeValue)
+            result.tag.push(`img[src='${originalAttr[len].nodeValue}']`)
+            result.type.push('image')
+            break
+          }
+        }
+      })
+      console.log(result.content)
+      // let srcs = xpath.select("//img//@src", doc)
+      // srcs.forEach(item =>{
+      //   console.log(item.value)
+      // })
+      // var a = {
+      //   "key": [
+      //     "NcsdGAMd8",
+      //     "VFcDD_G8yr",
+      //     "p6U_5K4gLh",
+      //     "a96JQLjg2S",
+      //     "JspTN1fT9a"
+      //   ],
+      //     "content" :["Title", "123kjklj", "fdsfs dfd fd", "-70%", "LAST CHANCE"],
+      //     "tag": [
+      //     "html[lang=en] head title#bacc ",
+      //     "html[lang=en] body div#123 p#aaa span#acccc ",
+      //     "html[lang=en] body div#123 p#aaa i[data=accdddd].abcccc#aaaaddd ",
+      //     "html[lang=en] body div#123 p#aaa div ",
+      //     "html[lang=en] body div#123 p#aaa div p "
+      //   ]
+      // }
+      // console.log(result)
+      let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
+        ...result
+      })
+      res.send(commons.resReturn(data.data));
+    }catch (e) {
+      console.log(commons.resReturn(e, 500, 'error'))
+      res.send(commons.resReturn(e, 500, 'error'))
+    }
+
   }
 
   async newReport(req, res) {
@@ -238,8 +267,6 @@ class dpController extends baseController {
   }
 
   async updateReport(req, res) {
-
-
     let newStatus = req.body.status
     let params = {
 
@@ -264,7 +291,7 @@ class dpController extends baseController {
         console.log("fdwfw")
         const data = await ddbClient.send(new DynamoDB.UpdateItemCommand(params));
         res.send(commons.resReturn(data));
-        if (newStatus == "2") {
+        if (newStatus == "4") {
 
           let params = {
             TableName: "Report",
@@ -300,6 +327,17 @@ class dpController extends baseController {
           const data3 = await ddbClient.send(new DynamoDB.PutItemCommand(params));
           console.log(data3);
         }
+        else if (newStatus == "3"){
+          console.log("here")
+          let params = {
+            TableName: "Report",
+            Key: {
+              id: { S: req.body.id },
+            }
+          };
+          const data4 = await ddbClient.send(new DynamoDB.DeleteItemCommand(params));
+          console.log(data4);
+        }
         
     }
     run();
@@ -308,6 +346,13 @@ class dpController extends baseController {
   async checkDP(req, res) {
     let content = req.body.content
     let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/checkDP', {
+      "content": content
+    })
+    res.send(commons.resReturn(data.data));
+  }
+  async checkOCR(req, res) {
+    let content = req.body.content
+    let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/checkOCR', {
       "content": content
     })
     res.send(commons.resReturn(data.data));

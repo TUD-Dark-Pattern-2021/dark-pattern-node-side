@@ -2,8 +2,10 @@ import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Dropdown, message, Icon} from 'antd';
+
 import { withRouter } from 'react-router';
 const { Header } = Layout;
+const { SubMenu } = Menu;
 import UserToolBar from './UserToolBar'
 import {connect} from "react-redux";
 
@@ -21,7 +23,6 @@ export default class HeaderCom extends Component {
     super(props);
     this.state = {
       showMenu: false,
-
     }
   }
 
@@ -45,34 +46,71 @@ export default class HeaderCom extends Component {
   }
 
   menu = () => {
-    return (<Menu>
-      <Menu.Item>
-        <Link  to="/introduction"  onClick={this.toggleMenu}>
-          1st menu item
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link  to="/introduction"  onClick={this.toggleMenu}>
-          2st menu item
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link  to="/introduction"  onClick={this.toggleMenu}>
-          3st menu item
-        </Link>
-      </Menu.Item>
-    <Menu.Item>
-        <Link  to="/introduction"  onClick={this.toggleMenu}>
-          4st menu item
-        </Link>
-      </Menu.Item>
-    <Menu.Item>
-        <Link  to="/introduction"  onClick={this.toggleMenu}>
-          5st menu item
-        </Link>
-    </Menu.Item>
+    return (
+      <Menu>
+        <SubMenu title="Sneaking">
+          <Menu.Item>Sneak into baskets</Menu.Item>
+          <Menu.Item>Hidden Costs</Menu.Item>
+        </SubMenu>
+        <SubMenu title="Forced Action">
+          <Menu.Item>Forced Continuity</Menu.Item>
+        </SubMenu>
+        <SubMenu title="Misdirection">
+          <Menu.Item>Confirmshaming</Menu.Item>
+          <Menu.Item>Visual Interference</Menu.Item>
+          <Menu.Item>Trick Questions</Menu.Item>
+        </SubMenu>
+        <SubMenu title="Urgency">
+        <Menu.Item>Fake Countdown</Menu.Item>
+          <Menu.Item>Fake Limited-time</Menu.Item>
+          <Menu.Item>Fake High-demand</Menu.Item>
+        </SubMenu>
+        <SubMenu title="Social Proof">
+          <Menu.Item>Fake Activity</Menu.Item>
+        </SubMenu>
+        <SubMenu title="Scarcity">
+          <Menu.Item>Fake Low-Stock</Menu.Item>
+        </SubMenu>
+        <SubMenu title="Other Dark Patterns">
+          <Menu.Item>Privacy Zuckering</Menu.Item>
+          <Menu.Item>Bait and Switch</Menu.Item>
+        </SubMenu>
+      </Menu>
+    )
 
-    </Menu>)
+    // return (<Menu>
+    //   <Menu.Item>
+    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
+    //       Sneaking
+    //     </Link>
+    //   </Menu.Item>
+    //   <Menu.Item>
+    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
+    //     Forced Action	
+    //     </Link>
+    //   </Menu.Item>
+    //   <Menu.Item>
+    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
+    //     Misdirection
+    //     </Link>
+    //   </Menu.Item>
+    // <Menu.Item>
+    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
+    //     Urgency
+    //     </Link>
+    //   </Menu.Item>
+    // <Menu.Item>
+    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
+    //     Social Proof
+    //     </Link>
+    // </Menu.Item>
+    // <Menu.Item>
+    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
+    //     Scarcity
+    //     </Link>
+    // </Menu.Item>
+
+    // </Menu>)
   }
 
   getMenuList = (isMobile) => {
@@ -82,12 +120,18 @@ export default class HeaderCom extends Component {
           Home
         </Link>
       </li>
-      <li>
-        <Dropdown overlay={this.menu}>
-          <Link to="/introduction">
-            Dark Patterns
+      <li onClick={this.toggleMenu}>
+        <Dropdown overlay={this.menu} >
+          <Link to="/Introduction" className="ant-dropdown-link">
+            Introduction <Icon type="down" />
           </Link>
         </Dropdown>
+
+        {/*<Dropdown overlay={this.menu}>*/}
+         {/* <Link to="/introduction">*/}
+        {/*   Dark Pattern Introduction*/}
+         {/* </Link>*/}
+        {/*</Dropdown>}*/}
 
         {/*<Link to="/introduction">*/}
         {/*  Dark Pattern Introduction*/}
@@ -140,7 +184,7 @@ export default class HeaderCom extends Component {
             <div className={'mobile-tabs'}>
               <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={this.toggleMenu}/>
               <div className={this.state.showMenu ? 'show-menu' : ''}>
-                <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>
+                <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>`
                   <Icon type="close" />
                 </div>
                 {this.getMenuList(true)}
