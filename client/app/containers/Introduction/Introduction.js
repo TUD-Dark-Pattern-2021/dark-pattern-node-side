@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Layout,Breadcrumb, Icon } from 'antd';
+import { Button, Layout, Breadcrumb, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
@@ -26,19 +26,18 @@ class Introduction extends Component {
   static propTypes = {
     login: PropTypes.bool,
   };
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
     window.alert(e.target.url.value)
   }
   render() {
-
     return (
       <Content className={'introduction-content'}>
-       <h1>
+        <h1>
           Sneak Into basket
-          <img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" width = "70px" height = "50px"/>
+          <img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" width="70px" height="50px" />
         </h1>
-        
+
         <h2>
           What is Sneak Into basket?
         </h2>
@@ -47,13 +46,17 @@ class Introduction extends Component {
         </p>
         <div className={'youtube-video'}>
           <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen></iframe>
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen></iframe>
 
         </div>
-        
+
+        <p>Here are some examples of Sneak into Basket:</p>
+
+      
       </Content>
+
     );
   }
 }
