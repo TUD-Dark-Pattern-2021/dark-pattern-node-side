@@ -162,19 +162,19 @@ class Home extends Component {
           </tr>
           <tr>
             <td rowSpan="2">Sneaking</td>
-            <td>Sneak into baskets</td>
+            <td><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Sneak into baskets</td>
             <td>When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
             (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
             </td>
           </tr>
           <tr>
-            <td>Hidden Costs</td>
+            <td><img src="/assets/img/HiddenCosts.png" alt="HiddenCosts." id="HiddenCosts"  width = "50px" height = "30px"/>Hidden Costs</td>
             <td>When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout</td>
           </tr>
 
           <tr>
             <td>Forced Action</td>
-            <td>Forced Continuity</td>
+            <td><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity." id="ForcedContinuity"  width = "50px" height = "30px"/>Forced Continuity</td>
             <td>This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
               (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
             </td>
@@ -182,7 +182,7 @@ class Home extends Component {
 
           <tr>
             <td rowSpan="3">Misdirection</td>
-            <td>Confirmshaming</td>
+            <td><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming." id="Confirmshaming"  width = "50px" height = "30px"/>Confirmshaming</td>
             <td>Invoking language and emotion (shame)
               to convince users not to make a certain
               choice, or guilting users into opting into
@@ -190,13 +190,13 @@ class Home extends Component {
               (e.g., “No thanks, I don’t want to save.”)</td>
           </tr>
           <tr>
-            <td>Visual Interference</td>
+            <td><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Visual Interference</td>
             <td>Manipulation of the interface that the user will use in order to hide some information or actions
             (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
             </td>
           </tr>
           <tr>
-            <td>Trick Questions </td>
+            <td><img src="/assets/img/TrickQuestions.png" alt="Trick Questions" id="TrickQuestions"  width = "50px" height = "30px"/>Trick Questions </td>
             <td>Misleading users to make certain
               decisions based on the usage of confusing
               language, for example, using long and
@@ -209,7 +209,7 @@ class Home extends Component {
 
           <tr>
             <th rowSpan="3">Urgency</th>
-            <td><b>Fake Countdown</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake Countdown</b></td>
             <td>Using a countdown timer to alert users that a
               discount or deal is about to expire, which only
               purposely creates urgency for the purchase
@@ -217,7 +217,7 @@ class Home extends Component {
             </td>
           </tr>
           <tr>
-            <td><b>Fake Limited-time</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake Limited-time</b></td>
             <td>Giving users the impression that a deal or saleis
               only for a limited amount fo time or is about to
               expire soon, without stating a specific deadline.
@@ -226,7 +226,7 @@ class Home extends Component {
             </td>
           </tr>
           <tr>
-            <td><b>Fake High-demand</b> </td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake High-demand</b> </td>
             <td>Informing users that the product is in highdemand and will sell out soon, thereby making
               it more attractive to users.
               (e.g., “this item is in high demand”, “selling fast”)
@@ -235,7 +235,7 @@ class Home extends Component {
 
           <tr>
             <td>Social Proof</td>
-            <td><b>Fake Activity</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake Activity</b></td>
             <td>Informing the user about other people’s activity
               on the website, including behavious of
               puchasing, viewing, visiting etc, which may not
@@ -245,7 +245,7 @@ class Home extends Component {
           </tr>
           <tr>
             <td>Scarcity</td>
-            <td><b>Fake Low-Stock</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Low-Stock</b></td>
             <td>Informing users about the limited availability of
               a product, making it more desirable to users.
               (e.g., “only 2 items left in stock”)</td>
@@ -253,14 +253,14 @@ class Home extends Component {
 
           <tr>
             <td rowSpan="2">Other Dark Patterns</td>
-            <td>Privacy Zuckering </td>
+            <td><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering" id="Zuckering" float= "right" width = "50px" height = "30px"/>Privacy Zuckering </td>
             <td>Sharing more information to the public than you orignally intended to do.
             (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used.
               (This info was used to push ads.))
             </td>
           </tr>
           <tr>
-            <td>Bait and Switch</td>
+            <td><img src="/assets/img/Bait.png" alt="Mouse Trap" id="Bait" float= "right" width = "50px" height = "30px"/>Bait and Switch</td>
             <td>When a user plans and expects one thing to happen, but something else happens instead.
             (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
             </td>

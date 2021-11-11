@@ -49,68 +49,38 @@ export default class HeaderCom extends Component {
     return (
       <Menu>
         <SubMenu title="Sneaking">
-          <Menu.Item>Sneak into baskets</Menu.Item>
-          <Menu.Item>Hidden Costs</Menu.Item>
+        
+          <Menu.Item><Link to="/SneakIntoBasket"><img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" />Sneak into baskets</Link></Menu.Item>
+          
+          <Menu.Item><Link to="/HiddenCost"><img src="/assets/img/HC.png" alt="HiddenCosts." id="HiddenCosts" />Hidden Costs</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Forced Action">
-          <Menu.Item>Forced Continuity</Menu.Item>
+          <Menu.Item><Link to="/ForcedContinuity"><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity." id="ForcedContinuity"  width = "50px" height = "30px"/>Forced Continuity</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Misdirection">
-          <Menu.Item>Confirmshaming</Menu.Item>
-          <Menu.Item>Visual Interference</Menu.Item>
-          <Menu.Item>Trick Questions</Menu.Item>
+          <Menu.Item><Link to="/ConfirmShaming"><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming." id="Confirmshaming"  width = "50px" height = "30px"/>Confirmshaming</Link></Menu.Item>
+          <Menu.Item><Link to="/VisualInterference"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Visual Interference</Link></Menu.Item>
+          <Menu.Item><Link to="/TrickQuestions"><img src="/assets/img/trickquestions1.png" alt="Trick Questions" id="TrickQuestions"  width = "20%" height = "20%"/>Trick Questions</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Urgency">
-        <Menu.Item>Fake Countdown</Menu.Item>
-          <Menu.Item>Fake Limited-time</Menu.Item>
-          <Menu.Item>Fake High-demand</Menu.Item>
+        <Menu.Item><Link to="/FakeCountdown"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Countdown</Link></Menu.Item>
+          <Menu.Item><Link to="/FakeLimitedTime"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Limited-time</Link></Menu.Item>
+          <Menu.Item><Link to="/FakeHighDemand"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake High-demand</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Social Proof">
-          <Menu.Item>Fake Activity</Menu.Item>
+          <Menu.Item><Link to="/FakeActivity"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Activity</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Scarcity">
-          <Menu.Item>Fake Low-Stock</Menu.Item>
+          <Menu.Item><Link to="/FakeLowStock"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Low-Stock</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Other Dark Patterns">
-          <Menu.Item>Privacy Zuckering</Menu.Item>
-          <Menu.Item>Bait and Switch</Menu.Item>
+          <Menu.Item><Link to="/PrivacyZuckering"><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering" id="Zuckering" float= "right" width = "50px" height = "30px"/>Privacy Zuckering</Link></Menu.Item>
+          <Menu.Item><Link to="/BaitAndSwitch"><img src="/assets/img/Bait.png" alt="Mouse Trap." id="Bait" float= "right" width = "50px" height = "30px"/>Bait and Switch</Link></Menu.Item>
         </SubMenu>
       </Menu>
     )
 
-    // return (<Menu>
-    //   <Menu.Item>
-    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
-    //       Sneaking
-    //     </Link>
-    //   </Menu.Item>
-    //   <Menu.Item>
-    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
-    //     Forced Action	
-    //     </Link>
-    //   </Menu.Item>
-    //   <Menu.Item>
-    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
-    //     Misdirection
-    //     </Link>
-    //   </Menu.Item>
-    // <Menu.Item>
-    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
-    //     Urgency
-    //     </Link>
-    //   </Menu.Item>
-    // <Menu.Item>
-    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
-    //     Social Proof
-    //     </Link>
-    // </Menu.Item>
-    // <Menu.Item>
-    //     <Link  to="/introduction"  onClick={this.toggleMenu}>
-    //     Scarcity
-    //     </Link>
-    // </Menu.Item>
-
-    // </Menu>)
+  
   }
 
   getMenuList = (isMobile) => {
@@ -122,7 +92,7 @@ export default class HeaderCom extends Component {
       </li>
       <li onClick={this.toggleMenu}>
         <Dropdown overlay={this.menu} >
-          <Link to="/Introduction" className="ant-dropdown-link">
+          <Link className="ant-dropdown-link">
             Introduction <Icon type="down" />
           </Link>
         </Dropdown>
@@ -148,6 +118,7 @@ export default class HeaderCom extends Component {
           About us
         </Link>
       </li>
+     
       {
         isMobile &&
         <li onClick={this.toggleMenu}>
