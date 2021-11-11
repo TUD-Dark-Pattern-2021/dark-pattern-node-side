@@ -62,7 +62,12 @@ let routerConfig = {
       action: 'checkDP',
       path: 'checkDP',
       method: 'post'
-    }
+    },
+    {
+      action: 'checkOCR',
+      path: 'checkOCR',
+      method: 'post'
+    },
   ],
   dynamodb:[
     {
