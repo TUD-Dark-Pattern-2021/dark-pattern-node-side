@@ -115,12 +115,12 @@ class Home extends Component {
             </p>
         </div>
         <div className="content4-bottom">
-            <div className="group-financially"><b>Sneak into baskets</b></div>
-            <div className="group-financially"><b>Hidden Costs</b></div>
-            <div className="group-financially"><b>Fake Countdown</b></div>
-            <div className="group-financially"><b>Fake Limited-time</b></div>
-            <div className="group-financially"><b>Fake High-demand</b></div>
-            <div className="group-financially"><b>Fake Low-Stock</b></div>
+            <div className="group-financially"><a><b>Sneak into baskets</b></a></div>
+          <div className="group-financially"><a><b>Hidden Costs</b></a></div>
+          <div className="group-financially"><a><b>Fake Countdown</b></a></div>
+          <div className="group-financially"><a><b>Fake Limited-time</b></a></div>
+          <div className="group-financially"><a><b>Fake High-demand</b></a></div>
+          <div className="group-financially"><a><b>Fake Low-Stock</b></a></div>
         </div>
         </div>
 
@@ -138,23 +138,173 @@ class Home extends Component {
       </p>
     </div>
     <div className="content4-bottom-emotionally">
-      <div className="group-financially"><b>Confirmshaming</b></div>
-      <div className="group-financially"><b>Trick Questions</b></div>
-      <div className="group-financially"><b>Visual Interference</b></div>
-      <div className="group-financially"><b>Fake Limited Time</b></div>
-      <div className="group-financially"><b>Fake Countdown</b></div>
-      <div className="group-financially"><b>Fake High-demand</b></div>
-      <div className="group-financially"><b>Fake Low-Stock</b></div>
+      <div className="group-financially"><a><b>Confirmshaming</b></a></div>
+      <div className="group-financially"><a><b>Trick Questions</b></a></div>
+      <div className="group-financially"><a><b>Visual Interference</b></a></div>
+      <div className="group-financially"><a><b>Fake Limited Time</b></a></div>
+      <div className="group-financially"><a><b>Fake Countdown</b></a></div>
+      <div className="group-financially"><a><b>Fake High-demand</b></a></div>
+      <div className="group-financially"><a><b>Fake Low-Stock</b></a></div>
     </div>
   </div>
         </div>
-<h3>
-          <br />
+<div className="content-table">
+        <h3 className="table-header">
           The following table will cateogrise the dark patterns: <br />
-          <b><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></b>
+          <p><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></p>
         </h3>
-        <table>
+
+  <div className="category-table-sneaking">
+    <div className="category-sneakinto">
+      <p>Sneaking</p>
+    </div>
+    <div className="pattern-type-sneakinto">
+      <img src="/assets/img/sneakintobasket1.png" alt="test." id="Panic" />
+    </div>
+    <div className="description-sneakinto">
+      When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
+      (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
+    </div>
+    <div className="pattern-type-hiddencost">
+      <img src="/assets/img/hiddenCost.png" alt="test." id="Panic" />
+    </div>
+    <div className="description-hiddencost">
+      When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout
+    </div>
+  </div>
+
+
+
+  <div className="category-table-forcedAction">
+    <div className="category-forcedaction">
+      <p>Forced Action</p>
+    </div>
+    <div className="pattern-type-forcedaction">
+      <h1>forced action</h1>
+    </div>
+    <div className="description-forcedaction">
+      This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
+      (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
+    </div>
+  </div>
+
+
+  <div className="category-table-misdirection">
+    <div className="category-confirmshaming">
+      <p>Misdirection</p>
+    </div>
+    <div className="pattern-type-confirmshaming">
+      confirmshaming
+    </div>
+    <div className="description-confirmshaming">
+      Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
+    </div>
+    <div className="pattern-type-visualinterference">
+      visual interference
+
+    </div>
+    <div className="description-visualinterference">
+      Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
+    </div>
+
+    <div className="pattern-type-trickquestions">
+      <img src="/assets/img/trickquestions1.png" alt="test." id="Panic" />
+    </div>
+    <div className="description-trickquestions">
+      Misleading users to make certain decisions based on the usage of confusing language, for example, using long and complicated double negative sentences. (e.g., “If you do not wish to be contacted via email, please ensure that the box is not checked.”)
+    </div>
+
+  </div>
+
+
+
+
+  <div className="category-table-Urgency">
+    <div className="category-fakecountdown">
+      <p>Urgency</p>
+    </div>
+    <div className="pattern-type-fakecountdown">
+      fake countdown
+    </div>
+    <div className="description-fakecountdown">
+      Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
+    </div>
+    <div className="pattern-type-fakelimitedtime">
+      fake limited time
+    </div>
+    <div className="description-fakelimitedtime">
+      Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
+    </div>
+
+    <div className="pattern-type-fakehighdemand">
+      fake high demand
+    </div>
+    <div className="description-fakehighdemand">
+      Misleading users to make certain decisions based on the usage of confusing language, for example, using long and complicated double negative sentences. (e.g., “If you do not wish to be contacted via email, please ensure that the box is not checked.”)
+    </div>
+
+  </div>
+
+
+
+  <div className="category-table-SocialProof">
+    <div className="category-fakeactivity">
+      <p>Social Proof</p>
+    </div>
+    <div className="pattern-type-fakeactivity">
+      fake activity
+    </div>
+    <div className="description-fakeactivity">
+      Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+    </div>
+  </div>
+
+
+
+  <div className="category-table-Scarcity">
+    <div className="category-fakelowstock">
+      <p>Scarcity</p>
+    </div>
+    <div className="pattern-type-fakelowstock">
+      fake low stock
+    </div>
+    <div className="description-fakelowstock">
+      Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+    </div>
+  </div>
+
+  <div className="category-table-otherDP">
+    <div className="category-privacyzuckering">
+      <p>Other Dark Patterns</p>
+    </div>
+    <div className="pattern-type-privacyzuckering">
+      privacy zuckering
+    </div>
+    <div className="description-privacyzuckering">
+      Sharing more information to the public than you orignally intended to do. (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used. (This info was used to push ads.)
+    </div>
+    <div className="pattern-type-baitandswitch">
+      bait and switch
+    </div>
+    <div className="description-baitandswitch">
+      When a user plans and expects one thing to happen, but something else happens instead. (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  {/*
+  <table>
+
+
           <tbody>
+
           <tr>
             <th>Category</th>
             <th>Pattern Type</th>
@@ -265,8 +415,11 @@ class Home extends Component {
             (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
             </td>
           </tr>
-          </tbody>
-        </table>
+
+
+        </table>*/}
+</div>
+
 
         {/* <div>
           <form action="" onSubmit={this.onSubmit}>
