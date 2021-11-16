@@ -154,7 +154,7 @@ class dpController extends baseController {
         ...result
       })
       console.log(data.data)
-      res.send(commons.resReturn(data.data));
+      res.send(commons.resReturn(data.data, data.status));
     }catch (e) {
       console.log(commons.resReturn(e, 500, 'error'))
       res.send(commons.resReturn(e, 500, 'error'))
