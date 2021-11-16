@@ -68,10 +68,10 @@ class dpController extends baseController {
                         attr += `#${value}`
                       }
                     })
-                    continue
+                    break
                   }
                   attr += `#${i.value}`
-                  continue
+                  break
                 }
                 if (i.name === 'class') {
                   if (i.value.indexOf(' ')) {
@@ -81,9 +81,14 @@ class dpController extends baseController {
                         attr += `.${value}`
                       }
                     })
-                    continue
+                    break
                   }
                   attr += `.${i.value}`
+                  break
+                }
+                // filter the attributes starts with 'data'
+                // data-options
+                if (i.name.indexOf('data') > -1 || i.name.indexOf('style') > -1) {
                   continue
                 }
                 if (i.value.indexOf("\"") > -1) {
@@ -148,6 +153,7 @@ class dpController extends baseController {
       let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
         ...result
       })
+      console.log(data.data)
       res.send(commons.resReturn(data.data));
     }catch (e) {
       console.log(commons.resReturn(e, 500, 'error'))
