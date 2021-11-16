@@ -33,61 +33,278 @@ class Home extends Component {
   render() {
     return (
       <Content className={'index-content'}>
+        <div className="header-container">
+          <div>
         <h1>
-          <b><u>Dark Patterns</u></b>
+          Dark Patterns
         </h1>
         <h2>
-          <b><u>What is a dark pattern?</u></b>
+          are design elements, on webpages, that deliberately obscure, mislead, force and/or deceive website visitors into making unintended and possibly harmful choices.
+
         </h2>
-        <h3>Dark patterns are design elements, on webpages, that deliberately obscure, mislead, coerce and/or deceive website visitors into making unintended and possibly harmful choices. Dark patterns
-          can be split into many categories. Dark patterns are especially used on shopping websites. <br />
-          The highlighting of the devious dark patterns will allow the user to be aware
-          of when he/she is being tricked or deceived. It will also provide information
+
+        </div>
+          <img src="/assets/img/header-pic.png" alt="header-pic." id="header-pic" />
+        </div>
+        <div className="container1">
+          <h3>Dark patterns can be split into many categories</h3>
+        <div className="DP-category-container">
+        <div>
+        <img src="/assets/img/scarcity.png" alt="scarcity." id="scarcity-icon" />
+        <h2>Scarcity </h2>
+        </div>
+        <div>
+          <img src="/assets/img/forcedAction.png" alt="scarcity." id="forced-action-icon" />
+        <h2>Forced Action </h2>
+        </div>
+        <div>
+          <img src="/assets/img/misdirection.png" alt="scarcity." id="misdirection-icon" />
+        <h2>Misdirection </h2>
+        </div>
+        <div>
+          <img src="/assets/img/socialProof.png" alt="scarcity." id="social-proof-icon" />
+        <h2>Social Proof </h2>
+        </div>
+        <div>
+          <img src="/assets/img/scarcity.png" alt="scarcity." id="scarciy-icon" />
+        <h2>Sneaking </h2>
+        </div>
+        <div>
+          <img src="/assets/img/urgency.png" alt="scarcity." id="urgency-icon" />
+        <h2>Urgency </h2>
+        </div>
+          </div>
+        </div>
+          <img src="/assets/img/circle.png"alt="half-circle." className="half-circle1"/>
+
+
+
+
+        <h3 className="shopping-web"> Dark patterns are especially used on <p>shopping</p> websites<img src="/assets/img/gouwuche.png"alt="half-circle." className="shoppingcart"/> <br /></h3>
+
+        <img src="/assets/img/circle2.png"alt="half-circle." className="half-circle2"/>
+<div className="content3">
+
+  <h2>
+    The highlighting of the devious dark patterns will allow the user to be aware of when he/she is being tricked or deceived.
+  </h2>
+        <h3>
+          It will also provide information
           on how the dark pattern is considered a dark pattern which will educate the
-          user, hopefully allowing them to recognize dark patterns in the future. This
-          system will assist the user in various ways, such as:
-          <br />
-          <br />
-          <p>
-            <img src="/assets/img/MoneyStealing.png" alt="Figure with a money bag over the shoulder." id="MoneyMan" />
-            <b><u>Financially </u></b> – It will highlight when the user might be tricked into
+          user, hopefully allowing them to recognize dark patterns in the future.<br/>
 
-            adding extra items to their baskets or being pushed into buying the
-            more expensive option. The dark patterns that fall into this category are:
 
-            <ul>
-              <li><b><mark>Sneak into baskets</mark></b></li>
-              <li><b><mark>Hidden Costs</mark></b></li>
-              <li><b><mark>Fake Countdown</mark></b></li>
-              <li><b><mark>Fake Limited-time</mark></b></li>
-              <li><b><mark>Fake High-demand</mark></b></li>
-              <li><b><mark>Fake Low-Stock</mark></b></li>
-            </ul>
-          </p>
-          <br />
-          <p>
-            <img src="/assets/img/Panic.jpg" alt="Man Panicing." id="Panic" />
-            <b><u>Emotionally</u></b> - It will highlight the urgency of low stocks and fake
-            countdowns and remind the user to relax and that more than likely
-            the stock and countdown is fake. The dark patterns that fall into this category are:
-
-            <ul>
-              <li><b><mark>Confirmshaming</mark></b></li>
-              <li><b><mark>Trick Questions</mark></b></li>
-              <li><b><mark>Visual Interference</mark></b></li>
-              <li><b><mark>Fake Countdown</mark></b></li>
-              <li><b><mark>Fake Limited-time</mark></b></li>
-              <li><b><mark>Fake High-demand</mark></b></li>
-              <li><b><mark>Fake Low-Stock</mark></b></li>
-            </ul>
-          </p>
-
-          <br />
-          The following table will cateogrise the dark patterns: <br />
-          <b><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></b>
         </h3>
-        <table>
+  <h4>
+    This system will assist the user in various ways, such as:
+  </h4>
+
+
+</div>
+        <div className="content4-container">
+        <div className="content4">
+          <div className="content4-top">
+            <div className="content4-top-topic">
+            <img src="/assets/img/MoneyStealing.png" alt="Figure with a money bag over the shoulder." id="MoneyMan" />
+            <h1><b>Financially </b></h1>
+            </div>
+            <p>
+              It will highlight when the user might be tricked into
+              adding extra items to their baskets or being pushed into buying the
+              more expensive option. The dark patterns that fall into this category are:
+            </p>
+        </div>
+        <div className="content4-bottom">
+            <div className="group-financially"><a><b>Sneak into baskets</b></a></div>
+          <div className="group-financially"><a><b>Hidden Costs</b></a></div>
+          <div className="group-financially"><a><b>Fake Countdown</b></a></div>
+          <div className="group-financially"><a><b>Fake Limited-time</b></a></div>
+          <div className="group-financially"><a><b>Fake High-demand</b></a></div>
+          <div className="group-financially"><a><b>Fake Low-Stock</b></a></div>
+        </div>
+        </div>
+
+  <div className="content4">
+    <div className="content4-top">
+      <div className="content4-top-topic">
+        <img src="/assets/img/Panic.jpg" alt="Man Panicing." id="Panic" />
+        <h1><b>Emotionally </b></h1>
+      </div>
+      <p>
+        It will highlight the urgency of low stocks and fake
+        countdowns and remind the user to relax and that more than likely
+        the stock and countdown is fake. The dark patterns that fall into this category are:
+
+      </p>
+    </div>
+    <div className="content4-bottom-emotionally">
+      <div className="group-financially"><a><b>Confirmshaming</b></a></div>
+      <div className="group-financially"><a><b>Trick Questions</b></a></div>
+      <div className="group-financially"><a><b>Visual Interference</b></a></div>
+      <div className="group-financially"><a><b>Fake Limited Time</b></a></div>
+      <div className="group-financially"><a><b>Fake Countdown</b></a></div>
+      <div className="group-financially"><a><b>Fake High-demand</b></a></div>
+      <div className="group-financially"><a><b>Fake Low-Stock</b></a></div>
+    </div>
+  </div>
+        </div>
+<div className="content-table">
+        <h3 className="table-header">
+          The following table will cateogrise the dark patterns: <br />
+          <p><u>Note: The dark patterns in bold writing are the patterns our chrome extenion is able to detect for now.</u></p>
+        </h3>
+
+  <div className="category-table-sneaking">
+    <div className="category-sneakinto">
+      <p>Sneaking</p>
+    </div>
+    <div className="pattern-type-sneakinto">
+      <img src="/assets/img/sneakintobasket1.png" alt="test." id="Panic" />
+    </div>
+    <div className="description-sneakinto">
+      When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
+      (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
+    </div>
+    <div className="pattern-type-hiddencost">
+      <img src="/assets/img/hiddenCost.png" alt="test." id="Panic" />
+    </div>
+    <div className="description-hiddencost">
+      When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout
+    </div>
+  </div>
+
+
+
+  <div className="category-table-forcedAction">
+    <div className="category-forcedaction">
+      <p>Forced Action</p>
+    </div>
+    <div className="pattern-type-forcedaction">
+      <h1>forced action</h1>
+    </div>
+    <div className="description-forcedaction">
+      This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
+      (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
+    </div>
+  </div>
+
+
+  <div className="category-table-misdirection">
+    <div className="category-confirmshaming">
+      <p>Misdirection</p>
+    </div>
+    <div className="pattern-type-confirmshaming">
+      confirmshaming
+    </div>
+    <div className="description-confirmshaming">
+      Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
+    </div>
+    <div className="pattern-type-visualinterference">
+      visual interference
+
+    </div>
+    <div className="description-visualinterference">
+      Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
+    </div>
+
+    <div className="pattern-type-trickquestions">
+      <img src="/assets/img/trickquestions1.png" alt="test." id="Panic" />
+    </div>
+    <div className="description-trickquestions">
+      Misleading users to make certain decisions based on the usage of confusing language, for example, using long and complicated double negative sentences. (e.g., “If you do not wish to be contacted via email, please ensure that the box is not checked.”)
+    </div>
+
+  </div>
+
+
+
+
+  <div className="category-table-Urgency">
+    <div className="category-fakecountdown">
+      <p>Urgency</p>
+    </div>
+    <div className="pattern-type-fakecountdown">
+      fake countdown
+    </div>
+    <div className="description-fakecountdown">
+      Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
+    </div>
+    <div className="pattern-type-fakelimitedtime">
+      fake limited time
+    </div>
+    <div className="description-fakelimitedtime">
+      Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
+    </div>
+
+    <div className="pattern-type-fakehighdemand">
+      fake high demand
+    </div>
+    <div className="description-fakehighdemand">
+      Misleading users to make certain decisions based on the usage of confusing language, for example, using long and complicated double negative sentences. (e.g., “If you do not wish to be contacted via email, please ensure that the box is not checked.”)
+    </div>
+
+  </div>
+
+
+
+  <div className="category-table-SocialProof">
+    <div className="category-fakeactivity">
+      <p>Social Proof</p>
+    </div>
+    <div className="pattern-type-fakeactivity">
+      fake activity
+    </div>
+    <div className="description-fakeactivity">
+      Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+    </div>
+  </div>
+
+
+
+  <div className="category-table-Scarcity">
+    <div className="category-fakelowstock">
+      <p>Scarcity</p>
+    </div>
+    <div className="pattern-type-fakelowstock">
+      fake low stock
+    </div>
+    <div className="description-fakelowstock">
+      Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+    </div>
+  </div>
+
+  <div className="category-table-otherDP">
+    <div className="category-privacyzuckering">
+      <p>Other Dark Patterns</p>
+    </div>
+    <div className="pattern-type-privacyzuckering">
+      privacy zuckering
+    </div>
+    <div className="description-privacyzuckering">
+      Sharing more information to the public than you orignally intended to do. (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used. (This info was used to push ads.)
+    </div>
+    <div className="pattern-type-baitandswitch">
+      bait and switch
+    </div>
+    <div className="description-baitandswitch">
+      When a user plans and expects one thing to happen, but something else happens instead. (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  {/*
+  <table>
+
+
           <tbody>
+
           <tr>
             <th>Category</th>
             <th>Pattern Type</th>
@@ -95,19 +312,19 @@ class Home extends Component {
           </tr>
           <tr>
             <td rowSpan="2">Sneaking</td>
-            <td>Sneak into baskets</td>
+            <td><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Sneak into baskets</td>
             <td>When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
             (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
             </td>
           </tr>
           <tr>
-            <td>Hidden Costs</td>
+            <td><img src="/assets/img/HiddenCosts.png" alt="HiddenCosts." id="HiddenCosts"  width = "50px" height = "30px"/>Hidden Costs</td>
             <td>When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout</td>
           </tr>
 
           <tr>
             <td>Forced Action</td>
-            <td>Forced Continuity</td>
+            <td><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity." id="ForcedContinuity"  width = "50px" height = "30px"/>Forced Continuity</td>
             <td>This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
               (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
             </td>
@@ -115,7 +332,7 @@ class Home extends Component {
 
           <tr>
             <td rowSpan="3">Misdirection</td>
-            <td>Confirmshaming</td>
+            <td><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming." id="Confirmshaming"  width = "50px" height = "30px"/>Confirmshaming</td>
             <td>Invoking language and emotion (shame)
               to convince users not to make a certain
               choice, or guilting users into opting into
@@ -123,13 +340,13 @@ class Home extends Component {
               (e.g., “No thanks, I don’t want to save.”)</td>
           </tr>
           <tr>
-            <td>Visual Interference</td>
+            <td><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Visual Interference</td>
             <td>Manipulation of the interface that the user will use in order to hide some information or actions
             (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
             </td>
           </tr>
           <tr>
-            <td>Trick Questions </td>
+            <td><img src="/assets/img/TrickQuestions.png" alt="Trick Questions" id="TrickQuestions"  width = "50px" height = "30px"/>Trick Questions </td>
             <td>Misleading users to make certain
               decisions based on the usage of confusing
               language, for example, using long and
@@ -142,7 +359,7 @@ class Home extends Component {
 
           <tr>
             <th rowSpan="3">Urgency</th>
-            <td><b>Fake Countdown</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake Countdown</b></td>
             <td>Using a countdown timer to alert users that a
               discount or deal is about to expire, which only
               purposely creates urgency for the purchase
@@ -150,7 +367,7 @@ class Home extends Component {
             </td>
           </tr>
           <tr>
-            <td><b>Fake Limited-time</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake Limited-time</b></td>
             <td>Giving users the impression that a deal or saleis
               only for a limited amount fo time or is about to
               expire soon, without stating a specific deadline.
@@ -159,7 +376,7 @@ class Home extends Component {
             </td>
           </tr>
           <tr>
-            <td><b>Fake High-demand</b> </td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake High-demand</b> </td>
             <td>Informing users that the product is in highdemand and will sell out soon, thereby making
               it more attractive to users.
               (e.g., “this item is in high demand”, “selling fast”)
@@ -168,7 +385,7 @@ class Home extends Component {
 
           <tr>
             <td>Social Proof</td>
-            <td><b>Fake Activity</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket"  width = "50px" height = "30px"/>Fake Activity</b></td>
             <td>Informing the user about other people’s activity
               on the website, including behavious of
               puchasing, viewing, visiting etc, which may not
@@ -178,7 +395,7 @@ class Home extends Component {
           </tr>
           <tr>
             <td>Scarcity</td>
-            <td><b>Fake Low-Stock</b></td>
+            <td><b><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Low-Stock</b></td>
             <td>Informing users about the limited availability of
               a product, making it more desirable to users.
               (e.g., “only 2 items left in stock”)</td>
@@ -186,20 +403,23 @@ class Home extends Component {
 
           <tr>
             <td rowSpan="2">Other Dark Patterns</td>
-            <td>Privacy Zuckering </td>
+            <td><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering" id="Zuckering" float= "right" width = "50px" height = "30px"/>Privacy Zuckering </td>
             <td>Sharing more information to the public than you orignally intended to do.
             (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used.
               (This info was used to push ads.))
             </td>
           </tr>
           <tr>
-            <td>Bait and Switch</td>
+            <td><img src="/assets/img/Bait.png" alt="Mouse Trap" id="Bait" float= "right" width = "50px" height = "30px"/>Bait and Switch</td>
             <td>When a user plans and expects one thing to happen, but something else happens instead.
             (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
             </td>
           </tr>
-          </tbody>
-        </table>
+
+
+        </table>*/}
+</div>
+
 
         {/* <div>
           <form action="" onSubmit={this.onSubmit}>
