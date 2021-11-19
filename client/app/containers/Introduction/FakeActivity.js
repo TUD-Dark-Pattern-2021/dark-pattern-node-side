@@ -49,7 +49,7 @@ class FakeActivity extends Component {
         Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
         </p>
         <div className={'youtube-video'}>
-          <iframe src="" title="YouTube video player"
+          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
@@ -60,20 +60,20 @@ class FakeActivity extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FA1.png" alt="Fake Activity Example." width= "100%"/>Tutorial on how to change the fake share count for WordPress.
             <br/>
-            (SportsDirect.com)
+            (Bimber.com)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FA2.png" alt="Fake Activity Example." width= "100%"/>It shows the amount of people fasting, including a 4th of a person.
             <br/>
-            (SportsDirect.com)</h3>
+            (Fasting App)</h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/>Greeting card Added to basket.
+            <h3 ><img src="/assets/img/FA3.png" alt="Fake Activity Example." width= "100%"/>The user claimed to not like it but gave it 5 stars.
             <br/>
-            (avasflowers.net)</h3>
+            (Google.com)</h3>
           </div>
         </Carousel>
       </Content>
