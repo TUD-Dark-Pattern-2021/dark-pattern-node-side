@@ -49,7 +49,7 @@ class FakeLimitedTime extends Component {
         Giving users the impression that a deal or saleis only for a limited amount fo time or is about to expire soon, without stating a specific deadline. (e.g., “sale ends soon”, “only avaliable for a limited time”)
         </p>
         <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
+          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>

@@ -49,7 +49,7 @@ class ForcedContinuity extends Component {
         This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length. (e.g. You sign up for a week free trial to premium shopping, then, 
         if you have not cancelled your subscription, by next week you will be charged again, without warning)</p>
         <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
+          <iframe src="https://www.youtube.com/embed/AYdMqZbqwJ8" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
@@ -60,20 +60,18 @@ class ForcedContinuity extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/ForcedContinuity11.png" alt="ForcedContinuity Example." width= "100%"/>Signing up for the "Free Account".
             <br/>
-            (SportsDirect.com)
+            (TheLadders.com)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
-            <br/>
-            (SportsDirect.com)</h3>
+            <h3><img src="/assets/img/ForcedContinuity2.jpg" alt="ForcedContinuity Example." width= "100%"/>Cannot use the features fully due to not having a premium account.
+            <br/></h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/>Greeting card Added to basket.
-            <br/>
-            (avasflowers.net)</h3>
+            <h3 ><img src="/assets/img/ForcedContinuity3.jpg" alt="ForcedContinuity Example." width= "100%"/>Forcing you to pay for a premium account.
+            <br/></h3>
           </div>
         </Carousel>
       </Content>

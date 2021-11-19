@@ -64,7 +64,6 @@ export default class HeaderCom extends Component {
         </SubMenu>
         <SubMenu title="Urgency">
         <Menu.Item><Link to="/FakeCountdown"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Countdown</Link></Menu.Item>
-          <Menu.Item><Link to="/FakeLimitedTime"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Limited-time</Link></Menu.Item>
           <Menu.Item><Link to="/FakeHighDemand"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake High-demand</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Social Proof">

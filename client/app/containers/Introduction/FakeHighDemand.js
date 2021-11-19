@@ -48,7 +48,7 @@ class FakeHighDemand extends Component {
         <p>
         Informing users that the product is in high demand and will sell out soon, thereby making it more attractive to users. (e.g., “this item is in high demand”, “selling fast”)</p>
         <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
+          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
@@ -59,20 +59,20 @@ class FakeHighDemand extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FH1.png" alt="Fake High-demand Example." width= "100%"/>"Hurry limited quantities left!".
             <br/>
-            (SportsDirect.com)
+            (orthofeet.com)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FH2.png" alt="Fake High-demand Example." width= "100%"/>Out of stock.
             <br/>
-            (SportsDirect.com)</h3>
+            (6pm.com)</h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/>Greeting card Added to basket.
+            <h3 ><img src="/assets/img/FH3.png" alt="Fake High-demand Example." width= "100%"/>Urgent message "items in your cart are high demand".
             <br/>
-            (avasflowers.net)</h3>
+            (fashionnova.com)</h3>
           </div>
         </Carousel>
       </Content>
