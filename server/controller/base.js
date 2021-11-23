@@ -15,6 +15,16 @@ class baseController {
       '/api/dp/getList',
       '/api/dp/updateReport',
       '/api/user/login',
+      '/api/dynamodb/addItem',
+      '/api/dynamodb/getItem',
+      '/api/dynamodb/deleteItem',
+      '/api/dynamodb/storeDataset',
+      '/api/dynamodb/s3Test',
+      '/api/dynamodb/pushData',
+      '/api/dynamodb/dyanmoToS3',
+      '/api/dynamodb/listObjectsS3',
+      '/api/dynamodb/automaticTraining',
+      '/api/dynamodb/callfunctions',
     ];
     console.log(req.path)
     if (ignoreRouter.indexOf(req.path) > -1) {

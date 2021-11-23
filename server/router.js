@@ -115,6 +115,16 @@ let routerConfig = {
       path: 'listObjectsS3',
       method: 'get'
     },
+    {
+      action: 'automaticTraining',
+      path: 'automaticTraining',
+      method: 'post'
+    },
+    {
+      action: 'callfunctions',
+      path: 'callfunctions',
+      method: 'post'
+    },
   ], 
   user: [
     {
