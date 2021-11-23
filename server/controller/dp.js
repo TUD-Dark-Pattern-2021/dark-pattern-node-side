@@ -30,13 +30,14 @@ class dpController extends baseController {
       })
       const doc = new dom().parseFromString($.html())
 
-      let nodes = xpath.select("//text()", doc)
       let result = {
         key: [],
         content: [],
         tag: [],
         type: []
       }
+
+      let nodes = xpath.select("//text()", doc)
       nodes.forEach((item, index) => {
         if (!item.nodeValue.match(/\n/g)) {
 
@@ -55,6 +56,15 @@ class dpController extends baseController {
                 result.type.pop()
                 break
               }
+
+              if (item.parentNode.tagName === 'button') {
+                result.type[result.type.length -1] = 'button'
+              }
+
+              if (item.parentNode.tagName === 'a') {
+                result.type[result.type.length -1] = 'link'
+              }
+
               let attr = ''
               let originalAttr = item.parentNode.attributes
               let len = originalAttr.length
@@ -127,7 +137,25 @@ class dpController extends baseController {
           }
         }
       })
-      console.log(result.content)
+
+
+      let checkboxes = xpath.select("//input", doc)
+      checkboxes.forEach(node =>{
+        let originalAttr = node.attributes
+        let len = originalAttr.length
+        while(len--) {
+          if (originalAttr[len].name === 'href') {
+            // console.log(originalAttr[len].value)
+            result.key.push(shortid.generate())
+            result.content.push(originalAttr[len].nodeValue)
+            result.tag.push(`a[href='${originalAttr[len].nodeValue}']`)
+            result.type.push('link')
+            break
+          }
+        }
+      })
+
+      console.log(result)
       // let srcs = xpath.select("//img//@src", doc)
       // srcs.forEach(item =>{
       //   console.log(item.value)
