@@ -58,6 +58,7 @@ class ReportList extends Component {
             </div>
           ),
           width: 200,
+
         },
         {
           title: 'Category',

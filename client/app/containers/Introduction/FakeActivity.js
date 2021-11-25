@@ -35,28 +35,48 @@ class FakeActivity extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-        Fake Activity
+
+          What is Fake Activity?
           {/* <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" /> */}
         </h1>
         
-        <h2 >
+        {/* <h2 >
           What is Fake Activity?
           
-        </h2>
+        </h2>*/}
         <br/>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
         <p>
         Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
         </p>
-        <div className={'youtube-video'}>
-          <iframe src="" title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
 
+          </div>
+              <p>
+                Here's a video introducing Fake Activity
+              </p>
+    
+
+          <div className={'youtube-video'}>
+            <iframe src="" title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
+
+          </div>
         </div>
 
+
+
         <p>Here are some examples of Fake Activity:</p>
+        <hr/>
 
         <Carousel  autoplay>
           <div className={'Slider'}>
@@ -76,6 +96,8 @@ class FakeActivity extends Component {
             (avasflowers.net)</h3>
           </div>
         </Carousel>
+
+
       </Content>
     );
   }

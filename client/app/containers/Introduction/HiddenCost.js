@@ -35,27 +35,47 @@ class HiddenCosts extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-        Hidden Costs
-          <img src="/assets/img/HC.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+
+          What is Hidden Costs?
+
         </h1>
         
-        <h2 >
+        {/*<h2 >
           What is Hidden Costs?
           
-        </h2>
+        </h2>*/}
         <br/>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
         <p>
         When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout</p>
-        <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/1xJW-_DRkHM" title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/hiddenCost.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
 
+          </div>
+
+
+          <p>
+            Introducing Hidden Costs
+          </p>
+
+
+          <div className={'youtube-video'}>
+          <iframe src="https://www.youtube.com/embed/1xJW-_DRkHM" title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen></iframe>
+
+        </div>
         </div>
 
         <p>Here are some examples of Hidden Costs:</p>
+        <hr/>
 
         <Carousel  autoplay>
         <div className={'Slider'}>
@@ -74,6 +94,9 @@ class HiddenCosts extends Component {
             (Airbnb.com)</h3>
           </div>
         </Carousel>
+        <hr/>
+
+
       </Content>
     );
   }

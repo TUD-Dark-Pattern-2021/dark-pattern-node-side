@@ -35,28 +35,50 @@ class BaitAndSwitch extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-          Bait And Switch
+
+          What is Bait And Swtich?
           {/* <img src="/assets/img/Bait.png" alt="Sneak Into Basket." id="SneakIntoBasket" /> */}
         </h1>
-        
+        {/*
         <h2 >
           What is Bait And Swtich?
           
-        </h2>
+        </h2>*/}
         <br/>
-        <p>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
+            <p>
         When a user plans and expects one thing to happen, but something else happens instead. (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
-        </p>
-        <div className={'youtube-video'}>
+            </p>
+
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
+
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
+
+          </div>
+
+
+          <p>
+            Introducing Bait And Swtich
+          </p>
+
+
+          <div className={'youtube-video'}>
           <iframe src="https://www.youtube.com/embed/mX6zgN-Kn_w" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
 
         </div>
+        </div>
 
         <p>Here are some examples of Bait And Switch:</p>
+          <hr/>
 
         <Carousel  autoplay>
           <div className={'Slider'}>

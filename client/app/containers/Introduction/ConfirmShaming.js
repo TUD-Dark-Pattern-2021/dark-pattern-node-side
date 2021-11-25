@@ -35,28 +35,53 @@ class ConfirmShaming extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-        Confirm Shaming
+
+          What is Confirm Shaming?
           {/* <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" /> */}
         </h1>
-        
+        {/*
         <h2 >
           What is Confirm Shaming?
           
-        </h2>
+        </h2>*/}
+
         <br/>
-        <p>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
+            <p>
         Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
         </p>
-        <div className={'youtube-video'}>
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
+
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
+
+          </div>
+
+
+          <p>
+            Introducing Confirm Shaming
+          </p>
+
+
+
+          <div className={'youtube-video'}>
           <iframe src="https://www.youtube.com/embed/SIkqDGfEXjo?start=30&end=67" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
 
         </div>
+        </div>
+
 
         <p>Here are some examples of Confirm Shaming:</p>
+
+        <hr/>
 
         <Carousel  autoplay>
           <div className={'Slider'}>

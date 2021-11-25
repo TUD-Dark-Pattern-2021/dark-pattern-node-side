@@ -75,12 +75,12 @@ class Home extends Component {
         </div>
           </div>
         </div>
-          <img src="/assets/img/circle.png"alt="half-circle." className="half-circle1"/>
 
 
 
 
-        <h3 className="shopping-web"> Dark patterns are especially used on <p>shopping</p> websites<img src="/assets/img/gouwuche.png"alt="half-circle." className="shoppingcart"/> <br /></h3>
+
+        <h3 className="shopping-web"> Dark patterns are especially used on <p>shopping</p> websites<br/><img src="/assets/img/gouwuche.png"alt="half-circle." className="shoppingcart"/> </h3>
 
 
 <div className="content3">
@@ -121,12 +121,15 @@ class Home extends Component {
             </p>
         </div>
         <div className="content4-bottom">
-            <div className="group-financially"><a><b>Sneak into baskets</b></a></div>
-          <div className="group-financially"><a><b>Hidden Costs</b></a></div>
-          <div className="group-financially"><a><b>Fake Countdown</b></a></div>
-          <div className="group-financially"><a><b>Fake Limited-time</b></a></div>
-          <div className="group-financially"><a><b>Fake High-demand</b></a></div>
-          <div className="group-financially"><a><b>Fake Low-Stock</b></a></div>
+          <div className="group-financially">
+            <a to="/SneakIntoBasket"><img src="/assets/img/jump.png" /><b>Sneak into baskets</b>
+              </a>
+          </div>
+          <div className="group-financially"><a href="/HiddenCost"><img src="/assets/img/jump.png" /><b>Hidden Costs</b></a></div>
+          <div className="group-financially"><a href="/FakeCountdown"><img src="/assets/img/jump.png" /><b>Fake Countdown</b></a></div>
+          <div className="group-financially"><a href="/FakeLimitedTime"><img src="/assets/img/jump.png" /><b>Fake Limited-time</b></a></div>
+          <div className="group-financially"><a href="/FakeHighDemand"><img src="/assets/img/jump.png" /><b>Fake High-demand</b></a></div>
+          <div className="group-financially"><a href="/FakeLowStock"><img src="/assets/img/jump.png" /><b>Fake Low-Stock</b></a></div>
         </div>
         </div>
 
@@ -144,13 +147,13 @@ class Home extends Component {
       </p>
     </div>
     <div className="content4-bottom-emotionally">
-      <div className="group-financially"><a><b>Confirmshaming</b></a></div>
-      <div className="group-financially"><a><b>Trick Questions</b></a></div>
-      <div className="group-financially"><a><b>Visual Interference</b></a></div>
-      <div className="group-financially"><a><b>Fake Limited Time</b></a></div>
-      <div className="group-financially"><a><b>Fake Countdown</b></a></div>
-      <div className="group-financially"><a><b>Fake High-demand</b></a></div>
-      <div className="group-financially"><a><b>Fake Low-Stock</b></a></div>
+      <div className="group-financially"><Link to="/ConfirmShaming"><img src="/assets/img/jump.png" /><b>Confirmshaming</b></Link></div>
+      <div className="group-financially"><Link to="/TrickQuestions"><img src="/assets/img/jump.png" /><b>Trick Questions</b></Link></div>
+      <div className="group-financially"><Link to="/VisualInterference"><img src="/assets/img/jump.png" /><b>Visual Interference</b></Link></div>
+      <div className="group-financially"><Link to="/FakeLimitedTime"><img src="/assets/img/jump.png" /><b>Fake Limited Time</b></Link></div>
+      <div className="group-financially"><Link to="/FakeCountdown"><img src="/assets/img/jump.png" /><b>Fake Countdown</b></Link></div>
+      <div className="group-financially"><Link to="/FakeHighDemand"><img src="/assets/img/jump.png" /><b>Fake High-demand</b></Link></div>
+      <div className="group-financially"><Link to="/FakeLowStock"><img src="/assets/img/jump.png" /><b>Fake Low-Stock</b></Link></div>
     </div>
   </div>
         </div>

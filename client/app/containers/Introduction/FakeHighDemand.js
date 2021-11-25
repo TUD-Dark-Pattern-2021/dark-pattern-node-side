@@ -40,22 +40,45 @@ class FakeHighDemand extends Component {
           {/* <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" /> */}
         </h1>
         
-        <h2 >
+        {/*<h2 >
           What is Fake High-demand?
           
-        </h2>
+        </h2>*/}
         <br/>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
+
         <p>
         Informing users that the product is in high demand and will sell out soon, thereby making it more attractive to users. (e.g., “this item is in high demand”, “selling fast”)</p>
-        <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
-
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
         </div>
 
+
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
+
+          </div>
+              <p>
+                Here's a video introducing Sneak Into Basket
+              </p>
+
+          <div className={'youtube-video'}>
+            <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
+
+          </div>
+        </div>
+
+
+
+
         <p>Here are some examples of Fake High-demand:</p>
+        <hr/>
 
         <Carousel  autoplay>
           <div className={'Slider'}>
@@ -75,6 +98,10 @@ class FakeHighDemand extends Component {
             (avasflowers.net)</h3>
           </div>
         </Carousel>
+        <hr/>
+
+
+
       </Content>
     );
   }
