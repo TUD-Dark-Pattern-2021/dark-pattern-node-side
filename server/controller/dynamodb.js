@@ -123,34 +123,6 @@ class dynamodbController extends baseController {
         run();
     }
 
-    async s3Test() {
-        const bucketParams = {
-            Bucket: "darkpatternsdatasets",
-            Key: "dark_patterns.csv",
-        };
-
-        const run = async () => {
-            try {
-                const streamToString = (stream) =>
-                    new Promise((resolve, reject) => {
-                        const chunks = [];
-                        stream.on("data", (chunk) => chunks.push(chunk));
-                        stream.on("error", reject);
-                        stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
-                    });
-
-                const data = await s3c.send(new S3.GetObjectCommand(bucketParams));
-                // console.log(data)
-                const bodyContents = await streamToString(data.Body);
-                console.log(bodyContents);
-                return bodyContents;
-            } catch (err) {
-                console.log("Error", err);
-            }
-        };
-        run();
-    }
-
     async storeDataset(res) {
         const bucketParams = {
             Bucket: "darkpatternsdatasets",
@@ -313,9 +285,6 @@ class dynamodbController extends baseController {
         CSVToJSON().fromStream(s3Stream)
             .on('data', (row) => {
                 let datas = JSON.parse(row);
-                // console.log(datas.comment);
-
-                // console.log(JSON.stringify(datas));
 
                 let paramsDataset = {
                     TableName: "Dataset",
@@ -570,19 +539,6 @@ class dynamodbController extends baseController {
         let writeCount = 0;
         let writeChunk = 10000;
 
-        // const describeTable = () => {
-        //     console.log("describeTable")
-        //     dynamoToS3.describeTable(
-        //         {
-        //             TableName: "Dataset"
-        //         },
-        //         function (err, data) {
-        //             if (!err) {
-        //                 console.dir(data.Table);
-        //             } else console.dir(err);
-        //         }
-        //     );
-        // };
 
         const scanDynamoDB = (query) => {
             console.log("scanDynamoDB")
@@ -780,32 +736,6 @@ class dynamodbController extends baseController {
     }
 
 
-    // async getReq(req, res) {
-    //     var table = "DarkPatternsReqRes";
-    //     console.log("Getting Request")
-    //     let params = {
-
-    //         TableName: table,
-    //         Key: {
-    //             request: { S: req.body.request },
-    //         },
-    //         ProjectionExpression: "#r",
-    //         ExpressionAttributeNames: {
-    //             "#r": "request"
-    //         }
-
-    //     };
-    //     console.log(params)
-    //     console.log("Getting Response")
-
-    //     const run = async () => {
-    //         const data = await ddbClient.send(new DynamoDB.GetItemCommand(params));
-    //         console.log("Success", data.Item);
-    //         res.send(commons.resReturn(data.Item));
-    //         return data;
-    //     };
-    //     run();
-    // }
     // https://" + req.body.bucket + ".s3.amazonaws.com/Key'"
     async listObjectsS3(req, res) {
         let params = {
@@ -850,22 +780,6 @@ class dynamodbController extends baseController {
             fs.writeFile(filename, '', function(){console.log('done')})
         }
     }
-    // async callfunctions(req,res){
-    //     automaticTraining(req,res)
-    // }
-
-    // async callPushData() {
-    //     console.log('calling');
-    //     const result = await this.pushData();
-    //     console.log(result);
-    //     // expected output: "resolved"
-    //   }
-    //   async callDynamoToS3(req,res) {
-    //     console.log('calling');
-    //     const result = await this.dyanmoToS3();
-    //     console.log(result);
-    //     // expected output: "resolved"
-    //   }
     
     
 }
@@ -882,9 +796,5 @@ function addData(paramsDataset) {
     });
 }
 
-// function automaticTraining(req, res){
-//     callPushData();
-//     callDynamoToS3(req,res);
-// }
 
 module.exports = dynamodbController;
