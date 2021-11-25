@@ -17,8 +17,9 @@ import HiddenCost from "./Introduction/HiddenCost";
 import PrivacyZuckering from "./Introduction/PrivacyZuckering";
 import TrickQuestions from "./Introduction/TrickQuestions";
 import VisualInterference from "./Introduction/VisualInterference";
+import Example from './Example/Example'
 
 
 export { Home, Login, AdminIndex, AboutUs, Report, ChromeExtension, SneakIntoBasket, BaitAndSwitch, ConfirmShaming, FakeActivity, FakeCountdown,
-    FakeHighDemand, FakeLimitedTime, FakeLowStock, ForcedContinuity, HiddenCost, PrivacyZuckering, TrickQuestions, VisualInterference
+    FakeHighDemand, FakeLimitedTime, FakeLowStock, ForcedContinuity, HiddenCost, PrivacyZuckering, TrickQuestions, VisualInterference, Example
 };

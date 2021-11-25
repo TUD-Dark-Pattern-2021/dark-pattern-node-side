@@ -108,6 +108,11 @@ export default class HeaderCom extends Component {
 
       </li>
       <li onClick={this.toggleMenu}>
+        <Link to="/example">
+          Example
+        </Link>
+      </li>
+      <li onClick={this.toggleMenu}>
         <Link to="/chrome-extension">
           Chrome Extension
         </Link>

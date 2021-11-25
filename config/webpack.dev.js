@@ -47,6 +47,7 @@ module.exports = merge(commonConfig, {
           },
         ],
       },
+      { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=7631&name=[hash:8]-[name].[ext]' }
     ],
   },
   output: {

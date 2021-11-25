@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {Breadcrumb, Layout, Spin} from 'antd'
 import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import { Home, Login, AdminIndex, AboutUs, Report, ChromeExtension, SneakIntoBasket, BaitAndSwitch, ConfirmShaming, FakeActivity, FakeCountdown, FakeHighDemand, FakeLimitedTime, FakeLowStock,
-  ForcedContinuity, HiddenCost, PrivacyZuckering, TrickQuestions, VisualInterference} from './containers/index';
+  ForcedContinuity, HiddenCost, PrivacyZuckering, TrickQuestions, VisualInterference, Example} from './containers/index';
 import Header from './components/Header/Header';
 import { checkLoginState } from './reducer/modules/user';
 import { requireAuthentication } from './components/AuthenticatedComponent';
@@ -82,6 +82,7 @@ class App extends Component {
               <Route path='/PrivacyZuckering' exact component={PrivacyZuckering} />
               <Route path='/TrickQuestions' exact component={TrickQuestions} />
               <Route path='/VisualInterference' exact component={VisualInterference} />
+              <Route path='/example' exact component={Example} />
               <Route path='/chrome-extension' exact component={ChromeExtension} />
               <Route path='/about-us' exact component={AboutUs} />
               <Route path='/report' exact component={Report} />
