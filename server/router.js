@@ -115,6 +115,21 @@ let routerConfig = {
       path: 'listObjectsS3',
       method: 'get'
     },
+    {
+      action: 'automaticTraining',
+      path: 'automaticTraining',
+      method: 'post'
+    },
+    {
+      action: 'readCsvFile',
+      path: 'readCsvFile',
+      method: 'get'
+    },
+    {
+      action: 'emptyFile',
+      path: 'emptyFile',
+      method: 'post'
+    },
   ], 
   user: [
     {
