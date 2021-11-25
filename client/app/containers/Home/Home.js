@@ -140,8 +140,7 @@ class Home extends Component {
         <h1><b>Emotionally </b></h1>
       </div>
       <p>
-        It will highlight the urgency of low stocks and fake
-        countdowns and remind the user to relax and that more than likely
+        It will highlight the urgency of low stocks and fake countdowns and remind the user to relax and that more than likely
         the stock and countdown is fake. The dark patterns that fall into this category are:
 
       </p>
