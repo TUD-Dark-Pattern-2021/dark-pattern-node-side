@@ -125,6 +125,11 @@ let routerConfig = {
       path: 'readCsvFile',
       method: 'get'
     },
+    {
+      action: 'emptyFile',
+      path: 'emptyFile',
+      method: 'post'
+    },
   ], 
   user: [
     {

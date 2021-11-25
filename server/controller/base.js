@@ -25,6 +25,8 @@ class baseController {
       '/api/dynamodb/listObjectsS3',
       '/api/dynamodb/automaticTraining',
       '/api/dynamodb/readCsvFile',
+      '/api/dynamodb/emptyFile',
+      
     ];
     console.log(req.path)
     if (ignoreRouter.indexOf(req.path) > -1) {

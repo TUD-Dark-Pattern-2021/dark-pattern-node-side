@@ -300,6 +300,8 @@ class dynamodbController extends baseController {
 
         if (filename) {
             var stream = fs.createWriteStream(filename, { flags: 'a' });
+            fs.writeFile(filename, '', function(){console.log('done')})
+            
         }
 
         let rowCount = 0;
@@ -530,6 +532,11 @@ class dynamodbController extends baseController {
                 }
             );
             else scanDynamoDB(scanQuery);
+            const s3Streams = s3.getObject(bucketParams).createReadStream()
+                fastCsv.parseStream(s3Streams)
+                .on('data', (data) => {
+                    console.log(data)
+        })
         
     }
     async dyanmoToS3(req, res) {
@@ -835,6 +842,13 @@ class dynamodbController extends baseController {
         .on('data', (data) => {
             console.log(data)
   })
+    }
+
+    async emptyFile(req){
+        const filename = req.body.filename;
+        if (filename) {
+            fs.writeFile(filename, '', function(){console.log('done')})
+        }
     }
     // async callfunctions(req,res){
     //     automaticTraining(req,res)
