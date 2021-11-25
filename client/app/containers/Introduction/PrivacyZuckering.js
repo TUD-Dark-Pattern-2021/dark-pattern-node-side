@@ -35,42 +35,68 @@ class PrivacyZuckering extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-        Privacy Zuckering
-          <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+
+          What is Privacy Zuckering ?
+
         </h1>
         
-        <h2 >
+        {/*<h2 >
           What is Privacy Zuckering?
           
-        </h2>
+        </h2>*/}
         <br/>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
         <p>
         Sharing more information to the public than you orignally intended to do. (e.g., Messesnger set-up. It claims to ONLY
          "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used. (This info was used to push ads.)</p>
-        <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/Ogbht9CTfww" title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
 
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
+
+          </div>
+              <p>
+                Introducing Privacy Zuckering
+              </p>
+
+
+          <div className={'youtube-video'}>
+            <iframe src="https://www.youtube.com/embed/Ogbht9CTfww" title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
+
+          </div>
         </div>
 
         <p>Here are some examples of Privacy Zuckering:</p>
+        <hr/>
 
         <Carousel  autoplay>
           <div className={'Slider'}>
+
             <h3><img src="/assets/img/PZ1.png" alt="Privacy Zuckering Example." width= "100%"/>It will use your contacts to make a targeted network for adverts.
+
             <br/>
             (Messesnger.com)
             </h3>
           </div>
           <div className={'Slider'}>
+
             <h3><img src="/assets/img/PZ2.png" alt="Privacy Zuckering Example." width= "100%"/>There is a switch that is enabled, that will use your info for facebook ads, this description is hidden behind a dropdown.
             <br/>
             (Whatsapp.com)</h3>
+
           </div>
         </Carousel>
+        <hr/>
+
+
       </Content>
     );
   }

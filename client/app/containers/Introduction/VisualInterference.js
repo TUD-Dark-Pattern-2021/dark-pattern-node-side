@@ -35,28 +35,48 @@ class VisualInterference extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-        Visual Interference
-          <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+
+          What is Visual Interference?
+
         </h1>
         
-        <h2 >
+        {/*<h2 >
           What is Visual Interference?
           
-        </h2>
+        </h2>*/}
         <br/>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
         <p>
         Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.) </p>
+
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
+
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
+
+          </div>
+
+          <p>
+                Introducing Visual Interference
+              </p>
         <div className={'youtube-video'}>
           <iframe src="https://www.youtube.com/embed/5yj1GH111Xc?start=123&end=145" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
 
+
+          </div>
         </div>
 
-        <p>Here are some examples of Visual Interference:</p>
 
+        <p>Here are some examples of Visual Interference:</p>
+<hr/>
         <Carousel  autoplay>
           <div className={'Slider'}>
             <h3><img src="/assets/img/VI1.png" alt="Visual Interference Example." width= "100%"/>Seems like the option on the right is unavailable as they greyed it out but this is not the case.
@@ -75,6 +95,8 @@ class VisualInterference extends Component {
             (Facebook.com)</h3>
           </div>
         </Carousel>
+        <hr/>
+
       </Content>
     );
   }

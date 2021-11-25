@@ -35,27 +35,54 @@ class FakeLowStock extends Component {
     return (
       <Content className={'introduction-content'}>
         <h1 >
-        
-        Fake Low-Stock
-          <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+
+          What is Fake Low-Stock?
+
         </h1>
         
-        <h2 >
+        {/*<h2 >
           What is Fake Low-Stock?
           
-        </h2>
+        </h2>*/}
+
         <br/>
+        <div className={'intro-container'}>
+          <div className={'introLeft'}>
         <p>
         Informing users about the limited availability of a product, making it more desirable to users. (e.g., “only 2 items left in stock”) </p>
+          </div>
+          <div className={'introImg'}>
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </div>
+        </div>
+
+
+        <div className={'bottomVideoContainer'}>
+          <div className="circleDecoration">
+
+          </div>
+
+
+          <p>
+            Introducing Fake Low-Stock
+          </p>
+
         <div className={'youtube-video'}>
+
+
           <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
 
+
+        </div>
         </div>
 
+
+
         <p>Here are some examples of Fake Low-Stock:</p>
+        <hr/>
 
         <Carousel  autoplay>
         <div className={'Slider'}>
@@ -74,6 +101,8 @@ class FakeLowStock extends Component {
             (Ryanair.com)</h3>
           </div>
         </Carousel>
+        <hr/>
+
       </Content>
     );
   }
