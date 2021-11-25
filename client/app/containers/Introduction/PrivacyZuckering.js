@@ -79,20 +79,19 @@ class PrivacyZuckering extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/><p>Sports Direct Magazine Added to basket.</p>
+
+            <h3><img src="/assets/img/PZ1.png" alt="Privacy Zuckering Example." width= "100%"/>It will use your contacts to make a targeted network for adverts.
+
             <br/>
-            (SportsDirect.com)
+            (Messesnger.com)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/><p>Sports Direct Magazine Added to basket.</p>
+
+            <h3><img src="/assets/img/PZ2.png" alt="Privacy Zuckering Example." width= "100%"/>There is a switch that is enabled, that will use your info for facebook ads, this description is hidden behind a dropdown.
             <br/>
-            (SportsDirect.com)</h3>
-          </div>
-          <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/><p>Greeting card Added to basket.</p>
-            <br/>
-            (avasflowers.net)</h3>
+            (Whatsapp.com)</h3>
+
           </div>
         </Carousel>
         <hr/>

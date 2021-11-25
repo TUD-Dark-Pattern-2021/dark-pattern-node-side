@@ -30,13 +30,14 @@ class dpController extends baseController {
       })
       const doc = new dom().parseFromString($.html())
 
-      let nodes = xpath.select("//text()", doc)
       let result = {
         key: [],
         content: [],
         tag: [],
         type: []
       }
+
+      let nodes = xpath.select("//text()", doc)
       nodes.forEach((item, index) => {
         if (!item.nodeValue.match(/\n/g)) {
 
@@ -55,6 +56,15 @@ class dpController extends baseController {
                 result.type.pop()
                 break
               }
+
+              if (item.parentNode.tagName === 'button') {
+                result.type[result.type.length -1] = 'button'
+              }
+
+              if (item.parentNode.tagName === 'a') {
+                result.type[result.type.length -1] = 'link'
+              }
+
               let attr = ''
               let originalAttr = item.parentNode.attributes
               let len = originalAttr.length
@@ -68,10 +78,10 @@ class dpController extends baseController {
                         attr += `#${value}`
                       }
                     })
-                    continue
+                    break
                   }
                   attr += `#${i.value}`
-                  continue
+                  break
                 }
                 if (i.name === 'class') {
                   if (i.value.indexOf(' ')) {
@@ -81,9 +91,14 @@ class dpController extends baseController {
                         attr += `.${value}`
                       }
                     })
-                    continue
+                    break
                   }
                   attr += `.${i.value}`
+                  break
+                }
+                // filter the attributes starts with 'data'
+                // data-options
+                if (i.name.indexOf('data') > -1 || i.name.indexOf('style') > -1) {
                   continue
                 }
                 if (i.value.indexOf("\"") > -1) {
@@ -122,7 +137,25 @@ class dpController extends baseController {
           }
         }
       })
-      console.log(result.content)
+
+
+      let checkboxes = xpath.select("//input", doc)
+      checkboxes.forEach(node =>{
+        let originalAttr = node.attributes
+        let len = originalAttr.length
+        while(len--) {
+          if (originalAttr[len].name === 'href') {
+            // console.log(originalAttr[len].value)
+            result.key.push(shortid.generate())
+            result.content.push(originalAttr[len].nodeValue)
+            result.tag.push(`a[href='${originalAttr[len].nodeValue}']`)
+            result.type.push('link')
+            break
+          }
+        }
+      })
+
+      console.log(result)
       // let srcs = xpath.select("//img//@src", doc)
       // srcs.forEach(item =>{
       //   console.log(item.value)
@@ -148,7 +181,8 @@ class dpController extends baseController {
       let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
         ...result
       })
-      res.send(commons.resReturn(data.data));
+      console.log(data.data)
+      res.send(commons.resReturn(data.data, data.status));
     }catch (e) {
       console.log(commons.resReturn(e, 500, 'error'))
       res.send(commons.resReturn(e, 500, 'error'))

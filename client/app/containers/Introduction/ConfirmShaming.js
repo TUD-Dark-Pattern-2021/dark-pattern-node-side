@@ -85,20 +85,20 @@ class ConfirmShaming extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/CS1.jpg" alt="Confirm Shaming Example." width= "100%"/>Tells you to learn Italian or the bird logo will eat poison.
             <br/>
-            (SportsDirect.com)
+            (Duolingo.com)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/CS2.png" alt="Confirm Shaming Example." width= "100%"/>"Heroes press N, Wimps press Y".
             <br/>
-            (SportsDirect.com)</h3>
+            (Wolfenstein 1992)</h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/>Greeting card Added to basket.
+            <h3 ><img src="/assets/img/CS3.png" alt="Confirm Shaming Example." width= "100%"/>"I dont want Unlimited One-Day delivery".
             <br/>
-            (avasflowers.net)</h3>
+            (Amazon.com)</h3>
           </div>
         </Carousel>
       </Content>

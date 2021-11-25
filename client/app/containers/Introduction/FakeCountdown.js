@@ -47,6 +47,7 @@ class FakeCountdown extends Component {
         <p>
         Using a countdown timer to alert users that a discount or deal is about to expire, which only purposely creates urgency for the purchase (e.g., “sale ends in 12h20m33s”)</p>
 
+
           </div>
           <div className={'introImg'}>
             <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
@@ -63,11 +64,10 @@ class FakeCountdown extends Component {
               </p>
 
           <div className={'youtube-video'}>
-            <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen></iframe>
-
+          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen></iframe>
           </div>
 
         </div>
@@ -79,20 +79,20 @@ class FakeCountdown extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FC1.png" alt="Fake Countdown Example." width= "100%"/>The offer end in 1 hour.
             <br/>
-            (SportsDirect.com)
+            (justfab.com)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FC2.png" alt="Fake Countdown Example." width= "100%"/>Countdown to end of flash sale.
             <br/>
-            (SportsDirect.com)</h3>
+            (mattressfirm.com)</h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/>Greeting card Added to basket.
+            <h3 ><img src="/assets/img/FC3.png" alt="Fake Countdown Example." width= "100%"/>Sale ends soon.
             <br/>
-            (avasflowers.net)</h3>
+            (chicwish.com)</h3>
           </div>
         </Carousel>
 

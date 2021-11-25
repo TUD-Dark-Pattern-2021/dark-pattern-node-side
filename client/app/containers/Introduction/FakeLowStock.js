@@ -68,10 +68,13 @@ class FakeLowStock extends Component {
           </p>
 
         <div className={'youtube-video'}>
-          <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen></iframe>
+
+
+          <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen></iframe>
+
 
         </div>
         </div>
@@ -82,21 +85,20 @@ class FakeLowStock extends Component {
         <hr/>
 
         <Carousel  autoplay>
-          <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+        <div className={'Slider'}>
+            <h3><img src="/assets/img/FL1.png" alt="Fake Low-Stock Example." width= "100%"/>Only 3 left in stock.
             <br/>
-            (SportsDirect.com)
-            </h3>
+            (6pm.com)</h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/>Sports Direct Magazine Added to basket.
+            <h3><img src="/assets/img/FL2.png" alt="Fake Low-Stock Example." width= "100%"/>Only 4 rooms left at this price on our site.
             <br/>
-            (SportsDirect.com)</h3>
+            (Booking.com)</h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/>Greeting card Added to basket.
+            <h3><img src="/assets/img/FL3.png" alt="Fake Low-Stock Example." width= "100%"/>Only 1 seat left.
             <br/>
-            (avasflowers.net)</h3>
+            (Ryanair.com)</h3>
           </div>
         </Carousel>
         <hr/>

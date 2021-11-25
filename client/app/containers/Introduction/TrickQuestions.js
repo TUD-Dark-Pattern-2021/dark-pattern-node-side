@@ -80,20 +80,28 @@ class TrickQuestions extends Component {
 
         <Carousel  autoplay>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak1.png" alt="Sneak Into Basket Example." width= "100%"/><p>Sports Direct Magazine Added to basket.</p>
+
+          
+
+            <h3><img src="/assets/img/TQ1.png" alt="Trick Questions Example." width= "100%"/>It makes you click the checkbox to not recieve the emails when typically you would need to untick it.
+
             <br/>
-            (SportsDirect.com)
+            (newbalance.co.uk)
             </h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/ExampleSneak2.png" alt="Sneak Into Basket Example." width= "100%"/><p>Sports Direct Magazine Added to basket.</p>
+
+            <h3><img src="/assets/img/TQ2.png" alt="Trick Questionst Example." width= "100%"/>Again need to tick the checkbox to not get the emails.
+
             <br/>
-            (SportsDirect.com)</h3>
+            (Currys.co.uk)</h3>
           </div>
           <div className={'Slider'}>
-            <h3 ><img src="/assets/img/ExampleSneak3.png" alt="Sneak Into Basket Example." width= "100%"/><p>Greeting card Added to basket.</p>
+
+            <h3 ><img src="/assets/img/TQ3.png" alt="Trick Questions Example." width= "100%"/>Makes it very confusing on how to opt out.
+
             <br/>
-            (avasflowers.net)</h3>
+            (Royalmail.co.uk)</h3>
           </div>
         </Carousel>
 
