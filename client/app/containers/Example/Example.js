@@ -37,7 +37,7 @@ class Example extends Component {
   render() {
     return (
       <Content className={'example-content'}>
-        <div id="main">
+        <div id="main-example">
 
           <div id="header">
             <div id="logo">
