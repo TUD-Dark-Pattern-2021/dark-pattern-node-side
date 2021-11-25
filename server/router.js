@@ -121,9 +121,9 @@ let routerConfig = {
       method: 'post'
     },
     {
-      action: 'callfunctions',
-      path: 'callfunctions',
-      method: 'post'
+      action: 'readCsvFile',
+      path: 'readCsvFile',
+      method: 'get'
     },
   ], 
   user: [

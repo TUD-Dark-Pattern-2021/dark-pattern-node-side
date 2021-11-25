@@ -11,6 +11,7 @@ const docClient = require("../docClient.js")
 const unmarshal = require("dynamodb-marshaler").unmarshal;
 const Papa = require("papaparse");
 const dynamoToS3 = require("../dynamoToS3.js")
+const fastCsv = require('fast-csv');
 
 
 const fs = require('fs');
@@ -822,6 +823,18 @@ class dynamodbController extends baseController {
             return data;
         };
         run();
+    }
+
+    async readCsvFile(){
+        const bucketParams = {
+            Bucket: "darkpatternsdatasets",
+            Key: "dark_patterns.csv",
+        };
+        const s3Stream = s3.getObject(bucketParams).createReadStream()
+        fastCsv.parseStream(s3Stream)
+        .on('data', (data) => {
+            console.log(data)
+  })
     }
     // async callfunctions(req,res){
     //     automaticTraining(req,res)
