@@ -53,7 +53,9 @@ class Example extends Component {
 
           <div id="content_header"></div>
           <div id="site_content">
-            <div id="banner"></div>
+            <div id="banner">
+              <img src="https://dark-pattern-node-js.s3.eu-west-1.amazonaws.com/ocr_resized.jpg" alt=""/>
+            </div>
             <div id="sidebar_container">
 
               <div class="sidebar">
