@@ -7,6 +7,7 @@ import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import { Home, Login, AdminIndex, AboutUs, Report, ChromeExtension, SneakIntoBasket, BaitAndSwitch, ConfirmShaming, FakeActivity, FakeCountdown, FakeHighDemand, FakeLimitedTime, FakeLowStock,
   ForcedContinuity, HiddenCost, PrivacyZuckering, TrickQuestions, VisualInterference, Example} from './containers/index';
 import Header from './components/Header/Header';
+import Bread from './components/Bread'
 import { checkLoginState } from './reducer/modules/user';
 import { requireAuthentication } from './components/AuthenticatedComponent';
 import NotFound from './components/NotFound'
@@ -57,15 +58,7 @@ class App extends Component {
         <Router >
           <Layout className={{layout: true, 'admin-layout': window.location.pathname.indexOf('admin')>-1}}>
             <Header />
-            <Breadcrumb>
-                <Breadcrumb.Item href="">
-                  <Link to="/">
-                    Home
-                  </Link>
-                </Breadcrumb.Item>
-
-                <Breadcrumb.Item>Introduction</Breadcrumb.Item>
-            </Breadcrumb>
+            <Bread />
             <Switch>
               <Route path='/login' component={Login} />
               <Route path='/' exact component={Home} />

@@ -75,38 +75,31 @@ class Home extends Component {
         </div>
           </div>
         </div>
-
-
-
-
-
         <h3 className="shopping-web"> Dark patterns are especially used on <p>shopping</p> websites<br/><img src="/assets/img/gouwuche.png"alt="half-circle." className="shoppingcart"/> </h3>
+        <div className="content3">
+          <div className="half-circle2">
+
+          <h2>
+            The highlighting of the devious dark patterns will allow the user to be aware of when he/she is being tricked or deceived.
+          </h2>
+          </div>
+          <div className="circle2-middle">
+                <h3>
+                  It will also provide information
+                  on how the dark pattern is considered a dark pattern which will educate the
+                  user, hopefully allowing them to recognize dark patterns in the future.<br/>
 
 
-<div className="content3">
-  <div className="half-circle2">
-
-  <h2>
-    The highlighting of the devious dark patterns will allow the user to be aware of when he/she is being tricked or deceived.
-  </h2>
-  </div>
-  <div className="circle2-middle">
-        <h3>
-          It will also provide information
-          on how the dark pattern is considered a dark pattern which will educate the
-          user, hopefully allowing them to recognize dark patterns in the future.<br/>
+                </h3>
+          </div>
+          <div className="circle2-bottom">
+          <h4>
+            This system will assist the user in various ways, such as:
+          </h4>
+          </div>
 
 
-        </h3>
-  </div>
-  <div className="circle2-bottom">
-  <h4>
-    This system will assist the user in various ways, such as:
-  </h4>
-  </div>
-
-
-</div>
+        </div>
         <div className="content4-container">
         <div className="content4">
           <div className="content4-top">

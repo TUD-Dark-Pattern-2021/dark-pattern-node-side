@@ -1,11 +1,12 @@
-import React, { PureComponent as Component } from 'react';
+import React, {PureComponent as Component} from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Layout, Menu, Dropdown, message, Icon} from 'antd';
+import {Link} from 'react-router-dom';
+import {Layout, Menu, Dropdown, message, Icon} from 'antd';
 
-import { withRouter } from 'react-router';
-const { Header } = Layout;
-const { SubMenu } = Menu;
+import {withRouter} from 'react-router';
+
+const {Header} = Layout;
+const {SubMenu} = Menu;
 import UserToolBar from './UserToolBar'
 import {connect} from "react-redux";
 
@@ -47,39 +48,66 @@ export default class HeaderCom extends Component {
 
   menu = () => {
     return (
-      <Menu>
+      <Menu overlayClassName={'test'}>
         <SubMenu title="Sneaking">
-        
-          <Menu.Item><Link to="/SneakIntoBasket"><img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket" />Sneak into baskets</Link></Menu.Item>
-          
-          <Menu.Item><Link to="/HiddenCost"><img src="/assets/img/HC.png" alt="HiddenCosts." id="HiddenCosts" />Hidden Costs</Link></Menu.Item>
+          <Menu.Item>
+            <Link to="/SneakIntoBasket">
+              <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket"/>
+              Sneak into baskets
+            </Link>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Link to="/HiddenCost">
+              <img src="/assets/img/HC.png" alt="HiddenCosts." id="HiddenCosts"/>Hidden Costs
+            </Link>
+          </Menu.Item>
         </SubMenu>
         <SubMenu title="Forced Action">
-          <Menu.Item><Link to="/ForcedContinuity"><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity." id="ForcedContinuity"  width = "50px" height = "30px"/>Forced Continuity</Link></Menu.Item>
+          <Menu.Item><Link to="/ForcedContinuity"><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity."
+                                                       id="ForcedContinuity" width="50px" height="30px"/>Forced
+            Continuity</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Misdirection">
-          <Menu.Item><Link to="/ConfirmShaming"><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming." id="Confirmshaming"  width = "50px" height = "30px"/>Confirmshaming</Link></Menu.Item>
-          <Menu.Item><Link to="/VisualInterference"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Visual Interference</Link></Menu.Item>
-          <Menu.Item><Link to="/TrickQuestions"><img src="/assets/img/trickquestions1.png" alt="Trick Questions" id="TrickQuestions"  width = "20%" height = "20%"/>Trick Questions</Link></Menu.Item>
+          <Menu.Item><Link to="/ConfirmShaming"><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming."
+                                                     id="Confirmshaming" width="50px"
+                                                     height="30px"/>Confirmshaming</Link></Menu.Item>
+          <Menu.Item><Link to="/VisualInterference"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+                                                         id="SneakIntoBasket" float="right" width="50px" height="30px"/>Visual
+            Interference</Link></Menu.Item>
+          <Menu.Item><Link to="/TrickQuestions"><img src="/assets/img/trickquestions1.png" alt="Trick Questions"
+                                                     id="TrickQuestions" width="20%" height="20%"/>Trick
+            Questions</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Urgency">
-        <Menu.Item><Link to="/FakeCountdown"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Countdown</Link></Menu.Item>
-          <Menu.Item><Link to="/FakeHighDemand"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake High-demand</Link></Menu.Item>
+          <Menu.Item><Link to="/FakeCountdown"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+                                                    id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
+            Countdown</Link></Menu.Item>
+          <Menu.Item><Link to="/FakeHighDemand"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+                                                     id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
+            High-demand</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Social Proof">
-          <Menu.Item><Link to="/FakeActivity"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Activity</Link></Menu.Item>
+          <Menu.Item><Link to="/FakeActivity"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+                                                   id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
+            Activity</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Scarcity">
-          <Menu.Item><Link to="/FakeLowStock"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" float= "right" width = "50px" height = "30px"/>Fake Low-Stock</Link></Menu.Item>
+          <Menu.Item><Link to="/FakeLowStock"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+                                                   id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
+            Low-Stock</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Other Dark Patterns">
-          <Menu.Item><Link to="/PrivacyZuckering"><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering" id="Zuckering" float= "right" width = "50px" height = "30px"/>Privacy Zuckering</Link></Menu.Item>
-          <Menu.Item><Link to="/BaitAndSwitch"><img src="/assets/img/Bait.png" alt="Mouse Trap." id="Bait" float= "right" width = "50px" height = "30px"/>Bait and Switch</Link></Menu.Item>
+          <Menu.Item><Link to="/PrivacyZuckering"><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering"
+                                                       id="Zuckering" float="right" width="50px" height="30px"/>Privacy
+            Zuckering</Link></Menu.Item>
+          <Menu.Item><Link to="/BaitAndSwitch"><img src="/assets/img/Bait.png" alt="Mouse Trap." id="Bait" float="right"
+                                                    width="50px" height="30px"/>Bait and Switch</Link></Menu.Item>
         </SubMenu>
       </Menu>
     )
 
-  
+
   }
 
   getMenuList = (isMobile) => {
@@ -90,16 +118,16 @@ export default class HeaderCom extends Component {
         </Link>
       </li>
       <li onClick={this.toggleMenu}>
-        <Dropdown overlay={this.menu} >
+        <Dropdown overlay={this.menu}>
           <Link className="ant-dropdown-link">
-            Introduction <Icon type="down" />
+            Introduction <Icon type="down"/>
           </Link>
         </Dropdown>
 
         {/*<Dropdown overlay={this.menu}>*/}
-         {/* <Link to="/introduction">*/}
+        {/* <Link to="/introduction">*/}
         {/*   Dark Pattern Introduction*/}
-         {/* </Link>*/}
+        {/* </Link>*/}
         {/*</Dropdown>}*/}
 
         {/*<Link to="/introduction">*/}
@@ -122,7 +150,7 @@ export default class HeaderCom extends Component {
           About us
         </Link>
       </li>
-     
+
       {
         isMobile &&
         <li onClick={this.toggleMenu}>
@@ -133,8 +161,9 @@ export default class HeaderCom extends Component {
       }
     </ul>)
   }
+
   render() {
-    const { login } = this.props;
+    const {login} = this.props;
     return (
       <div>
         {
@@ -142,8 +171,8 @@ export default class HeaderCom extends Component {
           <Header>
             <Link to="/" className="logo">
               <picture>
-                  <source media="(max-width: 1024px)" srcSet="/assets/img/logo-s.png" />
-                  <img src="/assets/img/logo.png" alt="dp logo"/>
+                <source media="(max-width: 1024px)" srcSet="/assets/img/logo-s.png"/>
+                <img src="/assets/img/logo.png" alt="dp logo"/>
               </picture>
             </Link>
 
@@ -160,13 +189,13 @@ export default class HeaderCom extends Component {
               <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={this.toggleMenu}/>
               <div className={this.state.showMenu ? 'show-menu' : ''}>
                 <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>`
-                  <Icon type="close" />
+                  <Icon type="close"/>
                 </div>
                 {this.getMenuList(true)}
               </div>
             </div>
             {
-              login && this.props.location.pathname.indexOf('admin') > -1 && <UserToolBar />
+              login && this.props.location.pathname.indexOf('admin') > -1 && <UserToolBar/>
             }
           </Header>
         }
