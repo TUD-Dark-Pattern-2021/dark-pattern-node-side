@@ -1,76 +1,37 @@
 .introduction-content {
-
-  padding: 10%;
-
-
-    h1 {
-      margin-top: -6%;
-      font-size: 50px;
-      color: #040404;
-      word-spacing: 5px;
-      font-weight: bold;
-
-
-    }
-    /*h2 {
-      font-size: 24px;
-      font-weight: normal;
-      margin: 18px 0 40px;
-      text-align: center;
-    }*/
+  h1 {
+    font-size: 50px;
+    color: #040404;
+    word-spacing: 5px;
+    font-weight: bold;
+  }
+  /*h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 18px 0 40px;
+    text-align: center;
+  }*/
   .intro-container{
-    display: grid;
-
-    width: 110%;
-
-    grid-template-columns: 60% 30%;
-    grid-gap: 12%;
-    grid-template-rows:100%;
-    margin-top: 2%;
-    margin-left: -4%;
-
-
+    margin-top: 5%;
     .introLeft {
-
-      background-color: #FFE491;
-      border-radius: 50px;
-      padding: 5% 1% 5% 8%;
-      color:#291B00;
-
-      height: 100%;
       p{
-        margin-top: 0px;
+        color:#291B00;
+        padding: 5%;
         text-align: left;
-       line-height: 46px;
-       font-size: 26px;
-        font-weight: normal;
-
-        width: 90%;
-
+        line-height: 46px;
+        font-size: 26px;
+        width: 100%;
+        background-color: #FFE491;
+        border-radius: 50px;
 
       }
-
-
-
     }
-    .introImg{
-      margin-top: -10%;
-
-
     img{
-
-      width: 120%;
-    }
+      width: 100%;
 
     }
   }
-  p{
-    margin-top: 10%;
-    font-size: 26px;
-    font-weight: normal;
-    text-align: center;
-    color:#291B00;
-  }
+
   hr {
     height: 5px;
     border: none;
@@ -78,111 +39,181 @@
     margin-bottom: 5%;
     margin-left: -5%;
     border-radius: 4px;
-    width: 112%;
+    width: 100%;
 
   }
   .bottomVideoContainer{
-    display: flex;
+
     border: #291B00 solid 5px;
-    height: 100%;
     border-radius: 50px;
     margin-top: 15%;
+    width: 100%;
     margin-left: -4%;
-    width: 110%;
-    z-index:1;
+    margin-bottom: 15%;
+
+
+    .Intro-backgroundColor{
+      background-color: #FFE491;
+      padding: 10%;
+      border-radius: 50px;
+      margin: 1% 1% 1% 0%;
+
+
+    }
 
     p{
-      margin-top: 10%;
-      margin-left: 2%;
+      font-size: 26px;
       font-weight: bold;
-      text-align: end;
-      padding:1%;
-      z-index:1;
+      text-align: right;
+      color:#291B00;
     }
-    .circleDecoration{
-      position: absolute;
-      background-color: #FFE491;
-      border-radius: 40px;
-      margin-left: 1%;
-      margin-top:0.5%;
-      width:25%;
-      height:39%;
 
-    }
     .youtube-video {
       /*margin: 30px 0;*/
-      margin-top: 0;
-      margin-left: 10%;
-      padding: 3% 2% 1% 15%;
+      padding: 1%;
+      width: 60%;
 
 
       iframe {
         display: block;
-        margin: 0 auto;
-        width: 560px;
-        height: 315px;
-
+        width: 90%;
+        height: 100%;
       }
     }
   }
-    .Slider {
-        height: 100%;
-        color: #fff;
-        line-height: 100%;
-        text-align: center;
-        background: #fff;
-        padding-bottom: 10%;
+  p{
+    text-align: center;
+  }
+  .Slider {
+    height: 100%;
+    color: #fff;
+    line-height: 100%;
+    text-align: center;
+    background: #fff;
+    padding-bottom: 10%;
 
     h3{
       color:red;
 
-      margin-bottom: 10%;
-      height:600px;
       img{
-       padding: 2%;
+        padding: 2%;
         height: 100%;
       }
       p{
         text-align: center;
-      line-height: 110%;
-      font-size: 25px;
-        padding: 10px;
+        line-height: 100%;
+        font-size: 25px;
+        padding: 2%;
         color:whitesmoke;
         background-color: black;
 
       }
     }
-      };
-      #SneakIntoBasket{
-          float: right;
-          margin-bottom: -200px;
-          padding-bottom: 50px;
+  };
+  #SneakIntoBasket{
+    float: right;
+    margin-bottom: -200px;
+    padding-bottom: 50px;
 
-      }
-    
   }
-    
-  
-  @media screen and (max-width: 1000px) {
-    .introduction-content {
-      .introImg {
-        img {
 
-          display: none;
-        }
-
-      }
-
-      .bottomVideoContainer {
-        flex-direction: column;
-        .circleDecoration{
-          background-color: transparent;
-        }
-        .youtube-video {
-          iframe {
-            width: 100%;
-          }
+}
+@media only screen and (max-width: 600px) {
+  .introduction-content {
+    h1 {
+      font-size: 40px;
+    }
+    /*h2 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 18px 0 40px;
+      text-align: center;
+    }*/
+    .intro-container{
+      margin-top: 5%;
+      .introLeft {
+        p{
+          line-height: 30px;
+          font-size: 18px;
+          border-radius: 20px;
         }
       }
     }
+    .bottomVideoContainer {
+      border-radius: 30px;
+
+      .Intro-backgroundColor {
+        border-radius: 30px;
+
+      p{
+        font-size: 18px;
+      }
+
+      }
+
+      .youtube-video {
+        width: 100%;
+        height: 200px;
+        margin: 0%;
+        iframe {
+          width: 100%;
+        }
+      }
+    }
+      p{
+        font-size:18px;
+        font-weight: bold;
+        line-height: 20px;
+      }
+    p{
+      font-size: 18px;
+
+    }
+
   }
+}
+
+
+@media only screen and  (min-width: 600px) and (max-width: 1024px) {
+  .introduction-content {
+    h1 {
+      font-size: 40px;
+    }
+    .intro-container{
+      .introLeft {
+        p{
+          line-height: 33px;
+          font-size: 20px;
+          border-radius: 30px;
+        }
+      }
+    }
+    .bottomVideoContainer{
+      border-radius: 30px;
+      margin-top: 10%;
+      .Intro-backgroundColor{
+        background-color: #FFE491;
+        padding: 10%;
+        border-radius: 30px;
+        margin: 1% ;
+        width: 100%;
+      }
+      p{
+        font-size: 20px;
+        line-height: 30px;
+      }
+      .youtube-video {
+        width: 100%;
+        margin: 0%;
+        height: 500px;
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    p{
+      font-size: 20px;
+    }
+  }
+}
