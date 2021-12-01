@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Layout, Breadcrumb, Icon, Carousel } from 'antd';
+import {Button, Layout, Breadcrumb, Icon, Carousel, Row, Col} from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
@@ -34,72 +34,92 @@ class VisualInterference extends Component {
 
     return (
       <Content className={'introduction-content'}>
-        <h1 >
+        <Row>
+          <Col xs={24}  sm={24} md={24} lg={24}>
+            <h1 >
 
           What is Visual Interference?
 
-        </h1>
+            </h1>
+          </Col>
+        </Row>
         
         {/*<h2 >
           What is Visual Interference?
           
         </h2>*/}
-        <br/>
-        <div className={'intro-container'}>
-          <div className={'introLeft'}>
-        <p>
+        <Row className={'intro-container'}  type="flex" justify="center">
+          <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
+            <p>
         Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.) </p>
 
-          </div>
-          <div className={'introImg'}>
+          </Col>
+          <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}>
             <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
-          </div>
-        </div>
-
-        <div className={'bottomVideoContainer'}>
-          <div className="circleDecoration">
-
-          </div>
-
-          <p>
+          </Col>
+        </Row>
+        <Row className={'bottomVideoContainer'} type="flex" justify="center" >
+          <Col className={'Intro-backgroundColor'}  xs={24}  sm={24} md={8} lg={8}>
+            <p>
                 Introducing Visual Interference
-              </p>
-        <div className={'youtube-video'}>
+            </p>
+          </Col>
+          <Col className={'youtube-video'} xs={24}  sm={24} md={16} lg={16}>
           <iframe src="https://www.youtube.com/embed/5yj1GH111Xc?start=123&end=145" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen></iframe>
 
 
-          </div>
-        </div>
+          </Col>
+        </Row>
+        <Row  >
+          <Col xs={24}  sm={24} md={24} lg={24}>
+            <p>
+            Here are some examples of Visual Interference:
+            </p>
+            <hr/>
+          </Col>
+          <Col xs={24}  sm={24} md={24} lg={24}>
+            <Carousel  autoplay>
+              <div className={'Slider'}>
+                <h3>
+                  <img src="/assets/img/VI1.png" alt="Visual Interference Example." width= "100%"/>
+                  <p>
+                    Seems like the option on the right is unavailable as they greyed it out but this is not the case.
+                  </p>
+                  <br/>
+                  (GreenFingers.com)
+                </h3>
+              </div>
+              <div className={'Slider'}>
+                <h3>
+                  <img src="/assets/img/VI2.png" alt="Visual Interference Example." width= "100%"/>
+                  <p>
+                    The unsubscribe feature is hidden at the bottom of the page.
+                  </p>
+                  <br/>
+                  (PizzaExpress.com)
+                </h3>
+              </div>
+              <div className={'Slider'}>
+                <h3 >
+                  <img src="/assets/img/VI3.png" alt="Visual InterferenceExample." width= "100%"/>
+                  <p>
+                    Again the unsubscribe is a much smaller font.
+                  </p>
 
-
-        <p>Here are some examples of Visual Interference:</p>
-<hr/>
-        <Carousel  autoplay>
-          <div className={'Slider'}>
-            <h3><img src="/assets/img/VI1.png" alt="Visual Interference Example." width= "100%"/>Seems like the option on the right is unavailable as they greyed it out but this is not the case.
-            <br/>
-            (GreenFingers.com)
-            </h3>
-          </div>
-          <div className={'Slider'}>
-            <h3><img src="/assets/img/VI2.png" alt="Visual Interference Example." width= "100%"/>The unsubscribe feature is hidden at the bottom of the page.
-            <br/>
-            (PizzaExpress.com)</h3>
-          </div>
-          <div className={'Slider'}>
-            <h3 ><img src="/assets/img/VI3.png" alt="Visual InterferenceExample." width= "100%"/>Again the unsubscribe is a much smaller font.
-            <br/>
-            (Facebook.com)</h3>
-          </div>
+                  <br/>
+                  (Facebook.com)
+                </h3>
+              </div>
         </Carousel>
-        <hr/>
+  </Col>
+  </Row>
+  </Content>
 
-      </Content>
-    );
+  );
   }
-}
+  }
 
 export default VisualInterference;
