@@ -1,20 +1,16 @@
 .introduction-content {
-
-
-
-
-    h1 {
-      font-size: 50px;
-      color: #040404;
-      word-spacing: 5px;
-      font-weight: bold;
-    }
-    /*h2 {
-      font-size: 24px;
-      font-weight: normal;
-      margin: 18px 0 40px;
-      text-align: center;
-    }*/
+  h1 {
+    font-size: 50px;
+    color: #040404;
+    word-spacing: 5px;
+    font-weight: bold;
+  }
+  /*h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 18px 0 40px;
+    text-align: center;
+  }*/
   .intro-container{
     margin-top: 5%;
     .introLeft {
@@ -31,9 +27,7 @@
       }
     }
     img{
-
       width: 100%;
-
 
     }
   }
@@ -68,37 +62,35 @@
     }
 
     p{
-      font-size: 40px;
+      font-size: 26px;
       font-weight: bold;
       text-align: right;
       color:#291B00;
-      line-height: 150%;
     }
 
     .youtube-video {
       /*margin: 30px 0;*/
       padding: 1%;
       width: 60%;
-      height: 500px;
+
 
       iframe {
         display: block;
-        width: 100%;
+        width: 90%;
         height: 100%;
-
       }
     }
   }
   p{
     text-align: center;
   }
-    .Slider {
-        height: 100%;
-        color: #fff;
-        line-height: 100%;
-        text-align: center;
-        background: #fff;
-        padding-bottom: 10%;
+  .Slider {
+    height: 100%;
+    color: #fff;
+    line-height: 100%;
+    text-align: center;
+    background: #fff;
+    padding-bottom: 10%;
 
     h3{
       color:red;
@@ -117,38 +109,111 @@
 
       }
     }
-      };
-      #SneakIntoBasket{
-          float: right;
-          margin-bottom: -200px;
-          padding-bottom: 50px;
+  };
+  #SneakIntoBasket{
+    float: right;
+    margin-bottom: -200px;
+    padding-bottom: 50px;
 
-      }
-    
   }
-    
-  
-  @media screen and (max-width: 1000px) {
-    .introduction-content {
-      .introImg {
-        img {
 
-          display: none;
-        }
-
-      }
-
-      .bottomVideoContainer {
-        flex-direction: column;
-        .circleDecoration{
-          background-color: transparent;
-        }
-        .youtube-video {
-          width: 100%;
-          iframe {
-            width: 100%;
-          }
+}
+@media only screen and (max-width: 600px) {
+  .introduction-content {
+    h1 {
+      font-size: 40px;
+    }
+    /*h2 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 18px 0 40px;
+      text-align: center;
+    }*/
+    .intro-container{
+      margin-top: 5%;
+      .introLeft {
+        p{
+          line-height: 30px;
+          font-size: 18px;
+          border-radius: 20px;
         }
       }
     }
+    .bottomVideoContainer {
+      border-radius: 30px;
+
+      .Intro-backgroundColor {
+        border-radius: 30px;
+
+      p{
+        font-size: 18px;
+      }
+
+      }
+
+      .youtube-video {
+        width: 100%;
+        height: 200px;
+        margin: 0%;
+        iframe {
+          width: 100%;
+        }
+      }
+    }
+      p{
+        font-size:18px;
+        font-weight: bold;
+        line-height: 20px;
+      }
+    p{
+      font-size: 18px;
+
+    }
+
   }
+}
+
+
+@media only screen and  (min-width: 600px) and (max-width: 1024px) {
+  .introduction-content {
+    h1 {
+      font-size: 40px;
+    }
+    .intro-container{
+      .introLeft {
+        p{
+          line-height: 33px;
+          font-size: 20px;
+          border-radius: 30px;
+        }
+      }
+    }
+    .bottomVideoContainer{
+      border-radius: 30px;
+      margin-top: 10%;
+      .Intro-backgroundColor{
+        background-color: #FFE491;
+        padding: 10%;
+        border-radius: 30px;
+        margin: 1% ;
+        width: 100%;
+      }
+      p{
+        font-size: 20px;
+        line-height: 30px;
+      }
+      .youtube-video {
+        width: 100%;
+        margin: 0%;
+        height: 500px;
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    p{
+      font-size: 20px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Layout, Breadcrumb, Icon, Carousel } from 'antd';
+import {Button, Layout, Breadcrumb, Icon, Carousel, Row, Col} from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
@@ -34,75 +34,79 @@ class FakeLowStock extends Component {
 
     return (
       <Content className={'introduction-content'}>
-        <h1 >
-
+        <Row>
+          <Col xs={24}  sm={24} md={24} lg={24}>
+            <h1 >
           What is Fake Low-Stock?
 
-        </h1>
+            </h1>
+          </Col>
+        </Row>
         
         {/*<h2 >
           What is Fake Low-Stock?
           
         </h2>*/}
 
-        <br/>
-        <div className={'intro-container'}>
-          <div className={'introLeft'}>
-        <p>
+        <Row className={'intro-container'}  type="flex" justify="center">
+          <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
+            <p>
         Informing users about the limited availability of a product, making it more desirable to users. (e.g., “only 2 items left in stock”) </p>
-          </div>
-          <div className={'introImg'}>
+        </Col>
+        <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
             <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
-          </div>
-        </div>
-
-
-        <div className={'bottomVideoContainer'}>
-          <div className="circleDecoration">
-
-          </div>
-
-
-          <p>
+        </Col>
+        </Row>
+        <Row className={'bottomVideoContainer'} type="flex" justify="center" >
+          <Col className={'Intro-backgroundColor'}  xs={24}  sm={24} md={8} lg={8}>
+            <p>
             Introducing Fake Low-Stock
-          </p>
-
-        <div className={'youtube-video'}>
-
-
+            </p>
+          </Col>
+          <Col className={'youtube-video'} xs={24}  sm={24} md={16} lg={16}>
           <iframe src="https://www.youtube.com/embed/kxkrdLI6e6M?start=210&end=227" title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
+            allowFullScreen>
 
-
-        </div>
-        </div>
-
-
-
+          </iframe>
+          </Col>
+        </Row>
+        <Row  >
+          <Col xs={24}  sm={24} md={24} lg={24}>
         <p>Here are some examples of Fake Low-Stock:</p>
-        <hr/>
-
+            <hr/>
+          </Col>
+          <Col xs={24}  sm={24} md={24} lg={24}>
         <Carousel  autoplay>
         <div className={'Slider'}>
-            <h3><img src="/assets/img/FL1.png" alt="Fake Low-Stock Example." width= "100%"/>Only 3 left in stock.
+            <h3>
+              <img src="/assets/img/FL1.png" alt="Fake Low-Stock Example." width= "100%"/>
+            <p>
+              Only 3 left in stock.
+            </p>
             <br/>
             (6pm.com)</h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/FL2.png" alt="Fake Low-Stock Example." width= "100%"/>Only 4 rooms left at this price on our site.
+            <h3><img src="/assets/img/FL2.png" alt="Fake Low-Stock Example." width= "100%"/>
+            <p>
+              Only 4 rooms left at this price on our site.
+            </p>
             <br/>
             (Booking.com)</h3>
           </div>
           <div className={'Slider'}>
-            <h3><img src="/assets/img/FL3.png" alt="Fake Low-Stock Example." width= "100%"/>Only 1 seat left.
+            <h3><img src="/assets/img/FL3.png" alt="Fake Low-Stock Example." width= "100%"/>
+            <p>
+              Only 1 seat left.
+            </p>
             <br/>
             (Ryanair.com)</h3>
           </div>
         </Carousel>
-        <hr/>
-
+          </Col>
+        </Row>
       </Content>
     );
   }

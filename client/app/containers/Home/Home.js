@@ -35,47 +35,47 @@ class Home extends Component {
       <Content className={'index-content'}>
         <Row  className="header-container"  >
           <Col   xs={24}  sm={24} md={14} lg={14}  >
-        <h1>
-          Dark Patterns
-        </h1>
-        <h2>
-          are design elements, on webpages, that deliberately obscure, mislead, force and/or deceive website visitors into making unintended and possibly harmful choices.
-        </h2>
-        </Col>
+            <h1>
+              Dark Patterns
+            </h1>
+            <h2>
+              are design elements, on webpages, that deliberately obscure, mislead, force and/or deceive website visitors into making unintended and possibly harmful choices.
+            </h2>
+          </Col>
           <Col   xs={0}  sm={0} md={10} lg={10}   >
-          <img src="/assets/img/header-pic.png" alt="header-pic." id="header-pic" />
+            <img src="/assets/img/header-pic.png" alt="header-pic." id="header-pic" />
           </Col>
         </Row>
         <Row  className="container1" type="flex" justify="center">
           <Col span={24}>
-              <h3>Dark patterns can be split into many categories</h3>
+            <h3>Dark patterns can be split into many categories</h3>
           </Col>
-        <Row  className="DP-category-container" type="flex" justify="center">
-          <Col  xs={12}  sm={12} md={4} lg={4} className="container-category">
-            <img src="/assets/img/scarcity.png" alt="scarcity." id="scarcity-icon" />
-            <h2>Scarcity </h2>
-          </Col>
-          <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-            <img src="/assets/img/forcedAction.png" alt="scarcity." id="forced-action-icon" />
-            <h2>Forced Action </h2>
-          </Col>
-          <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-            <img src="/assets/img/misdirection.png" alt="scarcity." id="misdirection-icon" />
-            <h2>Misdirection </h2>
-          </Col>
-          <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-            <img src="/assets/img/socialProof.png" alt="scarcity." id="social-proof-icon" />
-            <h2>Social Proof </h2>
-          </Col>
-          <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-            <img src="/assets/img/scarcity.png" alt="scarcity." id="scarciy-icon" />
-            <h2>Sneaking </h2>
-          </Col>
-          <Col xs={12}  sm={12} md={4} lg={4}  className="container-category">
-            <img src="/assets/img/urgency.png" alt="scarcity." id="urgency-icon" />
-            <h2>Urgency </h2>
-          </Col>
-        </Row>
+          <Row  className="DP-category-container" type="flex" justify="center">
+            <Col  xs={12}  sm={12} md={4} lg={4} className="container-category">
+              <img src="/assets/img/scarcity.png" alt="scarcity." id="scarcity-icon" />
+              <h2>Scarcity </h2>
+            </Col>
+            <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
+              <img src="/assets/img/forcedAction.png" alt="scarcity." id="forced-action-icon" />
+              <h2>Forced Action </h2>
+            </Col>
+            <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
+              <img src="/assets/img/misdirection.png" alt="scarcity." id="misdirection-icon" />
+              <h2>Misdirection </h2>
+            </Col>
+            <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
+              <img src="/assets/img/socialProof.png" alt="scarcity." id="social-proof-icon" />
+              <h2>Social Proof </h2>
+            </Col>
+            <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
+              <img src="/assets/img/scarcity.png" alt="scarcity." id="scarciy-icon" />
+              <h2>Sneaking </h2>
+            </Col>
+            <Col xs={12}  sm={12} md={4} lg={4}  className="container-category">
+              <img src="/assets/img/urgency.png" alt="scarcity." id="urgency-icon" />
+              <h2>Urgency </h2>
+            </Col>
+          </Row>
         </Row>
         <Row type="flex" justify="center">
           <Col xs={24}  sm={24} md={24} lg={24}>
@@ -110,31 +110,31 @@ class Home extends Component {
         </Row>
         <Row className="content4-container" >
           <Col className="content4" xs={24}  sm={24} md={12} lg={12}>
-          <div className="content4-top">
-            <div className="content4-top-topic">
-            <img src="/assets/img/MoneyStealing.png" alt="Figure with a money bag over the shoulder." id="MoneyMan" />
-            <h1><b>Financially </b></h1>
+            <div className="content4-top">
+              <div className="content4-top-topic">
+                <img src="/assets/img/MoneyStealing.png" alt="Figure with a money bag over the shoulder." id="MoneyMan" />
+                <h1><b>Financially </b></h1>
+              </div>
+              <p>
+                It will highlight when the user might be tricked into
+                adding extra items to their baskets or being pushed into buying the
+                more expensive option. The dark patterns that fall into this category are:
+              </p>
             </div>
-            <p>
-              It will highlight when the user might be tricked into
-              adding extra items to their baskets or being pushed into buying the
-              more expensive option. The dark patterns that fall into this category are:
-            </p>
-        </div>
-        <div className="content4-bottom">
-          <div className="group-financially">
-            <a to="/SneakIntoBasket">
-              <img src="/assets/img/jump.png" />
-              <b>Sneak into baskets</b>
-            </a>
-          </div>
-          <div className="group-financially"><a href="/HiddenCost"><img src="/assets/img/jump.png" /><b>Hidden Costs</b></a></div>
-          <div className="group-financially"><a href="/FakeCountdown"><img src="/assets/img/jump.png" /><b>Fake Countdown</b></a></div>
-          <div className="group-financially"><a href="/FakeLimitedTime"><img src="/assets/img/jump.png" /><b>Fake Limited-time</b></a></div>
-          <div className="group-financially"><a href="/FakeHighDemand"><img src="/assets/img/jump.png" /><b>Fake High-demand</b></a></div>
-          <div className="group-financially"><a href="/FakeLowStock"><img src="/assets/img/jump.png" /><b>Fake Low-Stock</b></a></div>
-        </div>
-        </Col>
+            <div className="content4-bottom">
+              <div className="group-financially">
+                <a to="/SneakIntoBasket">
+                  <img src="/assets/img/jump.png" />
+                  <b>Sneak into baskets</b>
+                </a>
+              </div>
+              <div className="group-financially"><a href="/HiddenCost"><img src="/assets/img/jump.png" /><b>Hidden Costs</b></a></div>
+              <div className="group-financially"><a href="/FakeCountdown"><img src="/assets/img/jump.png" /><b>Fake Countdown</b></a></div>
+              <div className="group-financially"><a href="/FakeLimitedTime"><img src="/assets/img/jump.png" /><b>Fake Limited-time</b></a></div>
+              <div className="group-financially"><a href="/FakeHighDemand"><img src="/assets/img/jump.png" /><b>Fake High-demand</b></a></div>
+              <div className="group-financially"><a href="/FakeLowStock"><img src="/assets/img/jump.png" /><b>Fake Low-Stock</b></a></div>
+            </div>
+          </Col>
 
           <Col className="content4" xs={24}  sm={24} md={12} lg={12}>
             <div className="content4-top">
@@ -143,8 +143,8 @@ class Home extends Component {
                 <h1><b>Emotionally </b></h1>
               </div>
               <p>
-        It will highlight the urgency of low stocks and fake countdowns and remind the user to relax and that more than likely
-        the stock and countdown is fake. The dark patterns that fall into this category are:
+                It will highlight the urgency of low stocks and fake countdowns and remind the user to relax and that more than likely
+                the stock and countdown is fake. The dark patterns that fall into this category are:
 
               </p>
             </div>
@@ -177,14 +177,14 @@ class Home extends Component {
               <img src="/assets/img/sneakintobasket1.png" alt="test." id="Panic" />
             </div>
             <div className="description-sneakinto">
-      When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
-      (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
+              When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
+              (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
             </div>
             <div className="pattern-type-hiddencost">
               <img src="/assets/img/hiddenCost.png" alt="test." id="Panic" />
             </div>
             <div className="description-hiddencost">
-      When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout
+              When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout
             </div>
           </Col>
           <Col className="category-table-forcedAction" xs={24}  sm={24} md={24} lg={24}>
@@ -195,8 +195,8 @@ class Home extends Component {
               <h1>forced action</h1>
             </div>
             <div className="description-forcedaction">
-      This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
-      (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
+              This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
+              (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
             </div>
           </Col>
           <Col className="category-table-misdirection">
@@ -230,7 +230,7 @@ class Home extends Component {
               fake countdown
             </div>
             <div className="description-fakecountdown">
-      Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
+              Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
             </div>
             <div className="pattern-type-fakelimitedtime">
               fake limited time
@@ -252,52 +252,52 @@ class Home extends Component {
             <div className="pattern-type-fakeactivity">
               fake activity
             </div>
-    <div className="description-fakeactivity">
-      Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
-    </div>
-  </Col>
+            <div className="description-fakeactivity">
+              Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+            </div>
+          </Col>
 
 
 
-  <div className="category-table-Scarcity">
-    <div className="category-fakelowstock">
-      <p>Scarcity</p>
-    </div>
-    <div className="pattern-type-fakelowstock">
-      fake low stock
-    </div>
-    <div className="description-fakelowstock">
-      Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
-    </div>
-  </div>
+          <div className="category-table-Scarcity">
+            <div className="category-fakelowstock">
+              <p>Scarcity</p>
+            </div>
+            <div className="pattern-type-fakelowstock">
+              fake low stock
+            </div>
+            <div className="description-fakelowstock">
+              Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+            </div>
+          </div>
 
-  <div className="category-table-otherDP">
-    <div className="category-privacyzuckering">
-      <p>Other Dark Patterns</p>
-    </div>
-    <div className="pattern-type-privacyzuckering">
-      privacy zuckering
-    </div>
-    <div className="description-privacyzuckering">
-      Sharing more information to the public than you orignally intended to do. (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used. (This info was used to push ads.)
-    </div>
-    <div className="pattern-type-baitandswitch">
-      bait and switch
-    </div>
-    <div className="description-baitandswitch">
-      When a user plans and expects one thing to happen, but something else happens instead. (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
-    </div>
-  </div>
-
-
-
-
+          <div className="category-table-otherDP">
+            <div className="category-privacyzuckering">
+              <p>Other Dark Patterns</p>
+            </div>
+            <div className="pattern-type-privacyzuckering">
+              privacy zuckering
+            </div>
+            <div className="description-privacyzuckering">
+              Sharing more information to the public than you orignally intended to do. (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used. (This info was used to push ads.)
+            </div>
+            <div className="pattern-type-baitandswitch">
+              bait and switch
+            </div>
+            <div className="description-baitandswitch">
+              When a user plans and expects one thing to happen, but something else happens instead. (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
+            </div>
+          </div>
 
 
 
 
 
-  {/*
+
+
+
+
+          {/*
   <table>
 
 
@@ -419,7 +419,7 @@ class Home extends Component {
 
 
 
-        {/* <div>
+          {/* <div>
           <form action="" onSubmit={this.onSubmit}>
             <div>
               <input type="url" name="url" placeholder={'Enter Websites URL'}/>

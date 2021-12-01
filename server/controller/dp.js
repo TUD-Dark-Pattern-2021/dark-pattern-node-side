@@ -178,8 +178,10 @@ class dpController extends baseController {
       //   ]
       // }
       // console.log(result)
+      console.log(req.body.is_orc)
       let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
-        ...result
+        ...result,
+        is_ocr: req.body.is_orc
       })
       console.log(data.data)
       res.send(commons.resReturn(data.data, data.status));

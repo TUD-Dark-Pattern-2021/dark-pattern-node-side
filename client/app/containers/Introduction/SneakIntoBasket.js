@@ -50,9 +50,9 @@ class SneakIntoBasket extends Component {
               When you try purchase sometihng online, but the site sneaks and add item or price into your basket. (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
             </p>
           </Col>
-        <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
-          <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
-        </Col>
+          <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
+            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+          </Col>
         </Row>
         <Row className={'bottomVideoContainer'} type="flex" justify="center" >
           <Col className={'Intro-backgroundColor'}  xs={24}  sm={24} md={8} lg={8}>
@@ -62,9 +62,9 @@ class SneakIntoBasket extends Component {
           </Col>
           <Col className={'youtube-video'} xs={24}  sm={24} md={16} lg={16}>
             <iframe src="https://www.youtube.com/embed/RHdv3n0CG3g" title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen>
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen>
             </iframe>
           </Col>
         </Row>
