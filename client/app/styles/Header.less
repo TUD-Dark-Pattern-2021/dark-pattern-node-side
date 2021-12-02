@@ -4,20 +4,33 @@
   align-items: center;
   justify-content: space-between;
   background-color: inherit;
-  .mobile-tabs {
+  .mobile-menu-icon {
+    font-size: 24px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1;
     display: none;
-    z-index: 100;
-    .mobile-menu-icon {
-      font-size: 24px;
-    }
+  }
+  .mobile-tabs {
     > div {
-      display: none;
-      margin-top: 40px;
+      margin: 0;
       z-index: 10000;
+      //transition: all .2s;
+      //transform: translateX(100%);
+      height: 100%;
+      position: relative;
+
       &.show-menu {
         display: block;
-        background: #bbb;
+        background: #151515;
         padding: 15px;
+        i.anticon-close {
+          font-size: 22px;
+          color: #fff;
+          float: right;
+          cursor: pointer;
+        }
         ul {
           li {
             line-height: 40px;
@@ -56,11 +69,6 @@
           }
 
     }
-
-
-
-
-
     .report {
       width: 163px;
       height: 53px;
@@ -158,14 +166,61 @@
     display: none;
   }
 }
+
+.mobile-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.mobile-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.mobile-exit {
+  opacity: 1;
+}
+.mobile-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
 @media screen and (max-width: 1000px) {
   .ant-layout-header {
     padding: 0 20px;
+    height: 60px;
+    .mobile-menu-icon {
+      display: block;
+    }
     .tabs {
       display: none;
     }
+    .menu-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 10;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
     .mobile-tabs {
       display: block;
+      //display: none;
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      width: 250px;
+      z-index: 100;
+      > div.show-menu {
+        //transform: translateX(0);
+      }
     }
   }
 }

@@ -12,6 +12,7 @@ import { checkLoginState } from './reducer/modules/user';
 import { requireAuthentication } from './components/AuthenticatedComponent';
 import NotFound from './components/NotFound'
 import { hot } from 'react-hot-loader/root';
+import ScrollTop from "./ScrollTop";
 
 const LOADING_STATUS = 0;
 
@@ -56,33 +57,35 @@ class App extends Component {
     } else {
       r = (
         <Router >
-          <Layout className={{layout: true, 'admin-layout': window.location.pathname.indexOf('admin')>-1}}>
-            <Header />
-            <Bread />
-            <Switch>
-              <Route path='/login' component={Login} />
-              <Route path='/' exact component={Home} />
-              <Route path='/SneakIntoBasket' exact component={SneakIntoBasket} />
-              <Route path='/BaitAndSwitch' exact component={BaitAndSwitch} />
-              <Route path='/ConfirmShaming' exact component={ConfirmShaming} />
-              <Route path='/FakeActivity' exact component={FakeActivity} />
-              <Route path='/FakeCountdown' exact component={FakeCountdown} />
-              <Route path='/FakeHighDemand' exact component={FakeHighDemand} />
-              <Route path='/FakeLimitedTime' exact component={FakeLimitedTime} />
-              <Route path='/FakeLowStock' exact component={FakeLowStock} />
-              <Route path='/ForcedContinuity' exact component={ForcedContinuity} />
-              <Route path='/HiddenCost' exact component={HiddenCost} />
-              <Route path='/PrivacyZuckering' exact component={PrivacyZuckering} />
-              <Route path='/TrickQuestions' exact component={TrickQuestions} />
-              <Route path='/VisualInterference' exact component={VisualInterference} />
-              <Route path='/example' exact component={Example} />
-              <Route path='/chrome-extension' exact component={ChromeExtension} />
-              <Route path='/about-us' exact component={AboutUs} />
-              <Route path='/report' exact component={Report} />
-              <Route path='/admin/:path' exact component={requireAuthentication(AdminIndex)}/>
-              <Route component={NotFound} />
-            </Switch>
-          </Layout>
+          <ScrollTop>
+            <Layout className={{layout: true, 'admin-layout': window.location.pathname.indexOf('admin')>-1}}>
+              <Header />
+              <Bread />
+              <Switch>
+                <Route path='/login' component={Login} />
+                <Route path='/' exact component={Home} />
+                <Route path='/SneakIntoBasket' exact component={SneakIntoBasket} />
+                <Route path='/BaitAndSwitch' exact component={BaitAndSwitch} />
+                <Route path='/ConfirmShaming' exact component={ConfirmShaming} />
+                <Route path='/FakeActivity' exact component={FakeActivity} />
+                <Route path='/FakeCountdown' exact component={FakeCountdown} />
+                <Route path='/FakeHighDemand' exact component={FakeHighDemand} />
+                <Route path='/FakeLimitedTime' exact component={FakeLimitedTime} />
+                <Route path='/FakeLowStock' exact component={FakeLowStock} />
+                <Route path='/ForcedContinuity' exact component={ForcedContinuity} />
+                <Route path='/HiddenCost' exact component={HiddenCost} />
+                <Route path='/PrivacyZuckering' exact component={PrivacyZuckering} />
+                <Route path='/TrickQuestions' exact component={TrickQuestions} />
+                <Route path='/VisualInterference' exact component={VisualInterference} />
+                <Route path='/example' exact component={Example} />
+                <Route path='/chrome-extension' exact component={ChromeExtension} />
+                <Route path='/about-us' exact component={AboutUs} />
+                <Route path='/report' exact component={Report} />
+                <Route path='/admin/:path' exact component={requireAuthentication(AdminIndex)}/>
+                <Route component={NotFound} />
+              </Switch>
+            </Layout>
+          </ScrollTop>
         </Router>
       );
     }

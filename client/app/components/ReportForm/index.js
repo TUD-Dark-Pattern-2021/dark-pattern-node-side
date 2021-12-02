@@ -15,6 +15,7 @@ import { Form,
   message,
 } from 'antd'
 const { Option } = Select;
+const {TextArea } = Input
 
 class ReportForm extends Component {
   constructor(props) {
@@ -52,12 +53,14 @@ class ReportForm extends Component {
   render() {
     const formItemLayout = {
       labelCol: {
-        xs: { span: 4 },
-        sm: { span: 4 },
+        xs: { span: 24 },
+        sm: { span: 24 },
+        md: { span: 24 },
       },
       wrapperCol: {
-        xs: { span: 4 },
-        sm: { span: 16 },
+        xs: { span: 24 },
+        sm: { span: 24 },
+        md: { span: 24 },
       },
     };
     const { getFieldDecorator } = this.props.form;
@@ -119,13 +122,14 @@ class ReportForm extends Component {
                 message: 'Please input description!',
               },
             ],
-          })(<Input />)}
+          })(<TextArea rows={4}/>)}
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 12, offset: 4 }}>
+        <Row justify={'center'} type={'flex'}>
           <Button type="" htmlType="submit">
             Submit
           </Button>
-        </Form.Item>
+        </Row>
+
       </Form>
     </div>
     </div>

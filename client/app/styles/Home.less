@@ -132,9 +132,9 @@
     }
     .content4-container{
       .content4{
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 50% 30%;
+        //display: grid;
+        //grid-template-columns: 100%;
+        //grid-template-rows: 50% 30%;
         .content4-top{
           padding:10%;
           .content4-top-topic{
@@ -159,8 +159,7 @@
           align-items: center;
           justify-content:center;
           width: 100%;
-          padding: 10% 10% 10% 10%;
-          margin-top: 5%;
+          padding: 0 10% 10% 10%;
           .group-financially{
             background-color:#D8D8D8;
             padding: 2.5%;
@@ -481,16 +480,47 @@
          }
       }
     }*/
-
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-      table-layout: fixed;
-      width: 100%;
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+      border: solid 1px #dfdfdf;
+      margin-bottom: 15px;
+      min-width: 800px;
+      tr:nth-of-type(1) {
+        td {
+          border-top: none;
+          &:nth-of-type(1) {
+            font-weight: bold;
+            font-size: 25px;
+          }
+          &:nth-of-type(2) {
+            border-right: none;
+          }
+        }
+      }
+      tr:nth-of-type(2), tr:nth-of-type(3) {
+        td {
+          &:nth-of-type(1) {
+            border-right: none;
+          }
+        }
+      }
     }
+    td {
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid #dfdfdf;
+      border-right: 1px solid #dfdfdf;
+      font-size: 17px;
+    }
+    td:last-child {
+      border-right-color: transparent;
+    }
+
     #MoneyMan, #Panic{
-      float:right;
-      margin-left:10px;
+      width: 65%;
+      margin: 0 auto;
       position:relative;
     }
     ul{
@@ -546,16 +576,18 @@
 
 @media only screen and (max-width: 600px) {
   .ant-layout-content {
-    padding: 10%;
+    padding: 0 30px;
     width: 100%;
     &.index-content {
       text-align: left;
+      margin: 0;
       .header-container {
         h1 {
           font-size: 40px;
         }
         h2 {
           font-size: 18px;
+          margin: 0;
         }
       }
       .container1{
@@ -578,10 +610,11 @@
           }
         }
       }
-      h3{
+      h3.shopping-web{
         word-spacing: 2px;
+        //margin-top: 15px;
         p{
-          font-size: 18px;
+          //font-size: 18px;
         }
       }
       .content3{
@@ -616,7 +649,7 @@
             p{
               font-size: 15px;
               line-height:25px;
-              margin-bottom: 20%;
+              //margin-bottom: 20%;
             }
           }
           .content4-bottom{
@@ -632,7 +665,7 @@
       }
       .content-table{
         .table-header{
-          margin-top: -10%;
+          //margin-top: -10%;
           margin-bottom: 5%;
           border-radius: 50px;
           font-size: 30px;
@@ -859,14 +892,10 @@
             p {
               font-size: 20px;
               line-height: 30px;
-              margin-bottom: 30%;
             }
           }
 
           .content4-bottom {
-            padding: 10% 10% 10% 10%;
-            margin-top: 5%;
-
             .group-financially {
               font-size: 18px;
             }
@@ -875,7 +904,7 @@
       }
 
       .content-table {
-        margin-top: -12%;
+        //margin-top: -12%;
         img{
           display: none;
         }
