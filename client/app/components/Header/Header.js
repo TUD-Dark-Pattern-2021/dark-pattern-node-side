@@ -2,6 +2,7 @@ import React, {PureComponent as Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {Layout, Menu, Dropdown, message, Icon} from 'antd';
+import { CSSTransition } from 'react-transition-group';
 
 import {withRouter} from 'react-router';
 
@@ -24,6 +25,7 @@ export default class HeaderCom extends Component {
     super(props);
     this.state = {
       showMenu: false,
+      showMask: false
     }
   }
 
@@ -35,10 +37,18 @@ export default class HeaderCom extends Component {
     imgUrl: PropTypes.any,
   };
 
-  toggleMenu = () => {
-    this.setState({
-      showMenu: !this.state.showMenu
-    })
+  toggleMenu = (isMobile, forceClose) => {
+    if (forceClose) {
+      this.setState({
+        showMenu: false,
+        showMask: false
+      })
+    } else if (isMobile) {
+      this.setState({
+        showMenu: !this.state.showMenu,
+        showMask: !this.state.showMask
+      })
+    }
   }
   dropdown = () => {
     this.setState({
@@ -51,57 +61,63 @@ export default class HeaderCom extends Component {
       <Menu overlayClassName={'test'}>
         <SubMenu title="Sneaking">
           <Menu.Item>
-            <Link to="/SneakIntoBasket">
+            <Link to="/SneakIntoBasket" onClick={() => this.toggleMenu(null, true)}>
               <img src="/assets/img/sneakintobasket1.png" alt="Sneak Into Basket." id="SneakIntoBasket"/>
               Sneak into baskets
             </Link>
           </Menu.Item>
 
           <Menu.Item>
-            <Link to="/HiddenCost">
+            <Link to="/HiddenCost" onClick={() => this.toggleMenu(null, true)}>
               <img src="/assets/img/HC.png" alt="HiddenCosts." id="HiddenCosts"/>Hidden Costs
             </Link>
           </Menu.Item>
         </SubMenu>
         <SubMenu title="Forced Action">
-          <Menu.Item><Link to="/ForcedContinuity"><img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity."
+          <Menu.Item><Link to="/ForcedContinuity" onClick={() => this.toggleMenu(null, true)}>
+              <img src="/assets/img/ForcedContinuity.png" alt="Forced Continuity."
                                                        id="ForcedContinuity" width="50px" height="30px"/>Forced
             Continuity</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Misdirection">
-          <Menu.Item><Link to="/ConfirmShaming"><img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming."
+          <Menu.Item><Link to="/ConfirmShaming" onClick={() => this.toggleMenu(null, true)}>
+              <img src="/assets/img/ConfirmShaming.png" alt="Confirmshaming."
                                                      id="Confirmshaming" width="50px"
                                                      height="30px"/>Confirmshaming</Link></Menu.Item>
-          <Menu.Item><Link to="/VisualInterference"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+          <Menu.Item><Link to="/VisualInterference" onClick={() => this.toggleMenu(null, true)}>
+              <img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
                                                          id="SneakIntoBasket" float="right" width="50px" height="30px"/>Visual
             Interference</Link></Menu.Item>
-          <Menu.Item><Link to="/TrickQuestions"><img src="/assets/img/trickquestions1.png" alt="Trick Questions"
+          <Menu.Item><Link to="/TrickQuestions" onClick={() => this.toggleMenu(null, true)}>
+              <img src="/assets/img/trickquestions1.png" alt="Trick Questions"
                                                      id="TrickQuestions" width="20%" height="20%"/>Trick
             Questions</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Urgency">
-          <Menu.Item><Link to="/FakeCountdown"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+          <Menu.Item><Link to="/FakeCountdown" onClick={() => this.toggleMenu(null, true)}>
+            <img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
                                                     id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
             Countdown</Link></Menu.Item>
-          <Menu.Item><Link to="/FakeHighDemand"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+          <Menu.Item><Link to="/FakeHighDemand" onClick={() => this.toggleMenu(null, true)}><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
                                                      id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
             High-demand</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Social Proof">
-          <Menu.Item><Link to="/FakeActivity"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+          <Menu.Item><Link to="/FakeActivity" onClick={() => this.toggleMenu(null, true)}>
+            <img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
                                                    id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
             Activity</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Scarcity">
-          <Menu.Item><Link to="/FakeLowStock"><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
+          <Menu.Item><Link to="/FakeLowStock" onClick={() => this.toggleMenu(null, true)}><img src="/assets/img/SneakIntoBasket.png" alt="Sneak Into Basket."
                                                    id="SneakIntoBasket" float="right" width="50px" height="30px"/>Fake
             Low-Stock</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Other Dark Patterns">
-          <Menu.Item><Link to="/PrivacyZuckering"><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering"
+          <Menu.Item><Link to="/PrivacyZuckering" onClick={() => this.toggleMenu(null, true)}><img src="/assets/img/Zuckering.png" alt="Privacy Zuckering"
                                                        id="Zuckering" float="right" width="50px" height="30px"/>Privacy
             Zuckering</Link></Menu.Item>
-          <Menu.Item><Link to="/BaitAndSwitch"><img src="/assets/img/Bait.png" alt="Mouse Trap." id="Bait" float="right"
+          <Menu.Item><Link to="/BaitAndSwitch" onClick={() => this.toggleMenu(null, true)}><img src="/assets/img/Bait.png" alt="Mouse Trap." id="Bait" float="right"
                                                     width="50px" height="30px"/>Bait and Switch</Link></Menu.Item>
         </SubMenu>
       </Menu>
@@ -112,16 +128,16 @@ export default class HeaderCom extends Component {
 
   getMenuList = (isMobile) => {
     return (<ul>
-      <li onClick={this.toggleMenu}>
+      <li onClick={() => this.toggleMenu(isMobile)}>
         <Link to="/">
           Home
         </Link>
       </li>
-      <li onClick={this.toggleMenu}>
+      <li>
         <Dropdown overlay={this.menu}>
-          <Link className="ant-dropdown-link">
+          <a className="ant-dropdown-link">
             Introduction <Icon type="down"/>
-          </Link>
+          </a>
         </Dropdown>
 
         {/*<Dropdown overlay={this.menu}>*/}
@@ -135,17 +151,17 @@ export default class HeaderCom extends Component {
         {/*</Link>*/}
 
       </li>
-      <li onClick={this.toggleMenu}>
+      <li onClick={() => this.toggleMenu(isMobile)}>
         <Link to="/example">
           Example
         </Link>
       </li>
-      <li onClick={this.toggleMenu}>
+      <li onClick={() => this.toggleMenu(isMobile)}>
         <Link to="/chrome-extension">
           Chrome Extension
         </Link>
       </li>
-      <li onClick={this.toggleMenu}>
+      <li onClick={() => this.toggleMenu(isMobile)}>
         <Link to="/about-us">
           About us
         </Link>
@@ -153,7 +169,7 @@ export default class HeaderCom extends Component {
 
       {
         isMobile &&
-        <li onClick={this.toggleMenu}>
+        <li onClick={() => this.toggleMenu(isMobile)}>
           <Link to="/report">
             Report to Us
           </Link>
@@ -164,12 +180,13 @@ export default class HeaderCom extends Component {
 
   render() {
     const {login} = this.props;
+    const { showMenu } = this.state
     return (
       <div>
         {
           this.props.location.pathname !== "/login" &&
           <Header>
-            <Link to="/" className="logo">
+            <Link to="/" className="logo" style={{margin: 0, width:'auto', height: 'auto'}}>
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/assets/img/logo-s.png"/>
                 <img src="/assets/img/logo.png" alt="dp logo"/>
@@ -183,17 +200,24 @@ export default class HeaderCom extends Component {
                 Report to Us
               </Link>
             </div>
-
-
-            <div className={'mobile-tabs'}>
-              <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={this.toggleMenu}/>
-              <div className={this.state.showMenu ? 'show-menu' : ''}>
-                <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>`
-                  <Icon type="close"/>
+            <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={() => this.toggleMenu(true)}/>
+            <div className={`menu-mask ${this.state.showMask ? 'active' : ''}`} onClick={() => this.toggleMenu(null, true)} />
+            <CSSTransition
+              classNames='mobile'
+              in={showMenu}
+              timeout={1000}
+              unmountOnExit
+            >
+              <div className={'mobile-tabs'}>
+                <div className={'show-menu'}>
+                  <div onClick={this.toggleMenu} style={{height: 20, lineHeight: 1}}>`
+                    <Icon type="close"/>
+                  </div>
+                  {this.getMenuList(true)}
                 </div>
-                {this.getMenuList(true)}
               </div>
-            </div>
+            </CSSTransition>
+
             {
               login && this.props.location.pathname.indexOf('admin') > -1 && <UserToolBar/>
             }
