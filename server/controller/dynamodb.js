@@ -243,7 +243,7 @@ class dynamodbController extends baseController {
 
     async automaticTraining(req, res){
         const bucketName = "darkpatternsdatasets";
-        const keyName = "dark_patterns.csv";
+        const keyName = "enriched_type_df.csv";
         const params = {
             Bucket: bucketName,
             Key: keyName
@@ -257,7 +257,7 @@ class dynamodbController extends baseController {
 
         const query = {
             TableName: "Dataset",
-            Select: "ALL_ATTRIBUTES",
+            Select: "Pattern_String, Pattern_Type",
             KeyConditionExpression: keyCon,
             ExpressionAttributeValues: { ":name": { S: "Your order is reserved for 19:57 minutes." } },
             // ProjectionExpression: "ALL_ATTRIBUTES",
@@ -291,21 +291,21 @@ class dynamodbController extends baseController {
                     Item: {
                         "Pattern_String": datas['Pattern String'],
 
-                        "Comment": datas.comment,
+                        // "Comment": datas.comment,
 
-                        "Pattern_Category:": datas['Pattern Category'],
+                        // "Pattern_Category:": datas['Pattern Category'],
 
                         "Pattern_Type:": datas['Pattern Type'],
 
-                        " Where_in_website:": datas['Where in website?'],
+                        // " Where_in_website:": datas['Where in website?'],
 
-                        "Deceptive": datas['Deceptive?'],
+                        // "Deceptive": datas['Deceptive?'],
 
-                        "Website_Page": datas['Website Page'],
+                        // "Website_Page": datas['Website Page'],
 
                     }
                 };
-                console.log(paramsDataset)
+                // console.log(paramsDataset)
                 addData(paramsDataset);
             });
             const scanDynamoDB = (query) => {
@@ -463,7 +463,17 @@ class dynamodbController extends baseController {
                         const data1 = await s3c.send(new S3.PutObjectCommand(uploadParams));
                         console.log("Success", data1);
                         res.send(commons.resReturn(data1));
-                    }
+                        const bucketParams = {
+                            Bucket: "darkpatternsdatasets",
+                            Key: uploadParams.Key,
+                        };
+                        const s3Streams = s3.getObject(bucketParams).createReadStream()
+                        fastCsv.parseStream(s3Streams)
+                        .on('data', (data) => {
+                            console.log(data)
+                        
+                    })
+                }
                     else{
                         count++;
                     }
@@ -500,16 +510,16 @@ class dynamodbController extends baseController {
                     "query": query, stats: {}
                 }
             );
-            else scanDynamoDB(scanQuery);
-            const s3Streams = s3.getObject(bucketParams).createReadStream()
-                fastCsv.parseStream(s3Streams)
-                .on('data', (data) => {
-                    console.log(data)
-        })
+            else {
+                scanDynamoDB(scanQuery)
+            };
+            
+
+      
         
     }
     async dyanmoToS3(req, res) {
-        let count = 0;
+        let count = 0;  
         let headers = [];
         let unMarshalledArray = [];
         const filename = req.body.filename;
@@ -520,7 +530,7 @@ class dynamodbController extends baseController {
             TableName: "Dataset",
             Select: "ALL_ATTRIBUTES",
             KeyConditionExpression: keyCon,
-            ExpressionAttributeValues: { ":name": { S: "Your order is reserved for 19:57 minutes." } },
+            ExpressionAttributeValues: { ":name": { S: "Only 2 left" } },
             // ProjectionExpression: "ALL_ATTRIBUTES",
             Limit: 10000
         };
@@ -765,7 +775,7 @@ class dynamodbController extends baseController {
     async readCsvFile(){
         const bucketParams = {
             Bucket: "darkpatternsdatasets",
-            Key: "dark_patterns.csv",
+            Key: "V6DarkPatterns.csv",
         };
         const s3Stream = s3.getObject(bucketParams).createReadStream()
         fastCsv.parseStream(s3Stream)
@@ -786,12 +796,12 @@ class dynamodbController extends baseController {
 
 function addData(paramsDataset) {
 
-    console.log("Adding a new item based on: ");
+    // console.log("Adding a new item based on: ");
     docClient.put(paramsDataset, function (err, data) {
         if (err) {
             console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
         } else {
-            console.log("Added item:", JSON.stringify(paramsDataset.Item, null, 2));
+            // console.log("Added item:", JSON.stringify(paramsDataset.Item, null, 2));
         }
     });
 }
