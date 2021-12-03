@@ -93,7 +93,7 @@ class Example extends Component {
               <h2 style={{textAlign:"center"}}>Black Friday Sale</h2>
               <h2>Christmas Tree</h2>
               <img src="/assets/img/tree.jpg" alt="Christmas Tree" width="450" height="450" />
-                <h4>Receive a $15 voucher when you buy a real Christmas tree for $30* </h4>
+                <h3>Receive a $15 voucher when you buy a real Christmas tree for $30* </h3>
                 <h4>Limited time Deal, Hurry Up!</h4>
                 <br/>
                 <p>The festive season is full of traditions, both new and old that all add to the Christmas cheer and
