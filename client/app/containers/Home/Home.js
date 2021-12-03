@@ -124,15 +124,15 @@ class Home extends Component {
             <div className="content4-bottom">
               <div className="group-financially">
                 <Link to="/SneakIntoBasket">
-                  <img src="/assets/img/jump.png" />
+
                   <b>Sneak into baskets</b>
                 </Link>
               </div>
-              <div className="group-financially"><Link to="/HiddenCost"><img src="/assets/img/jump.png" /><b>Hidden Costs</b></Link></div>
-              <div className="group-financially"><Link to="/FakeCountdown"><img src="/assets/img/jump.png" /><b>Fake Countdown</b></Link></div>
-              <div className="group-financially"><Link to="/FakeLimitedTime"><img src="/assets/img/jump.png" /><b>Fake Limited-time</b></Link></div>
-              <div className="group-financially"><Link to="/FakeHighDemand"><img src="/assets/img/jump.png" /><b>Fake High-demand</b></Link></div>
-              <div className="group-financially"><Link to="/FakeLowStock"><img src="/assets/img/jump.png" /><b>Fake Low-Stock</b></Link></div>
+              <div className="group-financially"><Link to="/HiddenCost"><b>Hidden Costs</b></Link></div>
+              <div className="group-financially"><Link to="/FakeCountdown"><b>Fake Countdown</b></Link></div>
+              <div className="group-financially"><Link to="/FakeLimitedTime"><b>Fake Limited-time</b></Link></div>
+              <div className="group-financially"><Link to="/FakeHighDemand"><b>Fake High-demand</b></Link></div>
+              <div className="group-financially"><Link to="/FakeLowStock"><b>Fake Low-Stock</b></Link></div>
             </div>
           </Col>
 
@@ -149,13 +149,13 @@ class Home extends Component {
               </p>
             </div>
             <div className="content4-bottom">
-              <div className="group-financially"><Link to="/ConfirmShaming"><img src="/assets/img/jump.png" /><b>Confirmshaming</b></Link></div>
-              <div className="group-financially"><Link to="/TrickQuestions"><img src="/assets/img/jump.png" /><b>Trick Questions</b></Link></div>
-              <div className="group-financially"><Link to="/VisualInterference"><img src="/assets/img/jump.png" /><b>Visual Interference</b></Link></div>
-              <div className="group-financially"><Link to="/FakeLimitedTime"><img src="/assets/img/jump.png" /><b>Fake Limited Time</b></Link></div>
-              <div className="group-financially"><Link to="/FakeCountdown"><img src="/assets/img/jump.png" /><b>Fake Countdown</b></Link></div>
-              <div className="group-financially"><Link to="/FakeHighDemand"><img src="/assets/img/jump.png" /><b>Fake High-demand</b></Link></div>
-              <div className="group-financially"><Link to="/FakeLowStock"><img src="/assets/img/jump.png" /><b>Fake Low-Stock</b></Link></div>
+              <div className="group-financially"><Link to="/ConfirmShaming"><b>Confirmshaming</b></Link></div>
+              <div className="group-financially"><Link to="/TrickQuestions"><b>Trick Questions</b></Link></div>
+              <div className="group-financially"><Link to="/VisualInterference"><b>Visual Interference</b></Link></div>
+              <div className="group-financially"><Link to="/FakeLimitedTime"><b>Fake Limited Time</b></Link></div>
+              <div className="group-financially"><Link to="/FakeCountdown"><b>Fake Countdown</b></Link></div>
+              <div className="group-financially"><Link to="/FakeHighDemand"><b>Fake High-demand</b></Link></div>
+              <div className="group-financially"><Link to="/FakeLowStock"><b>Fake Low-Stock</b></Link></div>
             </div>
           </Col>
         </Row>
