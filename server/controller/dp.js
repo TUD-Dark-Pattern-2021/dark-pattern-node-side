@@ -178,6 +178,7 @@ class dpController extends baseController {
       //   ]
       // }
       // console.log(result)
+      // fs.writeFileSync('1.txt', JSON.stringify(result))
       console.log(req.body.is_orc)
       let data = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/parse', {
         ...result,

@@ -171,7 +171,7 @@ export default class HeaderCom extends Component {
         isMobile &&
         <li onClick={() => this.toggleMenu(isMobile)}>
           <Link to="/report">
-            Report to Us
+            Help Us
           </Link>
         </li>
       }
@@ -197,7 +197,7 @@ export default class HeaderCom extends Component {
             <div className={'tabs'}>
               {this.getMenuList()}
               <Link to="/report" className="report">
-                Report to Us
+                Help Us
               </Link>
             </div>
             <Icon type="menu-fold" className={"mobile-menu-icon"} onClick={() => this.toggleMenu(true)}/>
