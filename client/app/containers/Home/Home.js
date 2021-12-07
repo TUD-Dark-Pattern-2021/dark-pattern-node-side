@@ -266,7 +266,7 @@ class Home extends Component {
                 Scarcity
               </td>
               <td style={{width: '15%'}}>
-                <img src="/assets/img/1FakeLowstock.png" alt="test." id="Panic" />
+                <img src="/assets/img/1Fakelowstock.png" alt="test." id="Panic" />
               </td>
               <td style={{width: '60%'}}>  Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
               </td>
