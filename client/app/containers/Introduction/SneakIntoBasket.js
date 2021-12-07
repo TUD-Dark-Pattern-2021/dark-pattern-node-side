@@ -51,7 +51,7 @@ class SneakIntoBasket extends Component {
             </p>
           </Col>
           <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
-            <img src="/assets/img/sneakintobasketIntro.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
+            <img src="/assets/img/1sneakintoBasket.png" alt="Sneak Into Basket." id="SneakIntoBasket" />
           </Col>
         </Row>
         <Row className={'bottomVideoContainer'} type="flex" justify="center" >
