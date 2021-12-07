@@ -174,13 +174,13 @@ class Home extends Component {
                   Sneaking
                 </td>
                 <td style={{width: '15%'}}>
-                  <img src="/assets/img/1sneakintoBasket.png" alt="test." id="Panic" />
+                  <img src="/assets/img/1sneakintoBasket.png" alt="test." />
                 </td>
                 <td style={{width: '60%'}}>When you try purchase sometihng online, but the site sneaks and additio item or price inot your basket.
                   (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)</td>
               </tr>
               <tr>
-                <td style={{width: '15%'}}><img src="/assets/img/1HiddenCost.png" alt="test." id="Panic" /></td>
+                <td style={{width: '15%'}}><img src="/assets/img/1HiddenCost.png" alt="test." /></td>
                 <td style={{width: '60%'}}>When purcahsing an item, the site will hide the costs of such things as delievery or tax until you reach the checkout</td>
               </tr>
             </table >
@@ -191,7 +191,7 @@ class Home extends Component {
                   Forced Action
                 </td>
                 <td style={{width: '15%'}}>
-                  <img src="/assets/img/1ForcedContinuity.png" alt="test." id="Panic" />
+                  <img src="/assets/img/1ForcedContinuity.png" alt="test." />
                 </td>
                 <td style={{width: '60%'}}> This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length.
                   (e.g. You sign up for a week free trial to premium shopping, then, if you have not cancelled your subscription, by next week you will be charged again, without warning)
@@ -205,20 +205,20 @@ class Home extends Component {
                   Misdirection
                 </td>
                 <td style={{width: '15%'}}>
-                  <img src="/assets/img/1Conformshaming.png" alt="test." id="Panic" />
+                  <img src="/assets/img/1Conformshaming.png" alt="test." />
                 </td>
                 <td style={{width: '60%'}}>Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
                 </td>
               </tr>
               <tr>
                 <td style={{width: '15%'}}>
-                  <img src="/assets/img/1visualInterface.png" alt="test." id="Panic" />
+                  <img src="/assets/img/1visualInterface.png" alt="test." />
                 </td>
                 <td style={{width: '60%'}}>  Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
                 </td>
               </tr>
               <tr>
-                <td style={{width: '15%'}}> <img src="/assets/img/1TrickQuestion.png" alt="test." id="Panic" /></td>
+                <td style={{width: '15%'}}> <img src="/assets/img/1TrickQuestion.png" alt="test." /></td>
                 <td style={{width: '60%'}}>
                   Misleading users to make certain decisions based on the usage of confusing language, for example, using long and complicated double negative sentences. (e.g., “If you do not wish to be contacted via email, please ensure that the box is not checked.”)
                 </td>
@@ -230,19 +230,19 @@ class Home extends Component {
                 Urgency
               </td>
               <td style={{width: '15%'}}>
-                <img src="/assets/img/1FakeCountdown.png" alt="test." id="Panic" />
+                <img src="/assets/img/1FakeCountdown.png" alt="test." />
               </td>
               <td style={{width: '60%'}}>
                 Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
               </td>
             </tr>
             <tr>
-              <td style={{width: '15%'}}> <img src="/assets/img/1FakeLimitedTime.png" alt="test." id="Panic" /></td>
+              <td style={{width: '15%'}}> <img src="/assets/img/1FakeLimitedTime.png" alt="test." /></td>
               <td style={{width: '60%'}}>  Manipulation of the interface that the user will use in order to hide some information or actions (e.g., Autofilling a checkbox that will sign you up for useless emails, but the checkbox is hidden behind 1-2 dropdown menus.)
               </td>
             </tr>
               <tr>
-                <td style={{width: '15%'}}>  <img src="/assets/img/1FakeHighdemand.png" alt="test." id="Panic" /></td>
+                <td style={{width: '15%'}}>  <img src="/assets/img/1FakeHighdemand.png" alt="test." /></td>
                 <td style={{width: '60%'}}>
                   Misleading users to make certain decisions based on the usage of confusing language, for example, using long and complicated double negative sentences. (e.g., “If you do not wish to be contacted via email, please ensure that the box is not checked.”)
                 </td>
@@ -254,7 +254,7 @@ class Home extends Component {
                 Social Proof
               </td>
               <td style={{width: '15%'}}>
-                <img src="/assets/img/1FakeActivity.png" alt="test." id="Panic" />
+                <img src="/assets/img/1FakeActivity.png" alt="test." />
               </td>
               <td style={{width: '60%'}}>  Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
               </td>
@@ -266,7 +266,7 @@ class Home extends Component {
                 Scarcity
               </td>
               <td style={{width: '15%'}}>
-                <img src="/assets/img/1FakeLowstock.png" alt="test." id="Panic" />
+                <img src="/assets/img/1FakeLowstock.png" alt="test." />
               </td>
               <td style={{width: '60%'}}>  Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
               </td>
@@ -278,7 +278,7 @@ class Home extends Component {
                 Other Dark Patterns
               </td>
               <td style={{width: '15%'}}>
-                <img src="/assets/img/1PrivacyZuckering.png" alt="test." id="Panic" />
+                <img src="/assets/img/1PrivacyZuckering.png" alt="test." />
               </td>
               <td style={{width: '60%'}}>
                 Sharing more information to the public than you orignally intended to do. (e.g., Messesnger set-up. It claims to ONLY "upload your contacts to connect you with friends" but not until you click the "Learn more" button you find out exactly what information is being used. (This info was used to push ads.)
@@ -286,7 +286,7 @@ class Home extends Component {
             </tr>
             <tr>
               <td style={{width: '15%'}}>
-                <img src="/assets/img/1BaitAndSwitch.png" alt="test." id="Panic" />
+                <img src="/assets/img/1BaitAndSwitch.png" alt="test." />
               </td>
               <td style={{width: '60%'}}>  When a user plans and expects one thing to happen, but something else happens instead. (e.g., In Microsoft's guide to upgrading to Windows 10. The "Ok" button was not actually the button that would upgrade the Windows although it seemed to be. )
               </td>
