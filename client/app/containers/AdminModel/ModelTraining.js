@@ -30,7 +30,7 @@ class ModelTraining extends Component {
   };
 
   async onSubmit () {
-    let result = await axios.post('/api/dp/autoTrain')
+    let result = await axios.post('/api/dynamodb/automaticTraining')
     if (result.data.data) {
       if (result.data.data === 'Yes') {
         message.success('success!');
@@ -42,7 +42,6 @@ class ModelTraining extends Component {
   }
 
   render() {
-    let {textResult, imageResult, imageUrl} = this.state
     return <div>
       <div>
         Model Training

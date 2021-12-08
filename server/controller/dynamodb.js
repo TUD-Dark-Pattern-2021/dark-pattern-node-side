@@ -12,6 +12,7 @@ const unmarshal = require("dynamodb-marshaler").unmarshal;
 const Papa = require("papaparse");
 const dynamoToS3 = require("../dynamoToS3.js")
 const fastCsv = require('fast-csv');
+const axios = require('axios')
 
 
 const fs = require('fs');
@@ -241,7 +242,7 @@ class dynamodbController extends baseController {
             });
     };
 
-    async automaticTraining(req, res){
+    async automaticTraining() {
         const bucketName = "darkpatternsdatasets";
         const keyName = "enriched_type_df.csv";
         const params = {
@@ -251,7 +252,9 @@ class dynamodbController extends baseController {
         let count = 0;
         let headers = [];
         let unMarshalledArray = [];
-        const filename = req.body.filename;
+
+        const filename = "C:\Users\Jordan\Desktop\DarkPatterns\dark-pattern-node-side\server\controller\datasets";
+        
         // const test = true;
         const keyCon = "Pattern_String = :name"
 
@@ -259,7 +262,7 @@ class dynamodbController extends baseController {
             TableName: "Dataset",
             Select: "Pattern_String, Pattern_Type",
             KeyConditionExpression: keyCon,
-            ExpressionAttributeValues: {":name": { S: "Your order is reserved for 19:57 minutes." }},
+            ExpressionAttributeValues: { ":name": { S: "Your order is reserved for 19:57 minutes." } },
             // ProjectionExpression: "ALL_ATTRIBUTES",
             Limit: 10000
         };
@@ -270,256 +273,237 @@ class dynamodbController extends baseController {
             Limit: 10000
         };
 
-        if (filename) {
-            var stream = fs.createWriteStream(filename, { flags: 'a' });
-            fs.writeFile(filename, '', function(){console.log('done')})
-            
-        }
+        var stream = fs.createWriteStream(filename, { flags: 'a' });
+        fs.writeFile(filename, '', function () { console.log('done') })
+
 
         let rowCount = 0;
         let writeCount = 0;
         let writeChunk = 10000;
 
-        const s3Stream = s3.getObject(params).createReadStream()
 
-        CSVToJSON().fromStream(s3Stream)
-            .on('data', (row) => {
-                let datas = JSON.parse(row);
 
-                let paramsDataset = {
-                    TableName: "Dataset",
-                    Item: {
-                        "Pattern_String": datas['Pattern String'],
+        const scanDynamoDB = (query) => {
+            console.log("scanDynamoDB")
+            dynamoToS3.scan(query, function (err, data) {
+                if (!err) {
 
-                        // "Comment": datas.comment,
-
-                        // "Pattern_Category:": datas['Pattern Category'],
-
-                        "Pattern_Type:": datas['Pattern Type'],
-
-                        // " Where_in_website:": datas['Where in website?'],
-
-                        // "Deceptive": datas['Deceptive?'],
-
-                        // "Website_Page": datas['Website Page'],
-
+                    unMarshalIntoArray(data.Items);
+                    if (data.LastEvaluatedKey) {
+                        query.ExclusiveStartKey = data.LastEvaluatedKey;
+                        if (rowCount >= writeChunk) {
+                            unparseData(data.LastEvaluatedKey);
+                        }
+                        scanDynamoDB(query);
+                    } else {
+                        unparseData("File Written");
                     }
-                };
-                // console.log(paramsDataset)
-                addData(paramsDataset);
+                } else {
+                    console.dir(err);
+                }
             });
-            const scanDynamoDB = (query) => {
-                console.log("scanDynamoDB")
-                dynamoToS3.scan(query, function (err, data) {
-                    if (!err) {
-                        unMarshalIntoArray(data.Items);
-                        if (data.LastEvaluatedKey) {
-                            query.ExclusiveStartKey = data.LastEvaluatedKey;
-                            if (rowCount >= writeChunk) {
-                                unparseData(data.LastEvaluatedKey);
-                            }
-                            scanDynamoDB(query);
-                        } else {
-                            unparseData("File Written");
-                        }
-                    } else {
-                        console.dir(err);
-                    }
-                });
-            };
-    
-            const appendStats = (params, items) => {
-                console.log("appendStats")
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
-                    let key = item["Pattern_String"].S;
-                    console.log(items)
-    
-                    if (params.stats[key]) {
-                        params.stats[key]++;
-    
-                    } else {
-                        params.stats[key] = 1;
-    
-                    }
-    
-                    rowCount++;
-                    console.log(rowCount)
-                }
-            }
-    
-            const printStats = (stats) => {
-                console.log("printStats")
-                if (stats) {
-                    console.log("\nSTATS\n----------");
-                    Object.keys(stats).forEach((key) => {
-                        console.log(key + " = " + stats[key]);
-                    });
-                    writeCount += rowCount;
-                    rowCount = 0;
-                }
-            }
-    
-            const processStats = (params, data) => {
-                console.log("processStats")
-                let query = params.query;
-                appendStats(params, data.Items);
-                if (data.LastEvaluatedKey) {
-                    query.ExclusiveStartKey = data.LastEvaluatedKey;
-                    if (rowCount >= writeChunk) {
-                        printStats(params.stats);
-                    }
-                    queryDynamoDB(params);
-                }
-            };
-    
-            const processRows = (params, data) => {
-                console.log("processRows")
-                let query = params.query;
-                unMarshalIntoArray(data.Items);
-                if (data.LastEvaluatedKey) {
-                    query.ExclusiveStartKey = data.LastEvaluatedKey;
-                    if (rowCount >= writeChunk) {
-                        unparseData(data.LastEvaluatedKey);
-                    }
-                    queryDynamoDB(params);
+        };
+
+        const appendStats = (params, items) => {
+            console.log("appendStats")
+            for (let i = 0; i < items.length; i++) {
+                let item = items[i];
+                let key = item["Pattern_String"].S;
+                // console.log(items)
+
+                if (params.stats[key]) {
+                    params.stats[key]++;
+
                 } else {
-                    unparseData("File Written");
+                    params.stats[key] = 1;
+
                 }
-            };
-    
-            const queryDynamoDB = (params) => {
-                console.log("query")
-                let query = params.query;
-                dynamoToS3.query(query, function (err, data) {
-                    if (!err) {
-                        if ("Pattern_String") {
-                            processStats(params, data);
-                        } else {
-                            processRows(params, data);
-                        }
-                    } else {
-                        console.dir(err);
-                    }
+
+                rowCount++;
+                console.log(rowCount)
+            }
+        }
+
+        const printStats = (stats) => {
+            console.log("printStats")
+            if (stats) {
+                console.log("\nSTATS\n----------");
+                Object.keys(stats).forEach((key) => {
+                    console.log(key + " = " + stats[key]);
                 });
-            };
-    
-            const unparseData = (lastEvaluatedKey) => {
-                var endData = Papa.unparse({
-                    fields: [...headers],
-                    data: unMarshalledArray
-                });
-                if (writeCount > 0) {
-                    endData = endData.replace(/(.*\r\n)/, "");;
-                }
-                if (filename) {
-                    writeData(endData);
-                } else {
-                    console.log(endData);
-                }
-                console.log("last key:");
-                console.log(lastEvaluatedKey);
-    
-                unMarshalledArray = [];
                 writeCount += rowCount;
                 rowCount = 0;
             }
-    
-            const writeData = async (data) => {
-                stream.write(data);
-    
-                const fileStream = fs.createReadStream(filename);
-                let done = false;
-    
-                let uploadParams = {
-                    Bucket: "darkpatternsdatasets",
-                    Key: "darkpatterns.csv",
-                    Body: fileStream,
-                };
-                let params = {
-                    Bucket: "darkpatternsdatasets",
-                    Key: "darkpatterns.csv",
-                }
-    
-                let found = true;
-                
-                let files;
-                console.log(uploadParams.Key);
-    
-                const data2 = await s3c.send(new S3.ListObjectsV2Command(params));
-                console.log("Success", data2.Contents[1].Key);
-                files = new Array(data2.Contents.length);
-                for (const i in data2.Contents) {
-                    files.push(data2.Contents[i].Key)
-                }
-                while (found) {
-                    uploadParams.Key = "DarkPatterns.csv"
-                    uploadParams.Key = "V" + count.toString() + uploadParams.Key;
-                params.Key = "V" + count.toString() + params.Key;
-                console.log(uploadParams.Key)
-                    if (files.indexOf(uploadParams.Key) == -1) {
-                        console.log("123")
-                        found = false;
-                        const data1 = await s3c.send(new S3.PutObjectCommand(uploadParams));
-                        console.log("Success", data1);
-                        res.send(commons.resReturn(uploadParams.Key));
-                        const bucketParams = {
-                            Bucket: "darkpatternsdatasets",
-                            Key: uploadParams.Key,
-                        };
-                        const s3Streams = s3.getObject(bucketParams).createReadStream()
-                        fastCsv.parseStream(s3Streams)
-                        .on('data', (data) => {
-                            console.log(data)
-                        
-                    })
-                }
-                    else{
-                        count++;
-                    }
-    
-                }
-            };
-    
-            const unMarshalIntoArray = (items) => {
-                if (items.length === 0) return;
-    
-                items.forEach(function (row) {
-                    let newRow = {};
-    
-                    Object.keys(row).forEach(function (key) {
-                        if (headers.indexOf(key.trim()) === -1) {
-                            headers.push(key.trim());
-                        }
-                        let newValue = unmarshal(row[key]);
-    
-                        if (typeof newValue === "object") {
-                            newRow[key] = JSON.stringify(newValue);
-                        } else {
-                            newRow[key] = newValue;
-                        }
-                    });
-    
-                    unMarshalledArray.push(newRow);
-                    rowCount++;
-                });
-            }
-            // if (test) describeTable(scanQuery);
-            if (keyCon1) queryDynamoDB(
-                {
-                    "query": query, stats: {}
-                }
-            );
-            else {
-                scanDynamoDB(scanQuery)
-            };
-            
+        }
 
-      
-        
+        const processStats = (params, data) => {
+            console.log("processStats")
+            let query = params.query;
+            appendStats(params, data.Items);
+            if (data.LastEvaluatedKey) {
+                query.ExclusiveStartKey = data.LastEvaluatedKey;
+                if (rowCount >= writeChunk) {
+                    printStats(params.stats);
+                }
+                queryDynamoDB(params);
+            }
+        };
+
+        const processRows = (params, data) => {
+            console.log("processRows")
+            let query = params.query;
+            unMarshalIntoArray(data.Items);
+            if (data.LastEvaluatedKey) {
+                query.ExclusiveStartKey = data.LastEvaluatedKey;
+                if (rowCount >= writeChunk) {
+                    unparseData(data.LastEvaluatedKey);
+                }
+                queryDynamoDB(params);
+            } else {
+                unparseData("File Written");
+            }
+        };
+
+        const queryDynamoDB = (params) => {
+            console.log("query")
+            let query = params.query;
+            dynamoToS3.query(query, function (err, data) {
+                if (!err) {
+                    if ("Pattern_String") {
+                        processStats(params, data);
+                    } else {
+                        processRows(params, data);
+                    }
+                } else {
+                    console.dir(err);
+                }
+            });
+        };
+
+        const unparseData = (lastEvaluatedKey) => {
+            var endData = Papa.unparse({
+                fields: [...headers],
+                data: unMarshalledArray
+            });
+            if (writeCount > 0) {
+                endData = endData.replace(/(.*\r\n)/, "");;
+            }
+            if (filename) {
+                writeData(endData);
+            } else {
+                // console.log(endData);
+            }
+            console.log("last key:");
+            console.log(lastEvaluatedKey);
+
+            unMarshalledArray = [];
+            writeCount += rowCount;
+            rowCount = 0;
+        }
+
+        const writeData = async (data) => {
+            stream.write(data);
+
+            const fileStream = fs.createReadStream(filename);
+
+
+            let uploadParams = {
+                Bucket: "darkpatternsdatasets",
+                Key: "darkpatterns.csv",
+                Body: fileStream,
+                ACL:'public-read'
+            };
+            let params = {
+                Bucket: "darkpatternsdatasets",
+                Key: "darkpatterns.csv",
+            }
+
+            let found = true;
+
+            let files;
+            // console.log(uploadParams.Key);
+
+            const data2 = await s3c.send(new S3.ListObjectsV2Command(params));
+            // console.log("Success", data2.Contents[1].Key);
+            files = new Array(data2.Contents.length);
+            for (const i in data2.Contents) {
+                files.push(data2.Contents[i].Key)
+            }
+            while (found) {
+                uploadParams.Key = "DarkPatterns.csv"
+
+                uploadParams.Key = "V" + count.toString() + uploadParams.Key;
+                params.Key = "V" + count.toString() + params.Key;
+                // console.log(uploadParams.Key)
+                if (files.indexOf(uploadParams.Key) == -1) {
+
+                    found = false;
+                    const data1 = await s3c.send(new S3.PutObjectCommand(uploadParams));
+                    console.log("Success", data1);
+                    let dataPassed = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/autoTrain', {
+                        bucket: uploadParams.Bucket,
+                        csv:  uploadParams.Key
+                    })
+                    console.log(dataPassed)
+                    // res.send(commons.resReturn(dataPassed))
+                    //     const bucketParams = {
+                    //         Bucket: "darkpatternsdatasets",
+                    //         Key: uploadParams.Key,
+                    //     };
+                    //     const s3Streams = s3.getObject(bucketParams).createReadStream()
+                    //     fastCsv.parseStream(s3Streams)
+                    //     .on('data', (data) => {
+                    //         console.log(data)
+
+                    // })
+                    console.log("here")
+                }
+                else {
+                    count++;
+                }
+
+            }
+        };
+
+        const unMarshalIntoArray = (items) => {
+            if (items.length === 0) return;
+
+            items.forEach(function (row) {
+                let newRow = {};
+
+                Object.keys(row).forEach(function (key) {
+                    if (headers.indexOf(key.trim()) === -1) {
+                        headers.push(key.trim());
+                    }
+                    let newValue = unmarshal(row[key]);
+
+                    if (typeof newValue === "object") {
+                        newRow[key] = JSON.stringify(newValue);
+                    } else {
+                        newRow[key] = newValue;
+                    }
+                });
+
+                unMarshalledArray.push(newRow);
+                rowCount++;
+            });
+        }
+        // if (test) describeTable(scanQuery);
+        if (keyCon1) queryDynamoDB(
+            {
+                "query": query, stats: {}
+            }
+        );
+        else {
+            scanDynamoDB(scanQuery)
+        };
+
+
+
+
     }
     async dyanmoToS3(req, res) {
-        let count = 0;  
+        let count = 0;
         let headers = [];
         let unMarshalledArray = [];
         const filename = req.body.filename;
@@ -575,7 +559,6 @@ class dynamodbController extends baseController {
             for (let i = 0; i < items.length; i++) {
                 let item = items[i];
                 let key = item["Pattern_String"].S;
-                console.log(items)
 
                 if (params.stats[key]) {
                     params.stats[key]++;
@@ -586,7 +569,7 @@ class dynamodbController extends baseController {
                 }
 
                 rowCount++;
-                console.log(rowCount)
+                // console.log(rowCount)
             }
         }
 
@@ -671,6 +654,7 @@ class dynamodbController extends baseController {
             stream.write(data);
 
             const fileStream = fs.createReadStream(filename);
+
             let done = false;
 
             let uploadParams = {
@@ -684,7 +668,7 @@ class dynamodbController extends baseController {
             }
 
             let found = true;
-            
+
             let files;
             console.log(uploadParams.Key);
 
@@ -697,8 +681,8 @@ class dynamodbController extends baseController {
             while (found) {
                 uploadParams.Key = "DarkPatterns.csv"
                 uploadParams.Key = "V" + count.toString() + uploadParams.Key;
-            params.Key = "V" + count.toString() + params.Key;
-            console.log(uploadParams.Key)
+                params.Key = "V" + count.toString() + params.Key;
+                console.log(uploadParams.Key)
                 if (files.indexOf(uploadParams.Key) == -1) {
                     console.log("123")
                     found = false;
@@ -706,7 +690,7 @@ class dynamodbController extends baseController {
                     console.log("Success", data1);
                     res.send(commons.resReturn(data1));
                 }
-                else{
+                else {
                     count++;
                 }
 
@@ -760,9 +744,9 @@ class dynamodbController extends baseController {
             let files = [];
             for (let i = 0; i < data.Contents.length; i++) {
                 files.push({
-                  name: data.Contents[i].Key,
-                  size: data.Contents[i].Size,
-                  last_modified: data.Contents[i].LastModified,
+                    name: data.Contents[i].Key,
+                    size: data.Contents[i].Size,
+                    last_modified: data.Contents[i].LastModified,
                 })
             }
             // console.log(files);
@@ -772,26 +756,26 @@ class dynamodbController extends baseController {
         run();
     }
 
-    async readCsvFile(){
+    async readCsvFile() {
         const bucketParams = {
             Bucket: "darkpatternsdatasets",
             Key: "V6DarkPatterns.csv",
         };
         const s3Stream = s3.getObject(bucketParams).createReadStream()
         fastCsv.parseStream(s3Stream)
-        .on('data', (data) => {
-            console.log(data)
-  })
+            .on('data', (data) => {
+                console.log(data)
+            })
     }
 
-    async emptyFile(req){
+    async emptyFile(req) {
         const filename = req.body.filename;
         if (filename) {
-            fs.writeFile(filename, '', function(){console.log('done')})
+            fs.writeFile(filename, '', function () { console.log('done') })
         }
     }
-    
-    
+
+
 }
 
 function addData(paramsDataset) {
