@@ -34,7 +34,9 @@ class VisualInterference extends Component {
 
     return (
       <Content className={'introduction-content'}>
+
         <Row>
+
           <Col xs={24}  sm={24} md={24} lg={24}>
             <h1 >
 
