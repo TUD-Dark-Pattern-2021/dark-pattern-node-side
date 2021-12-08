@@ -259,7 +259,7 @@ class dynamodbController extends baseController {
             TableName: "Dataset",
             Select: "Pattern_String, Pattern_Type",
             KeyConditionExpression: keyCon,
-            ExpressionAttributeValues: { ":name": { S: "Your order is reserved for 19:57 minutes." } },
+            ExpressionAttributeValues: {":name": { S: "Your order is reserved for 19:57 minutes." }},
             // ProjectionExpression: "ALL_ATTRIBUTES",
             Limit: 10000
         };
@@ -462,7 +462,7 @@ class dynamodbController extends baseController {
                         found = false;
                         const data1 = await s3c.send(new S3.PutObjectCommand(uploadParams));
                         console.log("Success", data1);
-                        res.send(commons.resReturn(data1));
+                        res.send(commons.resReturn(uploadParams.Key));
                         const bucketParams = {
                             Bucket: "darkpatternsdatasets",
                             Key: uploadParams.Key,
