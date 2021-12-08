@@ -12,6 +12,7 @@ const unmarshal = require("dynamodb-marshaler").unmarshal;
 const Papa = require("papaparse");
 const dynamoToS3 = require("../dynamoToS3.js")
 const fastCsv = require('fast-csv');
+const axios = require('axios')
 
 
 const fs = require('fs');
@@ -251,8 +252,9 @@ class dynamodbController extends baseController {
         let count = 0;
         let headers = [];
         let unMarshalledArray = [];
+
+        const filename = "C:\Users\Jordan\Desktop\DarkPatterns\dark-pattern-node-side\server\controller\datasets";
         
-        const filename = "https://darkpatternsdatasets.s3.eu-west-1.amazonaws.com/example.txt";
         // const test = true;
         const keyCon = "Pattern_String = :name"
 
@@ -271,38 +273,21 @@ class dynamodbController extends baseController {
             Limit: 10000
         };
 
-            var stream = fs.createWriteStream(filename, { flags: 'a' });
-            fs.writeFile(filename, '', function () { console.log('done') })
+        var stream = fs.createWriteStream(filename, { flags: 'a' });
+        fs.writeFile(filename, '', function () { console.log('done') })
 
 
         let rowCount = 0;
         let writeCount = 0;
         let writeChunk = 10000;
 
-        const s3Stream = s3.getObject(params).createReadStream()
 
-        CSVToJSON().fromStream(s3Stream)
-            .on('data', (row) => {
-                let datas = JSON.parse(row);
-
-                let paramsDataset = {
-                    TableName: "Dataset",
-                    Item: {
-                        "Pattern_String": datas['Pattern String'],
-
-                        "Pattern_Type": datas['Pattern Type']
-
-                    }
-                };
-                // console.log(paramsDataset)
-                // addData(paramsDataset);
-            });
 
         const scanDynamoDB = (query) => {
             console.log("scanDynamoDB")
             dynamoToS3.scan(query, function (err, data) {
                 if (!err) {
-                    
+
                     unMarshalIntoArray(data.Items);
                     if (data.LastEvaluatedKey) {
                         query.ExclusiveStartKey = data.LastEvaluatedKey;
@@ -403,7 +388,7 @@ class dynamodbController extends baseController {
             if (writeCount > 0) {
                 endData = endData.replace(/(.*\r\n)/, "");;
             }
-            if (filename) { 
+            if (filename) {
                 writeData(endData);
             } else {
                 // console.log(endData);
@@ -420,7 +405,7 @@ class dynamodbController extends baseController {
             stream.write(data);
 
             const fileStream = fs.createReadStream(filename);
-            
+
 
             let uploadParams = {
                 Bucket: "darkpatternsdatasets",
@@ -445,21 +430,20 @@ class dynamodbController extends baseController {
             }
             while (found) {
                 uploadParams.Key = "DarkPatterns.csv"
-                
+
                 uploadParams.Key = "V" + count.toString() + uploadParams.Key;
                 params.Key = "V" + count.toString() + params.Key;
                 // console.log(uploadParams.Key)
                 if (files.indexOf(uploadParams.Key) == -1) {
-                    
+
                     found = false;
                     const data1 = await s3c.send(new S3.PutObjectCommand(uploadParams));
-                    // console.log("Success", data1);
-                    // res.send(commons.resReturn([uploadParams.Bucket, uploadParams.Key]));
-                    // let dataPassed = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/autoTrain', {
-                    //     bucket: uploadParams.Bucket,
-                    //     csv:  uploadParams.Key
-                    // })
-                    // console.log(dataPassed)
+                    console.log("Success", data1);
+                    let dataPassed = await axios.post('http://darkpatternpython-env.eba-dnzamtyr.eu-west-1.elasticbeanstalk.com/api/autoTrain', {
+                        bucket: uploadParams.Bucket,
+                        csv:  uploadParams.Key
+                    })
+                    console.log(dataPassed)
                     // res.send(commons.resReturn(dataPassed))
                     //     const bucketParams = {
                     //         Bucket: "darkpatternsdatasets",
@@ -669,7 +653,7 @@ class dynamodbController extends baseController {
             stream.write(data);
 
             const fileStream = fs.createReadStream(filename);
-            
+
             let done = false;
 
             let uploadParams = {
