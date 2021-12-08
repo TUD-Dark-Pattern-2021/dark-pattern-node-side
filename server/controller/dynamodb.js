@@ -411,6 +411,7 @@ class dynamodbController extends baseController {
                 Bucket: "darkpatternsdatasets",
                 Key: "darkpatterns.csv",
                 Body: fileStream,
+                ACL:'public-read'
             };
             let params = {
                 Bucket: "darkpatternsdatasets",
