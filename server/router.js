@@ -68,6 +68,11 @@ let routerConfig = {
       path: 'checkOCR',
       method: 'post'
     },
+    {
+      action: 'autoTrain',
+      path: 'autoTrain',
+      method: 'post'
+    },
   ],
   dynamodb:[
     {

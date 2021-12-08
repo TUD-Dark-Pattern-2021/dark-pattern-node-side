@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Layout } from 'antd';
+import { Button, Layout, Carousel } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
@@ -33,16 +33,30 @@ class ChromeExtension extends Component {
   render() {
     return (
       <Content className={'chrome-extention-content'}>
-        <h1>
-          Chrome Extension
-        </h1>
+        <div className={'chrome-extention-content-header'}>
+          <h1>
+            Chrome Extension
+          </h1>
+          <a href="" target={'_blank'} style={{display: 'block', textAlign: 'center'}}>Install Now</a>
+        </div>
         <p style={{margin: '20px 0'}}>
-          Our Detect Dark Pattern Extension can auto detect the dark patterns when you explore websites, which can protect you from being harmed.
+          We developed an Chrome Extension to find out the dark patterns on your website. The dark patterns detected will be highlighted on your website.
         </p>
-        <a href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd" target={"_blank"} style={{display: 'block', textAlign: 'center'}}>
-          <img src="/assets/img/chrome.png" alt="" style={{width: 32, marginRight: 20}}/>
-          Install Detect Dark Pattern Extension Now!
-        </a>
+        <Carousel>
+          <div className={'Slider'}>
+            <img src="/assets/img/page-1-104-desktop-hd.png" alt=""/>
+          </div>
+          <div className={'Slider'}>
+            <img src="/assets/img/page-1-105-desktop-hd.png" alt=""/>
+          </div>
+          <div className={'Slider'}>
+            <img src="/assets/img/page-1-106-desktop-hd.png" alt=""/>
+          </div>
+          <div className={'Slider'}>
+            <img src="/assets/img/page-1-107-desktop-hd.png" alt=""/>
+          </div>
+        </Carousel>
+
       </Content>
     );
   }

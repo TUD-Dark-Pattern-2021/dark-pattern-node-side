@@ -394,6 +394,11 @@ class dpController extends baseController {
     })
     res.send(commons.resReturn(data.data));
   }
+  async autoTrain(req, res) {
+
+
+    res.send(commons.resReturn({code: 200}));
+  }
 }
 
 module.exports = dpController;

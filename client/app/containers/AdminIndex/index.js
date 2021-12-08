@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ReportList, ReportNew  } from '../AdminReports'
-import { CurrentModel, ModelTest } from '../AdminModel'
+import { CurrentModel, ModelTest, ModelTraining } from '../AdminModel'
 import { ModelResources } from '../AdminS3'
 import AdminHome from './AdminHome'
 const { Content, Sider } = Layout
@@ -91,6 +91,11 @@ class Index extends Component {
                   Model Test
                 </Link>
               </Menu.Item>
+              <Menu.Item key="/admin/model-training">
+                <Link to={'/admin/model-training'}>
+                  Model Training
+                </Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub3"
@@ -116,6 +121,7 @@ class Index extends Component {
                 <Route path='/admin/report-new' component={ReportNew} />
                 <Route path='/admin/current-model' component={CurrentModel} />
                 <Route path='/admin/model-test' component={ModelTest} />
+                <Route path='/admin/model-training' component={ModelTraining} />
                 <Route path='/admin/model-resources' component={ModelResources} />
                 <Route component={AdminHome}>
                 </Route>
