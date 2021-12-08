@@ -254,7 +254,7 @@ class dynamodbController extends baseController {
         let unMarshalledArray = [];
 
         // const filename = "C:\Users\Jordan\Desktop\DarkPatterns\dark-pattern-node-side\server\controller\datasets";
-        const filename = __dirname + "/datasets/example.txt";
+        const filename = __dirname + "\datasets\example.txt";
         console.log(filename)
         
         // const test = true;
@@ -390,11 +390,8 @@ class dynamodbController extends baseController {
             if (writeCount > 0) {
                 endData = endData.replace(/(.*\r\n)/, "");;
             }
-            if (filename) {
                 writeData(endData);
-            } else {
-                // console.log(endData);
-            }
+
             console.log("last key:");
             console.log(lastEvaluatedKey);
 
