@@ -253,7 +253,9 @@ class dynamodbController extends baseController {
         let headers = [];
         let unMarshalledArray = [];
 
-        const filename = "C:\Users\Jordan\Desktop\DarkPatterns\dark-pattern-node-side\server\controller\datasets";
+        // const filename = "C:\Users\Jordan\Desktop\DarkPatterns\dark-pattern-node-side\server\controller\datasets";
+        const filename = __dirname + "/datasets/example.txt";
+        console.log(filename)
         
         // const test = true;
         const keyCon = "Pattern_String = :name"
