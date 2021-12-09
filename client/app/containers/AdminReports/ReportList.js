@@ -23,6 +23,45 @@ const statusMap = [
   },
 ]
 
+const changeStatusMap = [
+  {
+    label: 'All',
+    value: '',
+  },
+  ...statusMap
+]
+
+const categoryMap = [
+  {
+    label: 'All',
+    value: '',
+  },
+  {
+    label: 'Fake Activity',
+    value: 'fakeactivity',
+  },
+  {
+    label: 'Fake Countdown',
+    value: 'fakecountdown',
+  },
+  {
+    label: 'Fake Limited-Time',
+    value: 'fakelimitedtime',
+  },
+  {
+    label: 'Fake Low-Stock',
+    value: 'fakelowstock',
+  },
+  {
+    label: 'Fake High-Demand',
+    value: 'fakehighdemand',
+  },
+  {
+    label: 'Confirmshaming',
+    value: 'confirmshaming',
+  },
+]
+
 class ReportList extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +74,8 @@ class ReportList extends Component {
         {
           title: 'Create Time',
           dataIndex: 'createdTime',
+          defaultSortOrder: 'descend',
+          sorter: (a, b) => a.createdTime - b.createdTime,
           render:(text) => {
             return (
               <span>
@@ -115,25 +156,14 @@ class ReportList extends Component {
     const children = [];
     const Elements = [
       {
-        field: 'url',
-        type: 'text',
-      },
-      {
-        field: 'webType',
-        type: 'text',
-      },
-      {
-        field: 'keyword',
-        type: 'text',
-      },
-      {
         field: 'category',
-        type: 'text',
+        type: 'select',
+        value: categoryMap
       },
       {
         field: 'status',
         type: 'select',
-        value: statusMap
+        value: changeStatusMap
       },
       {
         field: 'startTime',
@@ -219,6 +249,12 @@ class ReportList extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        if (values.startTime) {
+          values.startTime = moment(values.startTime).valueOf()
+        }
+        if (values.endTime) {
+          values.endTime = moment(values.endTime).valueOf()
+        }
         this.getList(values)
       }
     });

@@ -8,8 +8,22 @@
 
   <link rel="icon" type="image/png" href="/assets/img/logo-s.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 </head>
 <body>
   <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <script>
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#383b75"
+        },
+        "button": {
+          "background": "#f1d600"
+        }
+      }
+    });
+  </script>
 </body>
 </html>

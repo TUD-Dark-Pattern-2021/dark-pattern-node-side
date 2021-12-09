@@ -39,6 +39,11 @@ class ReportForm extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        if (values.classification) {
+          values.classification = 1
+        } else {
+          values.classification = 0
+        }
         this.postNewReport(values)
       }
     });
@@ -67,6 +72,7 @@ class ReportForm extends Component {
     return<div className="Report-Container">
     <div className="reportBackground">
       <h1>Report New Dark Patterns</h1>
+      <p>Report new dark patterns to help us make our extension better! &#10024;</p>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <h3>Website URL:</h3>
         <Form.Item label="">
@@ -79,41 +85,34 @@ class ReportForm extends Component {
             ],
           })(<Input placeholder='Please input url'/>)}
         </Form.Item>
-        <h3>Website Type:</h3>
-        <Form.Item label="">
-          {getFieldDecorator('webType', {
-            rules: [{ required: true, message: 'Please select web type!' }],
-          })(
-            <Select placeholder="Please select web type">
-              <Option value="shopping">Shopping</Option>
-            </Select>,
-          )}
-        </Form.Item>
+
         <h3>Sentence Or Keywords Of Dark Patterns:</h3>
         <Form.Item label="">
-          {getFieldDecorator('keyword', {
+          {getFieldDecorator('patternString', {
             rules: [
               {
                 required: true,
-                message: 'Please input keyword!',
+                message: 'Please input sentence or keywords!',
               },
             ],
           })(<Input placeholder='Please input keyword' />)}
         </Form.Item>
-        <h3>Dark Pattern Category:</h3>
+        <h3>Dark Pattern Type:</h3>
         <Form.Item label="">
-          {getFieldDecorator('category', {
+          {getFieldDecorator('patternType', {
             rules: [{ required: true, message: 'Please select category!' }],
           })(
-            <Select placeholder="Please select categorye">
-              <Option value={0}>Misdirection</Option>
-              <Option value={1}>Urgency</Option>
-              <Option value={2}>Scarcity</Option>
-              <Option value={3}>Force Action</Option>
+            <Select placeholder="Please select category!">
+              <Option value={"fakeactivity"}>Fake Activity</Option>
+              <Option value={"fakecountdown"}>Fake Countdown</Option>
+              <Option value={"fakelimitedtime"}>Fake Limited-Time</Option>
+              <Option value={"fakelowstock"}>Fake Low-Stock</Option>
+              <Option value={"fakehighdemand"}>Fake High-Demand</Option>
+              <Option value={"confirmshaming"}>Confirmshaming</Option>
             </Select>,
           )}
         </Form.Item>
-        <h3>Issues Description:</h3>
+        <h3>Describe the Issue:</h3>
         <Form.Item label="" className="DPdescription">
           {getFieldDecorator('description', {
             rules: [
@@ -123,6 +122,12 @@ class ReportForm extends Component {
               },
             ],
           })(<TextArea rows={4}/>)}
+        </Form.Item>
+        <Form.Item label="" >
+          {getFieldDecorator('classification', {
+            valuePropName: 'checked',
+            initialValue: false,
+          })(<Checkbox style={{fontSize: 16}}>Check if reporting mis-highlighted content.</Checkbox>)}
         </Form.Item>
         <Row justify={'center'} type={'flex'}>
           <Button type="" htmlType="submit">

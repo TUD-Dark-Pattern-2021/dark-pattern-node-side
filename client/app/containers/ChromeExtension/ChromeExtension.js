@@ -45,25 +45,25 @@ class ChromeExtension extends Component {
           We developed a Chrome Extension to find out the dark patterns on your website, and those dark patterns detected will be highlighted.
         </p>
         <Carousel>
-          <div className={'Slider'}>
-            <iframe width="1061" height="597" src="https://www.youtube.com/embed/K2SSYFT61uE"
+          <div className={'chrome-extension-slider'}>
+            <iframe src="https://www.youtube.com/embed/K2SSYFT61uE"
                     title="YouTube video player" frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen>
 
             </iframe>
-
+            <img src="/assets/img/page-1-104-desktop-hd.png" alt="" style={{visibility: "hidden"}}/>
           </div>
-          <div className={'Slider'}>
+          <div className={'chrome-extension-slider'}>
             <img src="/assets/img/page-1-104-desktop-hd.png" alt=""/>
           </div>
-          <div className={'Slider'}>
+          <div className={'chrome-extension-slider'}>
             <img src="/assets/img/page-1-105-desktop-hd.png" alt=""/>
           </div>
-          <div className={'Slider'}>
+          <div className={'chrome-extension-slider'}>
             <img src="/assets/img/page-1-106-desktop-hd.png" alt=""/>
           </div>
-          <div className={'Slider'}>
+          <div className={'chrome-extension-slider'}>
             <img src="/assets/img/page-1-107-desktop-hd.png" alt=""/>
           </div>
         </Carousel>
