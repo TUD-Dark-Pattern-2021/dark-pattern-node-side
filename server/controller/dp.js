@@ -12,6 +12,8 @@ const docClient = require("../docClient.js")
 const { unmarshall } = require("@aws-sdk/util-dynamodb");
 const cheerio = require('cheerio');
 const {element} = require("prop-types");
+const moment = require('moment');
+const _ = require('lodash')
 
 // const filePath = path.join(__dirname, 'sample1.html');
 // let xml  = fs.readFileSync(filePath, 'utf8');
@@ -251,17 +253,63 @@ class dpController extends baseController {
   }
   async getList(req, res) {
 
-    let {status} = req.query;
-    console.log(req.query, '----------------------------')
-    let tableName = "Report";
+    const {status, startTime, endTime, category} = req.query;
+    const tableName = "Report";
+    let FilterExpression = ''
+    let ExpressionAttributeNames = {}
+    let ExpressionAttributeValues = {}
+    if (status) {
+      ExpressionAttributeNames["#status"] = "status";
+      ExpressionAttributeValues[":status"] = { N: status }
+      if (!FilterExpression) {
+        FilterExpression += "#status = :status"
+      } else {
+        FilterExpression += " AND #status = :status"
+      }
+    }
+    if (category) {
+      ExpressionAttributeNames["#category"] = "category";
+      ExpressionAttributeValues[":category"] = { S: category }
+      if (!FilterExpression) {
+        FilterExpression += "#category = :category"
+      } else {
+        FilterExpression += " AND #category = :category"
+      }
+    }
+    if (startTime) {
+      ExpressionAttributeNames["#createdTime"] = "createdTime";
+      ExpressionAttributeValues[":startTime"] = { N: startTime }
+      if (!FilterExpression) {
+        FilterExpression += "#createdTime > :startTime"
+      } else {
+        FilterExpression += " AND #createdTime > :startTime"
+      }
+    }
+    if (endTime) {
+      ExpressionAttributeNames["#createdTime"] = "createdTime";
+      ExpressionAttributeValues[":endTime"] = { N: endTime }
+      if (!FilterExpression) {
+        FilterExpression += "#createdTime < :endTime"
+      } else {
+        FilterExpression += " AND #createdTime < :endTime"
+      }
+    }
     const scanQuery = {
-
       TableName: tableName,
       Select: "ALL_ATTRIBUTES",
-      Limit: 10,
-
+      // Limit: 10,
     };
 
+    if(FilterExpression) {
+      scanQuery.FilterExpression = FilterExpression
+    }
+    if(!_.isEmpty(ExpressionAttributeNames)) {
+      scanQuery.ExpressionAttributeNames = ExpressionAttributeNames
+    }
+    if(!_.isEmpty(ExpressionAttributeValues)) {
+      scanQuery.ExpressionAttributeValues = ExpressionAttributeValues
+    }
+    console.log(scanQuery)
     const run = async () => {
       try {
         const data = await ddbClient.send(new DynamoDB.ScanCommand(scanQuery));
@@ -338,7 +386,7 @@ class dpController extends baseController {
             Key: {
               id: { S: req.body.id },
             },
-            ProjectionExpression: "#id, #url, description, keyword, webType", 
+            ProjectionExpression: "#id, #url, description, keyword, webType, category",
             ExpressionAttributeNames: {
               "#id": "id",
               "#url": "url"
@@ -346,21 +394,23 @@ class dpController extends baseController {
           };
 
           const data2 = await ddbClient.send(new DynamoDB.GetItemCommand(params));
-          console.log(data2.Item.url.S);
+          console.log(data2, 'data2===============');
+          const categoryMap = {
+            fakeactivity: 'Activity Notification',
+            confirmshaming: 'Confirmshaming',
+            fakecountdown: 'Countdown Timer',
+            fakelimitedtime: 'Limited-Time Message',
+            fakehighdemand: 'High-demand Message',
+            fakelowstock: 'Low-stock Message'
+          }
           params = {
             TableName: "Dataset",
             Item:{
-              Website_Page: {
-                S: data2.Item.url.S
-              },
               Pattern_String: {
-                S: data2.Item.description.S
+                S: data2.Item.keyword.S
               },
-              Pattern_Category:{
-                S:data2.Item.webType.S
-              },
-              Pattern_Type: {
-                S:data2.Item.keyword.S
+              "Pattern_Type:": {
+                S: categoryMap[data2.Item.category.S]
               }
             }
           };
