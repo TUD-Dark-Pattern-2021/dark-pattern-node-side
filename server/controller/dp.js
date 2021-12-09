@@ -242,7 +242,7 @@ class dpController extends baseController {
       try {
         const data = await ddbClient.send(new DynamoDB.PutItemCommand(params));
         console.log(data);
-        res.send("Added Report");
+        res.send(commons.resReturn("Added Report"));
       } catch (err) {
         console.error(err);
       }
