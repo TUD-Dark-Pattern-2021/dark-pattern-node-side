@@ -212,17 +212,17 @@ class dpController extends baseController {
         webType: {
           S: "shopping"
         },
-        screenshot: {
-          N: "5"
-        },
         keyword: {
-          S: req.body.keyword
+          S: req.body.patternString
         },
         category: {
-          N: String(req.body.category)
+          S: String(req.body.patternType)
         },
         description: {
           S: req.body.description
+        },
+        classification:{
+          N: String(req.body.classification)
         },
         createdTime: {
           N: String(Date.now())
@@ -251,12 +251,15 @@ class dpController extends baseController {
   }
   async getList(req, res) {
 
+    let {status} = req.query;
+    console.log(req.query, '----------------------------')
     let tableName = "Report";
     const scanQuery = {
 
       TableName: tableName,
       Select: "ALL_ATTRIBUTES",
-      Limit: 10
+      Limit: 10,
+
     };
 
     const run = async () => {
