@@ -2,6 +2,7 @@ import React, {PureComponent as Component} from "react";
 import PropTypes from "prop-types";
 import axios from 'axios'
 import { Form, Row, Col, Input, Button, Icon, Select, Table, DatePicker  } from 'antd'
+import moment from "moment";
 const { Option } = Select
 const statusMap = [
   {
@@ -33,7 +34,14 @@ class ReportList extends Component {
         },
         {
           title: 'Create Time',
-          dataIndex: 'createTime',
+          dataIndex: 'createdTime',
+          render:(text) => {
+            return (
+              <span>
+                {moment(text).format('YYYY-MM-DD HH:mm:ss')}
+              </span>
+            )
+          }
         },
         {
           title: 'Url',
@@ -218,8 +226,6 @@ class ReportList extends Component {
 
   static propTypes = {
     login: PropTypes.bool,
-    // animeList: PropTypes.array,
-    // getAnimeList: PropTypes.func
   };
 
   render() {
