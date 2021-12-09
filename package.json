@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prod": "cross-env NODE_ENV=production webpack -p --progress --profile --colors && cross-env NODE_ENV=production pm2 start ./server/server.js --no-daemon",
-    "start": "cross-env process.env.NODE_ENV=dev pm2 start ./server/server.js --watch server --no-daemon",
+    "start": "cross-env NODE_ENV=production webpack -p --progress --profile --colors && cross-env NODE_ENV=production pm2 start ./server/server.js --no-daemon",
+    "dev": "cross-env process.env.NODE_ENV=dev pm2 start ./server/server.js --watch server --no-daemon",
     "stop": "pm2 kill"
   },
   "engines": {
