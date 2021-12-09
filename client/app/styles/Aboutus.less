@@ -4,14 +4,12 @@
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 0px;
-
     h1{
       font-size: 30px;
       margin-top: 80px;
     }
     h2{
       font-size: 78px;
-
     }
     h3{
       font-size: 50px;
@@ -26,33 +24,134 @@
   }
 
 }
+.BottomLeft{
+  margin-top: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+  h1{
+    font-size: 30px;
+  }
+}
 .AboutusBottom{
-  margin-top: -180px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 100%;
- div{
-
+  margin-top: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
 
    h4{
      font-size: 30px;
    }
 
 
-
- }
+}
+.BottomPic{
+  margin-top: 50px;
   img{
-    grid-column-start: 2;
-    grid-column-end: 3;
-    justify-self:end;
-    align-self: start;
     width: 150px;
+  }
+}
+
+@media only screen and  (min-width: 600px) and (max-width: 1024px) {
+  .about-us-content{
+    .aboutusLeft{
+
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      h1{
+        font-size: 20px;
+        margin-top: 10px;
+
+      }
+      h2{
+        font-size: 40px;
+      }
+
+    }
+  };
+  .aboutusRight{
+    img{
+      width: 100%;
+    }
+
+  }
+  .BottomLeft{
+    margin-top: 50px;
+    padding-left: 0px;
+    padding-right: 100px;
+    h1{
+      font-size: 20px;
+    }
+  }
+  .AboutusBottom{
+    margin-top: 50px;
+    margin-left: 0px;
+    padding-left: 0px;
+
+    padding-right: 100px;
+
+    h4{
+      font-size: 20px;
+    }
 
 
   }
-
-
+  .BottomPic{
+    margin-top: 50px;
+    img{
+      width: 150px;
+    }
+  }
 }
+@media only screen and  (max-width: 600px) {
+  .about-us-content{
+    .aboutusLeft{
 
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      h1{
+        font-size: 18px;
+        margin-top: 10px;
+      }
+      h2{
+        font-size: 30px;
+      }
+
+    }
+  };
+  .aboutusRight{
+    img{
+      width: 100%;
+    }
+
+  }
+  .BottomLeft{
+    margin-top: 50px;
+    padding-left: 0px;
+    padding-right: 100px;
+    h1{
+      font-size: 18px;
+    }
+  }
+  .AboutusBottom{
+    margin-top: 50px;
+    margin-left: 0px;
+    padding-left: 0px;
+
+    padding-right: 100px;
+
+    h4{
+      font-size: 18px;
+    }
+
+
+  }
+  .BottomPic{
+    margin-top: 50px;
+    img{
+      width: 150px;
+    }
+  }
+}
 
 

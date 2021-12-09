@@ -5,6 +5,7 @@ import { Button, Layout, Carousel } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 const { Content } = Layout
+import {Icon} from 'antd';
 
 @connect(
   state => ({
@@ -35,14 +36,24 @@ class ChromeExtension extends Component {
       <Content className={'chrome-extention-content'}>
         <div className={'chrome-extention-content-header'}>
           <h1>
+            <img src="/assets/img/chromeextension.png" alt=""/>
             Chrome Extension
           </h1>
-          <a href="" target={'_blank'} style={{display: 'block', textAlign: 'center'}}>Install Now</a>
+          <a href="" target={'_blank'} style={{display: 'block', textAlign: 'center'}} id={"buttonDownload"}>Install Now !  <img src="/assets/img/financial_install.png" alt=""/> </a>
         </div>
         <p style={{margin: '20px 0'}}>
-          We developed an Chrome Extension to find out the dark patterns on your website. The dark patterns detected will be highlighted on your website.
+          We developed a Chrome Extension to find out the dark patterns on your website, and those dark patterns detected will be highlighted.
         </p>
         <Carousel>
+          <div className={'Slider'}>
+            <iframe width="1061" height="597" src="https://www.youtube.com/embed/K2SSYFT61uE"
+                    title="YouTube video player" frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen>
+
+            </iframe>
+
+          </div>
           <div className={'Slider'}>
             <img src="/assets/img/page-1-104-desktop-hd.png" alt=""/>
           </div>
