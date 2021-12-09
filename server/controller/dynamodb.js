@@ -13,6 +13,7 @@ const Papa = require("papaparse");
 const dynamoToS3 = require("../dynamoToS3.js")
 const fastCsv = require('fast-csv');
 const axios = require('axios')
+const path = require('path')
 
 
 const fs = require('fs');
@@ -225,11 +226,11 @@ class dynamodbController extends baseController {
 
                         "Comment": datas.comment,
 
-                        "Pattern_Category:": datas['Pattern Category'],
+                        "Pattern_Category": datas['Pattern Category'],
 
-                        "Pattern_Type:": datas['Pattern Type'],
+                        "Pattern_Type": datas['Pattern Type'],
 
-                        " Where_in_website:": datas['Where in website?'],
+                        " Where_in_website": datas['Where in website?'],
 
                         "Deceptive": datas['Deceptive?'],
 
@@ -254,7 +255,8 @@ class dynamodbController extends baseController {
         let unMarshalledArray = [];
 
         // const filename = "C:\Users\Jordan\Desktop\DarkPatterns\dark-pattern-node-side\server\controller\datasets";
-        const filename = __dirname + "/datasets/example.txt";
+      console.log(process.cwd())
+        const filename = path.resolve(process.cwd(), "datasets/example.txt");
         console.log(filename)
         
         // const test = true;
@@ -390,11 +392,8 @@ class dynamodbController extends baseController {
             if (writeCount > 0) {
                 endData = endData.replace(/(.*\r\n)/, "");;
             }
-            if (filename) {
                 writeData(endData);
-            } else {
-                // console.log(endData);
-            }
+
             console.log("last key:");
             console.log(lastEvaluatedKey);
 

@@ -41,26 +41,11 @@ class AboutUs extends Component {
             <h1>
               Who are we?
             </h1>
-
-
               <p>
                 We are a student group from TUD MSc Computer Science (Advanced Software Devlopment). We are currently in our last semester of the course.
               </p>
-
-
-            <h1>
-              What do we do?
-            </h1>
-
-              <p>
-                We are committed to research in the direction of Dark Pattern and hope to apply the theory to practice. We are currently developing a Dark Pattern detector in the form of a chrome extension.
-                Not all of the dark patterns can be detected in the time-frame given to us, but we plan to constantly improve the extenion.
-              </p>
-
-
-
           </Col>
-          <Col xs={24}  sm={12} md={12} lg={12} className={'aboutusRight'}>
+          <Col xs={24}  sm={24} md={24} lg={12} className={'aboutusRight'}>
             <img src="/assets/img/1PrivacyZuckering.png" alt="PrivacyZuckering." id="PrivacyZuckering" />
 
           </Col>
@@ -69,8 +54,18 @@ class AboutUs extends Component {
 
         </Row>
         <Row>
-          <Col xs={24}  sm={24} md={12} lg={12} offset={12} className={"AboutusBottom"}>
-            <div>
+          <Col xs={24}  sm={24} md={24} lg={10} className={"BottomLeft"}>
+            <h1>
+              What do we do?
+            </h1>
+
+            <p>
+              We are committed to research in the direction of Dark Pattern and hope to apply the theory to practice. We are currently developing a Dark Pattern detector in the form of a chrome extension.
+              Not all of the dark patterns can be detected in the time-frame given to us, but we plan to constantly improve the extenion.
+            </p>
+          </Col>
+          <Col xs={24}  sm={24} md={24} lg={10}  className={"AboutusBottom"}>
+
         <h4>
           Contact Us
         </h4>
@@ -79,17 +74,19 @@ class AboutUs extends Component {
           <br/>
           <a href="mailto:dowleyalan@gmail.com">Alan Dowley</a>
           <br/>
-          <a href="mailto:allenlyp1992@gmail.com">Yunpen Liu</a>
+          <a href="mailto:allenlyp1992@gmail.com">Yunpeng Liu</a>
           <br/>
           <a href="mailto:yufeiisu@gmail.com">Yufei Su</a>
           <br/>
           <a href="mailto:seanquan959@gmail.com">Quanwei Sun</a>
           <br/>
-          <a href="mailto:damian.x.gordon@tudublin.ie">Lan Zeng</a>
+          <a href="mailto:lan.zeng1995@gmail.com">Lan Zeng</a>
         </p>
-            </div>
-            <img src="/assets/img/Technological-University-Dublin-Logo.jpg" alt="Group Photo of all the people in the project" width="100%"  />
 
+
+          </Col>
+          <Col xs={24}  sm={24} md={24} lg={4} className={"BottomPic"}>
+            <img src="/assets/img/Technological-University-Dublin-Logo.jpg" alt="Group Photo of all the people in the project" width="100%"  />
           </Col>
 
 
