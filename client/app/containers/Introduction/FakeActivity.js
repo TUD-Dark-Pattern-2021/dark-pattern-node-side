@@ -50,7 +50,8 @@ class FakeActivity extends Component {
         <Row className={'intro-container'}  type="flex" justify="center">
           <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
             <p>
-        Informing the user about other people’s activity on the website, including behavious of puchasing, viewing, visiting etc, which may not be truthful. (e.g., “3 people are viewing this item now”)
+              Informing the user about other people’s activity on the website, including behaviours of purchasing, viewing, visiting etc., which may not be truthful. (e.g., “3 people are viewing this item now”)
+
             </p>
 
           </Col>

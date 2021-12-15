@@ -93,7 +93,8 @@ class PrivacyZuckering extends Component {
 
             <h3><img src="/assets/img/PZ2.png" alt="Privacy Zuckering Example." width= "100%"/>
             <p>
-              There is a switch that is enabled, that will use your info for facebook ads, this description is hidden behind a dropdown.
+              There is a switch that is enabled that will use your info for Facebook ads. This description is hidden behind a dropdown.
+
             </p>
             <br/>
             (Whatsapp.com)</h3>

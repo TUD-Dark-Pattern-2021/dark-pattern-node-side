@@ -88,7 +88,8 @@ class VisualInterference extends Component {
                 <h3>
                   <img src="/assets/img/VI1.png" alt="Visual Interference Example." width= "100%"/>
                   <p>
-                    Seems like the option on the right is unavailable as they greyed it out but this is not the case.
+                    It seems like the option on the right is unavailable as they greyed it out, but this is not the case.
+
                   </p>
                   <br/>
                   (GreenFingers.com)
