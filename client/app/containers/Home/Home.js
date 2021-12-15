@@ -53,27 +53,27 @@ class Home extends Component {
           </Col>
           <Row  className="DP-category-container" type="flex" justify="center">
             <Col  xs={12}  sm={12} md={4} lg={4} className="container-category">
-              <img src="/assets/img/scarcity.png" alt="scarcity." id="scarcity-icon" />
+              <img src="/assets/img/scarcity1.png" alt="scarcity." id="scarcity-icon" />
               <h2>Scarcity </h2>
             </Col>
             <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-              <img src="/assets/img/forcedAction.png" alt="scarcity." id="forced-action-icon" />
+              <img src="/assets/img/forcedAction1.png" alt="scarcity." id="forced-action-icon" />
               <h2>Forced Action </h2>
             </Col>
             <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-              <img src="/assets/img/misdirection.png" alt="scarcity." id="misdirection-icon" />
+              <img src="/assets/img/misdirection1.png" alt="scarcity." id="misdirection-icon" />
               <h2>Misdirection </h2>
             </Col>
             <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-              <img src="/assets/img/socialProof.png" alt="scarcity." id="social-proof-icon" />
+              <img src="/assets/img/socialProof1.png" alt="scarcity." id="social-proof-icon" />
               <h2>Social Proof </h2>
             </Col>
             <Col xs={12}  sm={12} md={4} lg={4} className="container-category">
-              <img src="/assets/img/scarcity.png" alt="scarcity." id="scarciy-icon" />
+              <img src="/assets/img/sneak.png" alt="scarcity." id="scarciy-icon" />
               <h2>Sneaking </h2>
             </Col>
             <Col xs={12}  sm={12} md={4} lg={4}  className="container-category">
-              <img src="/assets/img/urgency.png" alt="scarcity." id="urgency-icon" />
+              <img src="/assets/img/urgency1.png" alt="scarcity." id="urgency-icon" />
               <h2>Urgency </h2>
             </Col>
           </Row>
