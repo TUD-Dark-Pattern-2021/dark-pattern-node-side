@@ -48,7 +48,8 @@ class FakeLimitedTime extends Component {
         <Row className={'intro-container'}  type="flex" justify="center">
           <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
             <p>
-        Giving users the impression that a deal or saleis only for a limited amount fo time or is about to expire soon, without stating a specific deadline. (e.g., “sale ends soon”, “only avaliable for a limited time”)
+              Giving users the impression that a deal or sales only for a limited amount of time or is about to expire soon, without stating a specific deadline. (e.g., “sale ends soon”, “only available for a limited time”)
+
             </p>
           </Col>
           <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >

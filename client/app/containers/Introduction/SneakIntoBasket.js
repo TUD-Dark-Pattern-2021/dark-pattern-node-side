@@ -47,7 +47,7 @@ class SneakIntoBasket extends Component {
         <Row className={'intro-container'}  type="flex" justify="center">
           <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
             <p>
-              When you try purchase sometihng online, but the site sneaks and add item or price into your basket. (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
+              When you try to purchase something online, but the site sneaks and add item or price into your basket. (e.g., You add a laptop to your basket, the site may automatically add the price of warranty to it too.)
             </p>
           </Col>
           <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >

@@ -50,7 +50,7 @@ class ConfirmShaming extends Component {
         <Row className={'intro-container'}  type="flex" justify="center">
           <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
             <p>
-        Invoking language and emotion (shame) to convince users not to make a certain choice, or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
+              Invoking language and emotion (shame) to convince users not to make a certain choice or guilting users into opting into something. (e.g., “No thanks, I don’t want to save.”)
             </p>
           </Col>
           <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >

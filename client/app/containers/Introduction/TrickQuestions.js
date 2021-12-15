@@ -86,7 +86,8 @@ class TrickQuestions extends Component {
             <h3>
               <img src="/assets/img/TQ1.png" alt="Trick Questions Example." width= "100%"/>
               <p>
-                It makes you click the checkbox to not recieve the emails when typically you would need to untick it.
+                It makes you click the checkbox not to receive the emails when typically you would need to untick it.
+
               </p>
 
             <br/>

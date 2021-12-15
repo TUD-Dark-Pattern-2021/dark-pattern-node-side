@@ -52,9 +52,10 @@ class FakeLowStock extends Component {
           <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
             <p>
         Informing users about the limited availability of a product, making it more desirable to users. (e.g., “only 2 items left in stock”) </p>
-        </Col>
+
+          </Col>
         <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
-            <img src="/assets/img/FakeLowstock.png" alt="FakeLowstock." id="FakeLowstock" />
+            <img src="/assets/img/1FakeLowstock.png" alt="FakeLowstock." id="FakeLowstock" />
         </Col>
         </Row>
         <Row className={'bottomVideoContainer'} type="flex" justify="center" >

@@ -48,8 +48,9 @@ class ForcedContinuity extends Component {
         <Row className={'intro-container'}  type="flex" justify="center">
           <Col xs={24}  sm={16} md={16} lg={16} className={'introLeft'}  pull={1}>
             <p>
-        This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length. (e.g. You sign up for a week free trial to premium shopping, then, 
-        if you have not cancelled your subscription, by next week you will be charged again, without warning)
+              This is when the free trial you applied for comes to an end, and without warning, you get charged again for another subscription time length. (e.g. You sign up for a week free trial to premium shopping, then,
+              if you have not cancelled your subscription by next week, you will be charged again, without warning)
+
             </p>
           </Col>
           <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
