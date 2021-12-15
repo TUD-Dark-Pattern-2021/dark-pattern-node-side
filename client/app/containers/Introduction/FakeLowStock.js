@@ -55,7 +55,7 @@ class FakeLowStock extends Component {
 
           </Col>
         <Col className={'introImg'} xs={0}  sm={8} md={8} lg={8}  >
-            <img src="/assets/img/FakeLowstock.png" alt="FakeLowstock." id="FakeLowstock" />
+            <img src="/assets/img/1FakeLowstock.png" alt="FakeLowstock." id="FakeLowstock" />
         </Col>
         </Row>
         <Row className={'bottomVideoContainer'} type="flex" justify="center" >
